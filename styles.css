@@ -1,0 +1,5 @@
+@keyframes pulse {
+  0% { filter: drop-shadow(0 0 40px #E60000); }
+  50% { filter: drop-shadow(0 0 100px #ff3333); }
+  100% { filter: drop-shadow(0 0 40px #E60000); }
+}

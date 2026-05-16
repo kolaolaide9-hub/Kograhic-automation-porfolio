@@ -1,0 +1,188 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-LWSVMWPZYK");
+</script>
+
+<!-- Google tag (gtag.js) -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'G-LWSVMWPZYK');\n</script>\n<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KOGRAHIC Mockup Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@900&family=Inter:wght@300;500;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--red:#E60000;--black:#000;--silver:#C0C0C0;--glow:#ff3333}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--black);color:var(--silver);font-family:'Inter',sans-serif;overflow-x:hidden}
+    h1,h2{font-family:'Orbitron',sans-serif;letter-spacing:8px;text-transform:uppercase}
+    .hero{height:100vh;display:grid;place-items:center;position:relative;background:var(--black)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(230,0,0,0.3),var(--black));opacity:0.8}
+    .hero h1{font-size:clamp(6rem,20vw,18rem);color:var(--red);text-shadow:0 0 100px var(--glow),0 0 200px var(--glow)}
+    .hero p{font-size:2rem;letter-spacing:10px;margin-top:2rem;color:var(--silver);text-shadow:0 0 30px var(--red)}
+    .section{padding:120px 20px;text-align:center}
+    .section h2{font-size:5rem;color:var(--red);text-shadow:0 0 60px var(--red);margin-bottom:4rem}
+    .upload-area{max-width:600px;margin:4rem auto;padding:3rem;background:#111;border:2px dashed var(--red);border-radius:20px;cursor:pointer}
+    .upload-btn{background:var(--red);color:#000;padding:1.5rem 3rem;border-radius:50px;font-size:1.6rem;font-weight:900;display:inline-block}
+    #userPreview{max-width:400px;margin:2rem auto;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.5)}
+    .templates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem;margin-top:4rem}
+    .template-card{cursor:pointer;transition:.4s}
+    .template-card svg{width:100%;height:auto;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.5);transition:.4s}
+    .template-card:hover svg{transform:scale(1.05)}
+    .template-card p{margin-top:1rem;font-size:1.6rem;font-weight:900}
+    #result{max-width:800px;margin:4rem auto;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,0.7)}
+    .download-btn{background:var(--red);color:#000;padding:1.5rem 3rem;border-radius:50px;font-size:1.8rem;font-weight:900;cursor:pointer;margin-top:2rem;display:inline-block;text-decoration:none}
+    canvas{display:none}
+    .back-link{margin:2rem;display:inline-block;background:var(--red);color:#000;padding:1rem 2rem;border-radius:50px;text-decoration:none;font-weight:900}
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div>
+      <h1>KOGRAHIC</h1>
+      <p>MOCKUP GENERATOR</p>
+    </div>
+  </section>
+
+  <section class="generator">
+    <h2>CREATE LUXURY MOCKUPS</h2>
+    <div class="upload-area">
+      <div class="upload-btn">UPLOAD YOUR DESIGN / LOGO</div>
+      <input type="file" id="designUpload" accept="image/*" style="display:none">
+      <div id="userPreview"></div>
+    </div>
+
+    <h2>CHOOSE TEMPLATE</h2>
+    <div class="templates-grid">
+      <!-- 6 Inline SVG Templates (black luxury style with print area) -->
+      <div class="template-card" data-name="T-Shirt">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <path d="M150 100 Q300 50 450 100 L450 300 Q450 350 400 350 L200 350 Q150 350 150 300 Z" fill="#111"/>
+          <rect x="200" y="200" width="200" height="350" fill="#222" rx="20"/>
+          <text x="300" y="600" text-anchor="middle" fill="#666" font-size="40">LUXURY T-SHIRT</text>
+        </svg>
+        <p>LUXURY T-SHIRT</p>
+      </div>
+
+      <div class="template-card" data-name="Hoodie">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <path d="M150 80 Q300 30 450 80 L450 350 Q450 400 400 400 L200 400 Q150 400 150 350 Z" fill="#111"/>
+          <circle cx="300" cy="80" r="50" fill="#111"/>
+          <rect x="200" y="220" width="200" height="350" fill="#222" rx="20"/>
+          <text x="300" y="600" text-anchor="middle" fill="#666" font-size="40">PREMIUM HOODIE</text>
+        </svg>
+        <p>PREMIUM HOODIE</p>
+      </div>
+
+      <div class="template-card" data-name="Mug">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <ellipse cx="300" cy="400" rx="150" ry="250" fill="#111"/>
+          <path d="M450 300 Q500 400 450 500" fill="none" stroke="#111" stroke-width="50"/>
+          <rect x="220" y="250" width="160" height="300" fill="#222" rx="20"/>
+          <text x="300" y="650" text-anchor="middle" fill="#666" font-size="40">CERAMIC MUG</text>
+        </svg>
+        <p>CERAMIC MUG</p>
+      </div>
+
+      <div class="template-card" data-name="Packaging">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <rect x="150" y="150" width="300" height="500" fill="#111" rx="20"/>
+          <rect x="200" y="250" width="200" height="300" fill="#222" rx="10"/>
+          <text x="300" y="700" text-anchor="middle" fill="#666" font-size="40">PRODUCT PACKAGING</text>
+        </svg>
+        <p>PRODUCT PACKAGING</p>
+      </div>
+
+      <div class="template-card" data-name="Phone Case">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <rect x="200" y="100" width="200" height="600" fill="#111" rx="40"/>
+          <rect x="220" y="200" width="160" height="400" fill="#222" rx="20"/>
+          <text x="300" y="750" text-anchor="middle" fill="#666" font-size="40">PHONE CASE</text>
+        </svg>
+        <p>PHONE CASE</p>
+      </div>
+
+      <div class="template-card" data-name="Poster">
+        <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="800" fill="#000"/>
+          <rect x="100" y="100" width="400" height="600" fill="#111" rx="20"/>
+          <rect x="150" y="150" width="300" height="500" fill="#222" rx="10"/>
+          <text x="300" y="750" text-anchor="middle" fill="#666" font-size="40">WALL POSTER</text>
+        </svg>
+        <p>WALL POSTER</p>
+      </div>
+    </div>
+
+    <div id="result"></div>
+    <a href="/" class="back-link">← BACK TO PORTFOLIO</a>
+  </section>
+
+  <script>
+    const uploadArea = document.querySelector('.upload-area');
+    const uploadInput = document.getElementById('designUpload');
+    const userPreview = document.getElementById('userPreview');
+    const resultDiv = document.getElementById('result');
+    let userDesign = null;
+
+    uploadArea.addEventListener('click', () => uploadInput.click());
+
+    uploadInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          userDesign = new Image();
+          userDesign.onload = () => {
+            userPreview.innerHTML = `<img src="${e.target.result}" style="max-width:400px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.5)">`;
+          };
+          userDesign.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.querySelectorAll('.template-card').forEach(card => {
+      card.addEventListener('click', () => {
+        if (!userDesign) {
+          alert('Upload your design first!');
+          return;
+        }
+        const svg = card.querySelector('svg').cloneNode(true);
+        svg.setAttribute('width', '600');
+        svg.setAttribute('height', '800');
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 800;
+        const ctx = canvas.getContext('2d');
+
+        const svgData = new XMLSerializer().serializeToString(svg);
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0);
+          ctx.drawImage(userDesign, 150, 200, 300, 400); // Perfect centered print area
+          const resultUrl = canvas.toDataURL('image/png');
+          resultDiv.innerHTML = `
+            <img src="${resultUrl}" style="max-width:100%;border-radius:20px">
+            <br>
+            <a href="${resultUrl}" download="kograhic-mockup.png" class="download-btn">DOWNLOAD MOCKUP</a>
+          `;
+        };
+        img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+      });
+    });
+  </script>
+
+  <footer style="padding:80px;background:#000;color:#666;text-align:center">
+    © 2025 KOGRAHIC — ALL RIGHTS RESERVED
+  </footer>
+</body>
+</html>

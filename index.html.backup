@@ -1,0 +1,233 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-LWSVMWPZYK");
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-LWSVMWPZYK");
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-LWSVMWPZYK");
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-LWSVMWPZYK");
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>KOGRAHIC — Luxury Streetwear Branding & Knockout Logo Design</title>
+
+<meta name="description" content="Premium graphic design studio by Kola Olaide. Specializing in bold luxury streetwear logos, branding, packaging, and motion graphics. Red, black, silver knockout style.">
+
+<meta name="keywords" content="luxury streetwear designer, knockout logo, streetwear branding, graphic design portfolio, red black silver logo">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KOGRAHIC — Premium Design That Hits Different</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@900&family=Inter:wght@300;500;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    :root{--red:#E60000;--black:#000;--silver:#C0C0C0;--glow:#ff3333}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--black);color:var(--silver);font-family:'Inter',sans-serif;overflow-x:hidden}
+    h1,h2{font-family:'Orbitron',sans-serif;letter-spacing:8px;text-transform:uppercase}
+    .hero{height:100vh;display:grid;place-items:center;position:relative;background:var(--black)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(230,0,0,0.3),var(--black));opacity:0.8}
+    .hero h1{font-size:clamp(6rem,20vw,18rem);color:var(--red);text-shadow:0 0 100px var(--glow),0 0 200px var(--glow);animation:punch 2s infinite alternate}
+    @keyframes punch{0%{transform:scale(1)}100%{transform:scale(1.05)}}
+    .hero p{font-size:2rem;letter-spacing:10px;margin-top:2rem;color:var(--silver);text-shadow:0 0 30px var(--red)}
+    .section{padding:140px 20px;text-align:center;position:relative}
+    .section h2{font-size:6rem;color:var(--red);text-shadow:0 0 60px var(--red);margin-bottom:4rem}
+    .story p{font-size:1.6rem;max-width:900px;margin:0 auto;line-height:2;font-weight:300}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem}
+    .service{background:var(--red);color:var(--black);padding:4rem;border-radius:20px;font-size:2rem;font-weight:900;transition:.5s;box-shadow:0 30px 60px rgba(230,0,0,0.5)}
+    .service:hover{transform:translateY(-30px);box-shadow:0 50px 100px rgba(230,0,0,0.7)}
+    .works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:3rem}
+    .work{position:relative;overflow:hidden;border-radius:20px;aspect-ratio:1;box-shadow:0 30px 60px rgba(0,0,0,0.8);transition:.5s}
+    .work img{width:100%;height:100%;object-fit:cover;filter:brightness(0.7);transition:.5s}
+    .work:hover img{filter:brightness(1);transform:scale(1.2)}
+    .work::after{content:attr(data-title);position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:2.5rem;font-weight:900;color:#fff;text-shadow:0 0 40px var(--black);opacity:0;transition:.5s}
+    .work:hover::after{opacity:1}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:3rem}
+    .testimonial{background:#111;padding:4rem;border-radius:20px;box-shadow:0 30px 60px rgba(0,0,0,0.5);transition:.5s;border:2px solid transparent}
+    .testimonial:hover{border-color:var(--red);transform:translateY(-20px)}
+    .testimonial .stars{display:flex;gap:8px;justify-content:center;margin-bottom:2rem}
+    .testimonial .stars img{height:32px}
+    .testimonial p{font-size:1.4rem;line-height:1.8;font-style:italic;margin-bottom:3rem}
+    .testimonial .client{display:flex;align-items:center;gap:2rem}
+    .testimonial .client img{width:80px;height:80px;border-radius:50%;border:4px solid var(--red);object-fit:cover}
+    .testimonial .client div{font-size:1.4rem;font-weight:900}
+    .testimonial .client small{display:block;color:#999}
+    .social-bar{position:fixed;bottom:40px;right:30px;z-index:9999;display:flex;flex-direction:column;gap:18px}
+    .social-icon{width:65px;height:65px;border-radius:50%;background:var(--red);box-shadow:0 15px 40px rgba(230,0,0,0.6);transition:.4s;display:grid;place-items:center}
+    .social-icon:hover{transform:scale(1.3);box-shadow:0 20px 50px rgba(230,0,0,0.8)}
+    .social-icon img{width:40px;height:40px}
+    footer{padding:80px;background:#000;color:#666;text-align:center;font-size:1.1rem}
+    @media (max-width:768px){.section{padding:80px 20px}.hero p{font-size:1.5rem}.section h2{font-size:4rem}}
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LWSVMWPZYK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(js, new Date());
+  gtag(config, G-LWSVMWPZYK);
+</script>
+</head>
+<body>
+  <section class="hero" data-aos="fade-in">
+    <div>
+      <div style="text-align:center"><img src="https://i.ibb.co/2D5nmNJ/kograhic-logo.png" alt="KOGRAHIC Logo" style="max-width:80%;height:auto;filter:drop-shadow(0 0 60px #E60000);animation:pulse 4s infinite"></div>
+      <p>WE DON'T DESIGN. WE KNOCK OUT.</p>
+    </div>
+  </section>
+
+  <section class="story" data-aos="fade-up">
+    <h2>THE STORY</h2>
+    <p>
+      Born in the streets. Built for dominance.<br><br>
+      KOGRAHIC is the knockout punch in a world of weak visuals.<br>
+      Founded by Kola Olaide in 2025, we fuse luxury craftsmanship with raw street energy — creating designs that don’t ask for attention. They take it.<br><br>
+      Logos that command respect. Brands that intimidate competitors. Visuals that turn heads and close deals.<br><br>
+      We don’t follow trends. We drop them.
+    </p>
+  </section>
+
+  <section class="services" data-aos="fade-up">
+    <h2>SERVICES</h2>
+    <div class="services-grid">
+      <div class="service">LOGO DESIGN</div>
+      <div class="service">BRAND IDENTITY</div>
+      <div class="service">SOCIAL MEDIA KITS</div>
+      <div class="service">PACKAGING</div>
+      <div class="service">MOTION GRAPHICS</div>
+      <div class="service">PRINT DESIGN</div>
+    </div>
+  </section>
+
+  <section class="works" data-aos="fade-up">
+    <h2>SELECTED WORKS</h2>
+    <div class="works-grid">
+      <div class="work" data-title="LOGO DESIGN"><img src="https://www.shutterstock.com/image-vector/vector-red-black-abstract-business-600nw-2551416171.jpg" alt="Logo Design"></div>
+      <div class="work" data-title="BRAND IDENTITY"><img src="https://www.shutterstock.com/image-vector/modern-simple-3-color-curve-260nw-2166322777.jpg" alt="Brand Identity"></div>
+      <div class="work" data-title="SOCIAL MEDIA"><img src="https://pixelbuddha.net/storage/109780/streetwear-instagram-pack-adobe-template-0.webp" alt="Social Media"></div>
+      <div class="work" data-title="MOTION"><img src="https://elements-resized.envatousercontent.com/elements-video-cover-images/256e8a56-42f6-4b7b-aa42-f4bafb41be4c/video_preview/video_preview_0000.jpg?w=500&cf_fit=cover&q=85&format=auto&s=2a73b5e9d5aa4a99483f3f30ddd31cbd95bb472134bc63bd6e8ab2c99840047e" alt="Motion Graphics"></div>
+      <div class="work" data-title="TYPE DESIGN"><img src="https://elements-resized.envatousercontent.com/elements-cover-images/eca00f89-c41f-49e0-a6e7-d916a10e0693?w=433&cf_fit=scale-down&q=85&format=auto&s=3e85deae3b9eef8246ffd19c4cb768ccfbb7cf15f0be3ebe2b966b6d2afbad3e" alt="Typography"></div>
+    </div>
+  </section>
+
+  <section class="testimonials" data-aos="fade-up">
+    <h2>CLIENT KNOCKOUTS</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+        </div>
+        <p>"Kola captured my brand's energy perfectly. The logo and social kits have doubled my engagement — real results, real fast."</p>
+        <div class="client">
+          <img src="https://www.shutterstock.com/image-photo/business-portrait-happy-black-man-260nw-2371141209.jpg" alt="Marcus R.">
+          <div>Marcus R.<br><small>CEO, Street Kings Apparel</small></div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+        </div>
+        <p>"Professional, fast, and creative. The motion graphics made my releases go viral. Highly recommend KOGRAHIC."</p>
+        <div class="client">
+          <img src="https://thumbs.dreamstime.com/b/headshot-portrait-smiling-young-african-american-businesswoman-looking-camera-beauty-charisma-head-shot-portrait-attractive-390014598.jpg" alt="Aisha K.">
+          <div>Aisha K.<br><small>Founder, Luxe Vibe Records</small></div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+          <img src="https://png.pngtree.com/png-vector/20240613/ourlarge/pngtree-superior-five-star-rating-icon-for-premium-content-png-image_12739610.png" alt="5 stars">
+        </div>
+        <p>"The packaging redesign elevated my product to luxury status. Sales are up 180%. Kola is a genius."</p>
+        <div class="client">
+          <img src="https://www.shutterstock.com/image-photo/confident-smiling-young-professional-african-260nw-2454390665.jpg" alt="Tiana L.">
+          <div>Tiana L.<br><small>Brand Owner & Influencer</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>START YOUR PROJECT</h2>
+    <form action="https://formspree.io/f/mvgelwab" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <input type="text" name="service" placeholder="Interested Service">
+      <textarea name="message" rows="8" placeholder="Tell me about your vision..." required></textarea>
+      <button type="submit">SEND MESSAGE</button>
+    </form>
+    <p style="margin-top:3rem;font-size:1.3rem;color:var(--silver)">
+kograhic@gmail.com</a>
+    </p>
+  </section>
+
+  <!-- FLOATING SOCIAL ICONS — VISUALLY PERFECT WHITE ICONS -->
+  <div class="social-bar">
+    <a href="https://wa.me/2349138290042" class="social-icon" target="_blank">
+      <img src="https://e7.pngegg.com/pngimages/833/631/png-clipart-whatsapp-computer-icons-android-mobile-phones-whatsapp-text-trademark.png" alt="WhatsApp">
+    </a>
+    <a href="https://instagram.com/kograhic" class="social-icon" target="_blank">
+      <img src="https://www.pngfind.com/pngs/m/277-2773517_instagram-logo-white-logo-instagram-png-putih-transparent.png" alt="Instagram">
+    </a>
+    <a href="https://tiktok.com/@kograhic" class="social-icon" target="_blank">
+      <img src="https://www.edigitalagency.com.au/wp-content/uploads/new-TikTok-icon-white-png.png" alt="TikTok">
+    </a>
+    <a href="https://behance.net/kograhic" class="social-icon" target="_blank">
+      <img src="https://toppng.com/uploads/preview/behance-be-white-logo-icon-symbol-png-116816663857verihzto8.png" alt="Behance">
+    </a>
+    <a href="https://twitter.com/kograhic" class="social-icon" target="_blank">
+      <img src="https://i.pinimg.com/736x/04/22/46/0422461cde4dea7a8d2469570f9c33a9.jpg" alt="X/Twitter">
+    </a>
+    <a href="https://calendly.com/kograhic/30min" class="social-icon" target="_blank">
+      <img src="https://www.vhv.rs/dpng/d/439-4398283_transparent-white-calendar-icon-png-colorfulness-png-download.png" alt="Book a Call">
+    </a>
+  </div>
+
+  <footer>© 2025 KO GRAPHIC DESIGN STUDIO — ALL RIGHTS RESERVED</footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init({duration:1200,once:true});</script>
+  <div style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999">
+  </div>
+</body>
+</html>
