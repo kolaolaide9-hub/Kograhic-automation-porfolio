@@ -1,1 +1,836 @@
+import { useState, useEffect, useRef } from "react";
+
+const WHATSAPP_URL = "https://wa.me/2349138290042";
+const DEMO_URL = "#demo";
+
+// ── Particle grid background ──────────────────────────────────────────────────
+function ParticleGrid() {
+  return (
+    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: `
+          linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px)
+        `,
+        backgroundSize: "60px 60px"
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14,165,233,0.15), transparent)"
+      }} />
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse 40% 60% at 85% 60%, rgba(6,182,212,0.08), transparent)"
+      }} />
+    </div>
+  );
+}
+
+// ── Glow orb ──────────────────────────────────────────────────────────────────
+function GlowOrb({ style }) {
+  return (
+    <div style={{
+      position: "absolute",
+      borderRadius: "50%",
+      filter: "blur(80px)",
+      pointerEvents: "none",
+      ...style
+    }} />
+  );
+}
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  const links = ["Services", "Industries", "Results", "Pricing", "Demo"];
+
+  return (
+    <nav style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+      padding: "0 24px",
+      background: scrolled ? "rgba(3,7,18,0.85)" : "transparent",
+      backdropFilter: scrolled ? "blur(20px)" : "none",
+      borderBottom: scrolled ? "1px solid rgba(56,189,248,0.1)" : "none",
+      transition: "all 0.4s ease"
+    }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        {/* Logo */}
+        <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
+          <div style={{
+            width: 36, height: 36, borderRadius: 10,
+            background: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 16, fontWeight: 900, color: "#fff",
+            boxShadow: "0 0 20px rgba(14,165,233,0.5)"
+          }}>K</div>
+          <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 18, color: "#f0f9ff", letterSpacing: "-0.02em" }}>
+            Kographic<span style={{ color: "#38bdf8" }}>AI</span>
+          </span>
+        </a>
+
+        {/* Desktop links */}
+        <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="nav-links">
+          {links.map(l => (
+            <a key={l} href={`#${l.toLowerCase()}`} style={{
+              color: "rgba(186,230,253,0.7)", textDecoration: "none",
+              fontSize: 14, fontWeight: 500, fontFamily: "'DM Sans', sans-serif",
+              transition: "color 0.2s", letterSpacing: "0.01em"
+            }}
+              onMouseEnter={e => e.target.style.color = "#38bdf8"}
+              onMouseLeave={e => e.target.style.color = "rgba(186,230,253,0.7)"}
+            >{l}</a>
+          ))}
+        </div>
+
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+          background: "linear-gradient(135deg, #0ea5e9, #0284c7)",
+          color: "#fff", textDecoration: "none",
+          padding: "10px 20px", borderRadius: 10, fontSize: 13, fontWeight: 700,
+          fontFamily: "'DM Sans', sans-serif",
+          boxShadow: "0 0 20px rgba(14,165,233,0.35)",
+          transition: "all 0.2s",
+          whiteSpace: "nowrap"
+        }}
+          onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 0 30px rgba(14,165,233,0.55)"; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 20px rgba(14,165,233,0.35)"; }}
+        >💬 Book Free Call</a>
+      </div>
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+        @media (max-width: 768px) { .nav-links { display: none !important; } }
+      `}</style>
+    </nav>
+  );
+}
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+function Hero() {
+  const stats = [
+    { val: "24/7", label: "Lead Capture" },
+    { val: "3s", label: "Avg Response" },
+    { val: "4×", label: "More Leads" },
+    { val: "72h", label: "Go Live" },
+  ];
+
+  return (
+    <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", padding: "120px 24px 80px", overflow: "hidden" }}>
+      <GlowOrb style={{ width: 600, height: 600, top: -100, left: "50%", transform: "translateX(-50%)", background: "rgba(14,165,233,0.12)" }} />
+      <GlowOrb style={{ width: 300, height: 300, top: 200, right: 100, background: "rgba(6,182,212,0.1)" }} />
+
+      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="hero-grid">
+
+          {/* Left */}
+          <div>
+            {/* Badge */}
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "rgba(14,165,233,0.1)", border: "1px solid rgba(14,165,233,0.25)",
+              borderRadius: 100, padding: "6px 16px", marginBottom: 32
+            }}>
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e", boxShadow: "0 0 8px #22c55e", display: "block" }} />
+              <span style={{ color: "#7dd3fc", fontSize: 13, fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
+                🇳🇬 Nigeria · 🇦🇪 UAE — Now accepting clients
+              </span>
+            </div>
+
+            <h1 style={{
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+              fontWeight: 900,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              color: "#f0f9ff",
+              margin: "0 0 24px"
+            }}>
+              Turn WhatsApp<br />
+              <span style={{
+                background: "linear-gradient(135deg, #38bdf8, #06b6d4, #0ea5e9)",
+                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent"
+              }}>Conversations Into</span><br />
+              Paying Customers
+            </h1>
+
+            <p style={{
+              color: "rgba(186,230,253,0.7)", fontSize: "1.1rem", lineHeight: 1.7,
+              fontFamily: "'DM Sans', sans-serif", maxWidth: 480, margin: "0 0 40px"
+            }}>
+              Kographic AI builds intelligent WhatsApp automation that captures leads, responds instantly, and converts enquiries into real revenue — 24 hours a day, 7 days a week.
+            </p>
+
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+                background: "linear-gradient(135deg, #0ea5e9, #0284c7)",
+                color: "#fff", textDecoration: "none",
+                padding: "14px 28px", borderRadius: 12, fontSize: 15, fontWeight: 700,
+                fontFamily: "'DM Sans', sans-serif",
+                boxShadow: "0 0 30px rgba(14,165,233,0.4)",
+                transition: "all 0.25s"
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 50px rgba(14,165,233,0.6)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 30px rgba(14,165,233,0.4)"; }}
+              >💬 Book Free Consultation</a>
+
+              <a href={DEMO_URL} style={{
+                background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.25)",
+                color: "#7dd3fc", textDecoration: "none",
+                padding: "14px 28px", borderRadius: 12, fontSize: 15, fontWeight: 600,
+                fontFamily: "'DM Sans', sans-serif", transition: "all 0.25s"
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(14,165,233,0.15)"; e.currentTarget.style.borderColor = "rgba(14,165,233,0.5)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(14,165,233,0.08)"; e.currentTarget.style.borderColor = "rgba(14,165,233,0.25)"; }}
+              >▶ See Live Demo</a>
+            </div>
+
+            {/* Stats row */}
+            <div style={{ display: "flex", gap: 24, marginTop: 48, flexWrap: "wrap" }}>
+              {stats.map(s => (
+                <div key={s.val} style={{ textAlign: "center" }}>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: "1.6rem", fontWeight: 900, color: "#38bdf8", lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(148,163,184,0.7)", marginTop: 4 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right — dashboard mockup */}
+          <div style={{ position: "relative" }} className="hero-right">
+            <div style={{
+              background: "rgba(14,165,233,0.06)",
+              border: "1px solid rgba(14,165,233,0.2)",
+              borderRadius: 24,
+              padding: 24,
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 0 60px rgba(14,165,233,0.1), inset 0 1px 0 rgba(255,255,255,0.05)"
+            }}>
+              {/* Fake WhatsApp conversation */}
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20, padding: "12px 16px", background: "rgba(0,0,0,0.3)", borderRadius: 12 }}>
+                <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #22c55e, #16a34a)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤖</div>
+                <div>
+                  <div style={{ color: "#f0f9ff", fontSize: 13, fontWeight: 700, fontFamily: "'DM Sans', sans-serif" }}>KographicAI Bot</div>
+                  <div style={{ color: "#22c55e", fontSize: 11, fontFamily: "'DM Sans', sans-serif", display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} /> Online · Responding instantly
+                  </div>
+                </div>
+              </div>
+
+              {[
+                { from: "user", text: "Hi, I'm interested in your 3-bed apartment in Lekki", time: "11:47 PM" },
+                { from: "bot", text: "Hello! 👋 Great choice — we have 2 units available in that area. What's your budget range?", time: "11:47 PM" },
+                { from: "user", text: "Around ₦45M", time: "11:48 PM" },
+                { from: "bot", text: "Perfect! I can book you a viewing for tomorrow. What time works best? ✅", time: "11:48 PM" },
+              ].map((msg, i) => (
+                <div key={i} style={{
+                  display: "flex", justifyContent: msg.from === "user" ? "flex-end" : "flex-start",
+                  marginBottom: 12
+                }}>
+                  <div style={{
+                    maxWidth: "75%",
+                    background: msg.from === "user" ? "rgba(14,165,233,0.2)" : "rgba(30,41,59,0.8)",
+                    border: `1px solid ${msg.from === "user" ? "rgba(14,165,233,0.3)" : "rgba(148,163,184,0.1)"}`,
+                    borderRadius: msg.from === "user" ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
+                    padding: "10px 14px"
+                  }}>
+                    <p style={{ margin: 0, color: "#e2e8f0", fontSize: 13, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>{msg.text}</p>
+                    <div style={{ textAlign: "right", marginTop: 4 }}>
+                      <span style={{ color: "rgba(148,163,184,0.5)", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" }}>{msg.time}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Metrics row */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginTop: 20 }}>
+                {[
+                  { val: "4×", label: "More Leads", color: "#38bdf8" },
+                  { val: "3s", label: "Response", color: "#22c55e" },
+                  { val: "−62%", label: "No-Shows", color: "#a78bfa" },
+                ].map(m => (
+                  <div key={m.val} style={{
+                    background: "rgba(0,0,0,0.3)", borderRadius: 10, padding: "12px 8px", textAlign: "center",
+                    border: "1px solid rgba(255,255,255,0.05)"
+                  }}>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 900, fontSize: 20, color: m.color }}>{m.val}</div>
+                    <div style={{ color: "rgba(148,163,184,0.6)", fontSize: 11, fontFamily: "'DM Sans', sans-serif", marginTop: 2 }}>{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Floating badge */}
+            <div style={{
+              position: "absolute", top: -16, right: -16,
+              background: "linear-gradient(135deg, #22c55e, #16a34a)",
+              borderRadius: 12, padding: "8px 16px",
+              boxShadow: "0 0 24px rgba(34,197,94,0.4)",
+              fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, color: "#fff"
+            }}>⚡ 72hr Go-Live</div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-right { display: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+// ── Scrolling ticker ──────────────────────────────────────────────────────────
+function Ticker() {
+  const items = ["WhatsApp Automation", "Lead Generation", "Customer Support AI", "Sales Funnels", "CRM Integration", "24/7 Availability", "Botpress Powered", "Instagram DM Bots", "Appointment Booking", "Cart Recovery"];
+  return (
+    <div style={{ overflow: "hidden", borderTop: "1px solid rgba(56,189,248,0.1)", borderBottom: "1px solid rgba(56,189,248,0.1)", padding: "14px 0", background: "rgba(14,165,233,0.03)" }}>
+      <div style={{ display: "flex", gap: 48, animation: "ticker 30s linear infinite", whiteSpace: "nowrap" }}>
+        {[...items, ...items].map((item, i) => (
+          <span key={i} style={{ color: "rgba(125,211,252,0.6)", fontSize: 13, fontFamily: "'DM Sans', sans-serif", fontWeight: 500, display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#38bdf8", display: "inline-block" }} />
+            {item}
+          </span>
+        ))}
+      </div>
+      <style>{`@keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }`}</style>
+    </div>
+  );
+}
+
+// ── Section heading ───────────────────────────────────────────────────────────
+function SectionHeading({ label, title, accent, sub }) {
+  return (
+    <div style={{ textAlign: "center", marginBottom: 60 }}>
+      <div style={{
+        display: "inline-flex", alignItems: "center", gap: 8,
+        background: "rgba(14,165,233,0.08)", border: "1px solid rgba(14,165,233,0.2)",
+        borderRadius: 100, padding: "5px 14px", marginBottom: 20
+      }}>
+        <span style={{ color: "#7dd3fc", fontSize: 12, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>{label}</span>
+      </div>
+      <h2 style={{
+        fontFamily: "'Syne', sans-serif", fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
+        fontWeight: 900, color: "#f0f9ff", margin: "0 0 16px", letterSpacing: "-0.02em"
+      }}>
+        {title} <span style={{ background: "linear-gradient(135deg, #38bdf8, #06b6d4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>{accent}</span>
+      </h2>
+      {sub && <p style={{ color: "rgba(148,163,184,0.7)", fontSize: "1rem", fontFamily: "'DM Sans', sans-serif", maxWidth: 540, margin: "0 auto", lineHeight: 1.7 }}>{sub}</p>}
+    </div>
+  );
+}
+
+// ── Services ──────────────────────────────────────────────────────────────────
+function Services() {
+  const services = [
+    { icon: "💬", title: "WhatsApp AI Chatbots", desc: "Instantly respond to every WhatsApp enquiry — 24/7. Qualify leads, answer FAQs, and route conversations without lifting a finger." },
+    { icon: "🎯", title: "AI Lead Generation", desc: "Never lose a lead to slow response again. Capture buyer intent, collect contact details, and qualify prospects automatically." },
+    { icon: "⚡", title: "Automated Customer Support", desc: "Cut support workload by 60%+. Your bot handles FAQs, tracks orders, and escalates only complex issues to your team." },
+    { icon: "🔗", title: "CRM & Workflow Automation", desc: "Sync every conversation to Google Sheets or your CRM automatically. Full audit trail, zero manual data entry." },
+    { icon: "📅", title: "AI Appointment Booking", desc: "Fill slots and slash no-shows with automated WhatsApp booking, 48hr reminders, and instant reschedule options." },
+    { icon: "📈", title: "Sales Funnel Automation", desc: "Turn enquiries into sales with automated follow-up sequences, cart recovery messages, and buyer qualification funnels." },
+  ];
+
+  return (
+    <section id="services" style={{ padding: "100px 24px", position: "relative" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <SectionHeading label="What We Build" title="Three Ways We" accent="Grow Your Business" sub="Every Nigerian business loses customers to slow replies. We automate the conversation so you never miss a lead — day or night." />
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
+          {services.map((s, i) => (
+            <ServiceCard key={i} {...s} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceCard({ icon, title, desc }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: hov ? "rgba(14,165,233,0.08)" : "rgba(15,23,42,0.6)",
+        border: `1px solid ${hov ? "rgba(14,165,233,0.4)" : "rgba(148,163,184,0.1)"}`,
+        borderRadius: 20, padding: 32,
+        backdropFilter: "blur(20px)",
+        boxShadow: hov ? "0 0 40px rgba(14,165,233,0.1)" : "none",
+        transition: "all 0.3s ease",
+        transform: hov ? "translateY(-4px)" : "none",
+        cursor: "default"
+      }}
+    >
+      <div style={{
+        width: 52, height: 52, borderRadius: 14, fontSize: 24,
+        background: "rgba(14,165,233,0.1)", border: "1px solid rgba(14,165,233,0.2)",
+        display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20
+      }}>{icon}</div>
+      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.1rem", color: "#f0f9ff", margin: "0 0 12px" }}>{title}</h3>
+      <p style={{ color: "rgba(148,163,184,0.7)", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7, margin: 0 }}>{desc}</p>
+    </div>
+  );
+}
+
+// ── Results / Portfolio ───────────────────────────────────────────────────────
+function Results() {
+  const cases = [
+    { icon: "🏡", category: "Real Estate · Lagos", title: "24/7 WhatsApp Lead Capture Bot", metric: "4× More Leads", metricColor: "#38bdf8", desc: "Lagos agent was losing 60%+ of after-hours leads. Bot responds in seconds, qualifies buyer intent, and books viewings — 24/7 with zero manual effort." },
+    { icon: "👗", category: "E-commerce · Abuja", title: "Instagram DM Sales Automation", metric: "+38% Revenue", metricColor: "#22c55e", desc: "Fashion store losing hot buyers to slow Instagram DM replies. ManyChat bot captures lead, shares catalogue, and moves buyer to WhatsApp in under 60 seconds." },
+    { icon: "🏥", category: "Clinic · Port Harcourt", title: "Appointment & No-Show Reduction", metric: "−62% No-Shows", metricColor: "#a78bfa", desc: "35% no-show rate costing revenue monthly. WhatsApp reminder sequence: 48hr → 3hr → instant reschedule option. No-shows dropped 62% with zero staff effort." },
+    { icon: "🏫", category: "Private School · Abuja", title: "Admission Inquiry Automation", metric: "−80% Manual Replies", metricColor: "#f59e0b", desc: "Admin team overwhelmed with 200+ daily inquiries about admission, fees, and programs during resumption. Bot auto-answers and routes serious leads to admin." },
+    { icon: "📦", category: "Logistics · Lagos", title: "Order Tracking & Support Bot", metric: "−70% Support Volume", metricColor: "#06b6d4", desc: "Delivery company flooded with 'where is my order?' messages. WhatsApp chatbot handles tracking, delivery ETA, and issue reporting — reducing agent load by 70%." },
+    { icon: "🛡️", category: "Security Company · UAE", title: "Incident Reporting & Escalation", metric: "−85% Response Time", metricColor: "#ef4444", desc: "Guards using WhatsApp manually — inconsistent reports, delayed escalation. Bot classifies severity, creates tickets, alerts manager: 22 min → 3 min response." },
+  ];
+
+  return (
+    <section id="results" style={{ padding: "100px 24px", position: "relative" }}>
+      <GlowOrb style={{ width: 500, height: 400, bottom: 0, left: -100, background: "rgba(6,182,212,0.06)" }} />
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <SectionHeading label="Proven Results" title="Real Projects." accent="Measurable Outcomes." sub="Every number below reflects an actual automation built for a real business challenge — in Nigeria and the UAE." />
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: 24 }}>
+          {cases.map((c, i) => <CaseCard key={i} {...c} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseCard({ icon, category, title, metric, metricColor, desc }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: "rgba(15,23,42,0.7)", borderRadius: 20,
+        border: `1px solid ${hov ? metricColor + "55" : "rgba(148,163,184,0.1)"}`,
+        overflow: "hidden", transition: "all 0.3s",
+        transform: hov ? "translateY(-4px)" : "none",
+        boxShadow: hov ? `0 0 40px ${metricColor}22` : "none"
+      }}
+    >
+      {/* Header bar */}
+      <div style={{ padding: "24px 28px 0", display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+        <div>
+          <div style={{ color: "rgba(148,163,184,0.5)", fontSize: 12, fontFamily: "'DM Sans', sans-serif", marginBottom: 8 }}>{category}</div>
+          <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1rem", color: "#f0f9ff", margin: 0, lineHeight: 1.3 }}>{title}</h3>
+        </div>
+        <div style={{ fontSize: 28, marginLeft: 16 }}>{icon}</div>
+      </div>
+      <div style={{ padding: "16px 28px" }}>
+        <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 900, fontSize: "1.5rem", color: metricColor, marginBottom: 12 }}>{metric}</div>
+        <p style={{ color: "rgba(148,163,184,0.65)", fontSize: "0.875rem", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7, margin: "0 0 20px" }}>{desc}</p>
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+          display: "inline-flex", alignItems: "center", gap: 6,
+          color: "#38bdf8", fontSize: 13, fontWeight: 700, fontFamily: "'DM Sans', sans-serif",
+          textDecoration: "none", transition: "gap 0.2s"
+        }}
+          onMouseEnter={e => e.currentTarget.style.gap = "10px"}
+          onMouseLeave={e => e.currentTarget.style.gap = "6px"}
+        >Get This For My Business →</a>
+      </div>
+    </div>
+  );
+}
+
+// ── Features ──────────────────────────────────────────────────────────────────
+function Features() {
+  const feats = [
+    { icon: "🕐", title: "24/7 Automated Replies", desc: "Your business never sleeps. Bot handles every enquiry the moment it arrives — midnight, weekends, public holidays." },
+    { icon: "⚡", title: "Faster Lead Conversion", desc: "Reply in 3 seconds, not 3 hours. Speed is the single biggest factor in whether a lead converts to a customer." },
+    { icon: "🔌", title: "Multi-Platform Integration", desc: "WhatsApp, Instagram DMs, website chat, and your CRM — all connected in one seamless automation system." },
+    { icon: "🧠", title: "Smart AI Responses", desc: "Powered by Botpress AI — the bot understands intent, asks the right qualifying questions, and responds naturally." },
+    { icon: "📊", title: "Analytics Dashboard", desc: "See exactly how many leads your bot captured, conversion rates, busiest hours, and where drop-offs happen." },
+    { icon: "🚀", title: "72-Hour Go-Live", desc: "From kick-off call to live bot in 72 hours. Zero technical knowledge required on your end. We handle everything." },
+  ];
+  return (
+    <section style={{ padding: "100px 24px", position: "relative" }}>
+      <GlowOrb style={{ width: 600, height: 400, top: 0, right: -200, background: "rgba(14,165,233,0.07)" }} />
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <SectionHeading label="Why It Works" title="Everything Your Business" accent="Needs to Automate" />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+          {feats.map((f, i) => (
+            <div key={i} style={{
+              background: "rgba(15,23,42,0.5)", border: "1px solid rgba(148,163,184,0.08)",
+              borderRadius: 16, padding: "28px 24px",
+              display: "flex", gap: 18, alignItems: "flex-start"
+            }}>
+              <span style={{ fontSize: 28, flexShrink: 0 }}>{f.icon}</span>
+              <div>
+                <h4 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "0.95rem", color: "#f0f9ff", margin: "0 0 8px" }}>{f.title}</h4>
+                <p style={{ color: "rgba(148,163,184,0.65)", fontSize: "0.85rem", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Testimonials ──────────────────────────────────────────────────────────────
+function Testimonials() {
+  const testi = [
+    { name: "Ahmed S.", role: "Real Estate · Lagos", result: "+3 deals/mo", text: "The chatbot increased our lead capture rate significantly within the very first month. We stopped losing leads to slow response times overnight. Every morning I wake up to qualified buyers in my inbox.", initials: "AS", color: "#38bdf8" },
+    { name: "Chinwe O.", role: "Ecommerce · Abuja", result: "34% cart recovery", text: "Customer response time dropped from hours to seconds. Our support team now only handles complex escalations — the bot handles everything else. Truly amazing automation that paid for itself in week two.", initials: "CO", color: "#22c55e" },
+    { name: "David A.", role: "Logistics · Port Harcourt", result: "−70% tickets", text: "We handle support queries 24/7 without adding a single staff member. The ROI paid for itself within the first two weeks. Delivery complaints dropped and the team is finally focused on real work.", initials: "DA", color: "#a78bfa" },
+    { name: "Khalid A.", role: "Real Estate · Dubai", result: "+4 viewings/wk", text: "The bilingual bot changed everything — it qualifies in Arabic and English and books viewings automatically. Our close rate jumped within weeks of going live.", initials: "KA", color: "#f59e0b" },
+    { name: "Layla M.", role: "Aesthetic Clinic · Abu Dhabi", result: "AED 22k recovered", text: "No-shows were costing us thousands every month. The WhatsApp reminder sequence cut no-shows by more than half. We recovered AED 22,000 in the first month alone. Worth every dirham.", initials: "LM", color: "#06b6d4" },
+    { name: "Omar M.", role: "Security Company · UAE", result: "−85% response time", text: "Incident reports used to take 22 minutes to reach the right manager. Now the bot classifies severity, raises a ticket, and alerts the team in under 3 minutes. Compliance sorted.", initials: "OM", color: "#ef4444" },
+  ];
+
+  return (
+    <section style={{ padding: "100px 24px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        <SectionHeading label="Client Results" title="Businesses That" accent="Already Automate" sub="Real Nigerian and UAE businesses. Real numbers. Real revenue from WhatsApp automation." />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
+          {testi.map((t, i) => <TestiCard key={i} {...t} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestiCard({ name, role, result, text, initials, color }) {
+  return (
+    <div style={{
+      background: "rgba(15,23,42,0.7)", border: "1px solid rgba(148,163,184,0.1)",
+      borderRadius: 20, padding: 28, display: "flex", flexDirection: "column", gap: 20
+    }}>
+      <div style={{ display: "flex", gap: 4 }}>
+        {[...Array(5)].map((_, i) => <span key={i} style={{ color: "#fbbf24", fontSize: 14 }}>★</span>)}
+      </div>
+      <p style={{ color: "rgba(186,230,253,0.75)", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.75, margin: 0, flex: 1 }}>"{text}"</p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{
+            width: 40, height: 40, borderRadius: "50%",
+            background: `linear-gradient(135deg, ${color}66, ${color}33)`,
+            border: `1px solid ${color}44`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 13, color
+          }}>{initials}</div>
+          <div>
+            <div style={{ color: "#f0f9ff", fontSize: 13, fontWeight: 700, fontFamily: "'DM Sans', sans-serif" }}>{name}</div>
+            <div style={{ color: "rgba(148,163,184,0.5)", fontSize: 11, fontFamily: "'DM Sans', sans-serif" }}>{role}</div>
+          </div>
+        </div>
+        <div style={{
+          background: `${color}15`, border: `1px solid ${color}30`,
+          borderRadius: 8, padding: "4px 10px",
+          color, fontSize: 11, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace"
+        }}>{result}</div>
+      </div>
+    </div>
+  );
+}
+
+// ── Demo ──────────────────────────────────────────────────────────────────────
+function Demo() {
+  return (
+    <section id="demo" style={{ padding: "100px 24px", position: "relative" }}>
+      <GlowOrb style={{ width: 600, height: 500, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "rgba(14,165,233,0.06)" }} />
+      <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <SectionHeading label="Try It Yourself" title="Live" accent="Demo" sub="Interact with the real Kographic AI chatbot — the same technology we deploy for your business." />
+
+        <div style={{
+          background: "rgba(15,23,42,0.8)", border: "1px solid rgba(14,165,233,0.2)",
+          borderRadius: 24, overflow: "hidden",
+          boxShadow: "0 0 60px rgba(14,165,233,0.08)"
+        }}>
+          {/* Browser chrome */}
+          <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(14,165,233,0.1)", display: "flex", alignItems: "center", gap: 8, background: "rgba(0,0,0,0.3)" }}>
+            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#ef4444" }} />
+            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#fbbf24" }} />
+            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#22c55e" }} />
+            <div style={{ flex: 1, background: "rgba(255,255,255,0.05)", borderRadius: 6, padding: "4px 12px", marginLeft: 12 }}>
+              <span style={{ color: "rgba(148,163,184,0.4)", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>🤖 KographicAI — Live Bot</span>
+            </div>
+          </div>
+          <iframe
+            src="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/11/09/20250111091038-EU5FGBLZ.json"
+            style={{ width: "100%", height: 520, border: "none", display: "block" }}
+            title="KographicAI Live Demo"
+          />
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: 32 }}>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+            display: "inline-flex", alignItems: "center", gap: 10,
+            background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.3)",
+            color: "#4ade80", textDecoration: "none",
+            padding: "14px 28px", borderRadius: 12, fontSize: 15, fontWeight: 700,
+            fontFamily: "'DM Sans', sans-serif", transition: "all 0.25s"
+          }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(34,197,94,0.15)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "rgba(34,197,94,0.1)"; e.currentTarget.style.transform = "none"; }}
+          >💬 Or Chat on WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Pricing ───────────────────────────────────────────────────────────────────
+function Pricing() {
+  const [region, setRegion] = useState("ng");
+
+  const plans = {
+    ng: [
+      {
+        name: "Starter Bot", price: "₦120,000", sub: "One-time setup · 2 weeks support", featured: false,
+        features: ["Basic Chatbot Flow", "Lead Capture & Storage", "1 Platform Integration", "FAQ Automation", "2 Weeks of Support"]
+      },
+      {
+        name: "Growth Bot", price: "₦280,000", sub: "One-time setup · 30 days support", featured: true,
+        features: ["Advanced Flow Logic & Qualification", "WhatsApp Business API Integration", "CRM or Google Sheets Sync", "Follow-up Sequences", "Monthly Analytics Report", "30 Days Priority Support"]
+      },
+      {
+        name: "Full Automation", price: "₦500,000", sub: "One-time setup · 60 days support", featured: false,
+        features: ["Full Business Automation System", "Multi-platform (WA + IG + Web)", "Custom AI Integrations", "E-commerce & Cart Recovery", "Advanced CRM Workflows", "Ongoing Optimisation (2 months)"]
+      },
+    ],
+    ae: [
+      {
+        name: "Starter", price: "AED 1,500", sub: "One-time setup · 2 weeks support", featured: false,
+        features: ["1 WhatsApp or website bot", "Up to 5 conversation flows", "Lead capture & FAQ", "Arabic + English support", "2 weeks post-launch support"]
+      },
+      {
+        name: "Growth", price: "AED 3,500", sub: "One-time + AED 800/month", featured: true,
+        features: ["WhatsApp + Instagram automation", "Arabic & English bilingual", "Full lead capture & qualification", "Appointment booking integration", "CRM sync & analytics", "30 days support + optimisation"]
+      },
+      {
+        name: "Enterprise", price: "AED 7,000+", sub: "Custom build + retainer", featured: false,
+        features: ["Full multi-channel automation", "Security & incident workflows", "Advanced CRM integration", "Compliance & analytics reporting", "Dedicated account manager", "Bilingual priority support"]
+      },
+    ]
+  };
+
+  return (
+    <section id="pricing" style={{ padding: "100px 24px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionHeading label="Investment" title="Pick Your" accent="Growth Plan" sub="One-time setup fee. You own your bot from day one. No hidden monthly platform costs." />
+
+        {/* Region toggle */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 48 }}>
+          <div style={{ background: "rgba(15,23,42,0.8)", border: "1px solid rgba(148,163,184,0.1)", borderRadius: 12, padding: 4, display: "flex", gap: 4 }}>
+            {[{ id: "ng", label: "🇳🇬 Nigeria" }, { id: "ae", label: "🇦🇪 UAE" }].map(r => (
+              <button key={r.id} onClick={() => setRegion(r.id)} style={{
+                padding: "8px 20px", borderRadius: 9, border: "none", cursor: "pointer",
+                fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 13,
+                background: region === r.id ? "rgba(14,165,233,0.2)" : "transparent",
+                color: region === r.id ? "#38bdf8" : "rgba(148,163,184,0.5)",
+                border: region === r.id ? "1px solid rgba(14,165,233,0.3)" : "1px solid transparent",
+                transition: "all 0.2s"
+              }}>{r.label}</button>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(290px, 1fr))", gap: 24, alignItems: "start" }}>
+          {plans[region].map((p, i) => <PricingCard key={p.name + region} {...p} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PricingCard({ name, price, sub, featured, features }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        background: featured ? "rgba(14,165,233,0.08)" : "rgba(15,23,42,0.6)",
+        border: `${featured ? "2px" : "1px"} solid ${featured ? "rgba(14,165,233,0.4)" : hov ? "rgba(14,165,233,0.2)" : "rgba(148,163,184,0.1)"}`,
+        borderRadius: 20, padding: 32, position: "relative",
+        boxShadow: featured ? "0 0 60px rgba(14,165,233,0.12)" : hov ? "0 0 30px rgba(14,165,233,0.05)" : "none",
+        transition: "all 0.3s",
+        transform: featured ? "scale(1.02)" : hov ? "translateY(-2px)" : "none"
+      }}
+    >
+      {featured && (
+        <div style={{
+          position: "absolute", top: -14, left: "50%", transform: "translateX(-50%)",
+          background: "linear-gradient(135deg, #0ea5e9, #0284c7)",
+          borderRadius: 100, padding: "5px 18px",
+          fontFamily: "'DM Sans', sans-serif", fontSize: 11, fontWeight: 800, color: "#fff",
+          boxShadow: "0 0 20px rgba(14,165,233,0.4)", whiteSpace: "nowrap"
+        }}>⭐ Most Popular</div>
+      )}
+      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "1.1rem", color: "#f0f9ff", margin: "0 0 8px" }}>{name}</h3>
+      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 900, fontSize: "2rem", color: featured ? "#38bdf8" : "#f0f9ff", margin: "12px 0 4px" }}>{price}</div>
+      <div style={{ color: "rgba(148,163,184,0.5)", fontSize: 12, fontFamily: "'DM Sans', sans-serif", marginBottom: 24 }}>{sub}</div>
+      <ul style={{ listStyle: "none", margin: "0 0 28px", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+        {features.map(f => (
+          <li key={f} style={{ display: "flex", alignItems: "center", gap: 10, color: "rgba(186,230,253,0.75)", fontSize: "0.875rem", fontFamily: "'DM Sans', sans-serif" }}>
+            <span style={{ color: "#22c55e", flexShrink: 0 }}>✓</span> {f}
+          </li>
+        ))}
+      </ul>
+      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+        display: "block", textAlign: "center",
+        background: featured ? "linear-gradient(135deg, #0ea5e9, #0284c7)" : "rgba(14,165,233,0.1)",
+        border: featured ? "none" : "1px solid rgba(14,165,233,0.25)",
+        color: featured ? "#fff" : "#38bdf8",
+        padding: "13px", borderRadius: 12, textDecoration: "none",
+        fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14,
+        boxShadow: featured ? "0 0 30px rgba(14,165,233,0.3)" : "none",
+        transition: "all 0.25s"
+      }}>Get Started →</a>
+    </div>
+  );
+}
+
+// ── Contact / CTA ─────────────────────────────────────────────────────────────
+function Contact() {
+  const [formData, setFormData] = useState({ name: "", business: "", message: "" });
+
+  return (
+    <section id="contact" style={{ padding: "100px 24px", position: "relative" }}>
+      <GlowOrb style={{ width: 700, height: 500, top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "rgba(14,165,233,0.07)" }} />
+      <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
+
+        {/* Main CTA */}
+        <div style={{
+          background: "rgba(15,23,42,0.8)", border: "1px solid rgba(14,165,233,0.2)",
+          borderRadius: 28, padding: "60px 48px", textAlign: "center",
+          backdropFilter: "blur(20px)",
+          boxShadow: "0 0 80px rgba(14,165,233,0.08)"
+        }}>
+          <h2 style={{
+            fontFamily: "'Syne', sans-serif", fontWeight: 900,
+            fontSize: "clamp(2rem, 5vw, 3.2rem)",
+            color: "#f0f9ff", margin: "0 0 16px", letterSpacing: "-0.03em"
+          }}>
+            Let AI Work<br />
+            <span style={{ background: "linear-gradient(135deg, #38bdf8, #06b6d4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              While You Sleep
+            </span>
+          </h2>
+          <p style={{ color: "rgba(148,163,184,0.7)", fontSize: "1rem", fontFamily: "'DM Sans', sans-serif", maxWidth: 500, margin: "0 auto 40px", lineHeight: 1.7 }}>
+            Book a free 30-minute strategy call and see exactly how a chatbot can grow your specific business. No tech jargon — just a clear plan and real numbers.
+          </p>
+
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{
+              display: "inline-flex", alignItems: "center", gap: 10,
+              background: "linear-gradient(135deg, #22c55e, #16a34a)",
+              color: "#fff", textDecoration: "none",
+              padding: "15px 32px", borderRadius: 14, fontSize: 15, fontWeight: 700,
+              fontFamily: "'DM Sans', sans-serif",
+              boxShadow: "0 0 30px rgba(34,197,94,0.35)",
+              transition: "all 0.25s"
+            }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 0 50px rgba(34,197,94,0.5)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 0 30px rgba(34,197,94,0.35)"; }}
+            >💬 Chat on WhatsApp Now →</a>
+          </div>
+
+          {/* Social links */}
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 32 }}>
+            {[
+              { label: "📸 Instagram", url: "https://instagram.com/kograhic" },
+              { label: "🎵 TikTok", url: "https://tiktok.com/@kog.co" },
+              { label: "𝕏 Twitter", url: "https://x.com/kolaolaide266" },
+              { label: "🔗 All Links", url: "https://linktr.ee/kograhic" },
+            ].map(s => (
+              <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" style={{
+                color: "rgba(125,211,252,0.6)", fontSize: 13, fontFamily: "'DM Sans', sans-serif",
+                textDecoration: "none", transition: "color 0.2s"
+              }}
+                onMouseEnter={e => e.target.style.color = "#38bdf8"}
+                onMouseLeave={e => e.target.style.color = "rgba(125,211,252,0.6)"}
+              >{s.label}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+function Footer() {
+  return (
+    <footer style={{ borderTop: "1px solid rgba(56,189,248,0.1)", padding: "40px 24px" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: 8,
+            background: "linear-gradient(135deg, #0ea5e9, #06b6d4)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontWeight: 900, color: "#fff", fontSize: 14,
+            boxShadow: "0 0 16px rgba(14,165,233,0.4)"
+          }}>K</div>
+          <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16, color: "#f0f9ff" }}>
+            Kographic<span style={{ color: "#38bdf8" }}>AI</span>
+          </span>
+        </div>
+        <p style={{ color: "rgba(100,116,139,0.6)", fontSize: 12, fontFamily: "'DM Sans', sans-serif", margin: 0 }}>
+          © 2026 Kographic AI · Powered by Botpress & ManyChat · 🇳🇬 Nigeria · 🇦🇪 UAE
+        </p>
+        <a href="mailto:kograhic@gmail.com" style={{ color: "rgba(125,211,252,0.5)", fontSize: 13, fontFamily: "'DM Sans', sans-serif", textDecoration: "none" }}>kograhic@gmail.com</a>
+      </div>
+    </footer>
+  );
+}
+
+// ── WhatsApp FAB ──────────────────────────────────────────────────────────────
+function WhatsAppFAB() {
+  const [hov, setHov] = useState(false);
+  return (
+    <a
+      href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer"
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        position: "fixed", bottom: 28, right: 28, zIndex: 200,
+        width: 56, height: 56, borderRadius: "50%",
+        background: "linear-gradient(135deg, #22c55e, #16a34a)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: 24, textDecoration: "none",
+        boxShadow: `0 0 ${hov ? 40 : 24}px rgba(34,197,94,${hov ? 0.6 : 0.4})`,
+        transform: hov ? "scale(1.1)" : "scale(1)",
+        transition: "all 0.25s"
+      }}
+      title="Chat on WhatsApp"
+    >💬</a>
+  );
+}
+
+// ── App ───────────────────────────────────────────────────────────────────────
+export default function App() {
+  return (
+    <div style={{ background: "linear-gradient(180deg, #020817 0%, #030d1a 50%, #020817 100%)", minHeight: "100vh", position: "relative" }}>
+      <ParticleGrid />
+      <Nav />
+      <Hero />
+      <Ticker />
+      <Services />
+      <Results />
+      <Features />
+      <Demo />
+      <Testimonials />
+      <Pricing />
+      <Contact />
+      <Footer />
+      <WhatsAppFAB />
+    </div>
+  );
+}
 
