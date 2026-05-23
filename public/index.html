@@ -1,2104 +1,1127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7.">
-<meta name="keywords" content="WhatsApp chatbot Nigeria, WhatsApp automation Lagos, lead capture bot Nigeria, Botpress developer Nigeria, chatbot for Nigerian business, Instagram automation Nigeria">
-<meta name="author" content="Kographic AI">
-<meta property="og:title" content="Kographic AI | WhatsApp Automation for Nigerian Businesses">
-<meta property="og:description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://kograhic.web.app">
-<meta property="og:image" content="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kographic AI | WhatsApp Automation">
-<meta name="twitter:description" content="Turn WhatsApp conversations into paying customers. 24/7 lead capture bots for Nigeria & UAE.">
-<title>Kographic AI | WhatsApp Automation for Nigerian Businesses</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-/* ══════════════════════════════════════
-   DESIGN TOKENS
-══════════════════════════════════════ */
-:root {
-  --green:        #00C853;
-  --green-dim:    #00a844;
-  --green-faint:  rgba(0,200,83,0.10);
-  --green-glow:   rgba(0,200,83,0.18);
-  --dark:         #050A05;
-  --dark2:        #0d1a0d;
-  --dark3:        #112211;
-  --card:         #0e1a0e;
-  --border:       rgba(0,200,83,0.18);
-  --border-faint: rgba(0,200,83,0.08);
-  --text:         #e8f5e8;
-  --muted:        #7a9a7a;
-  --white:        #ffffff;
-  --nav-h:        64px;
-  --radius:       16px;
-  --radius-sm:    10px;
-  --max-w:        1200px;
-  --px:           clamp(1rem, 4vw, 2.5rem);
-}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kographic AI | WhatsApp Automation for Nigerian & UAE Businesses</title>
+<meta name="description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian and UAE businesses. Capture leads, automate support, and increase sales 24/7." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
 
-/* ══════════════════════════════════════
-   RESET
-══════════════════════════════════════ */
+<style>
+/* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  background: var(--dark);
-  color: var(--text);
+  background: linear-gradient(180deg, #020817 0%, #030d1a 50%, #020817 100%);
+  min-height: 100vh;
+  color: #f0f9ff;
   font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.65;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  position: relative;
 }
-img { max-width: 100%; height: auto; display: block; }
-a { color: inherit; }
-button { font-family: inherit; cursor: pointer; }
+a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
+img { max-width: 100%; }
 
-/* ══════════════════════════════════════
-   SCROLLBAR
-══════════════════════════════════════ */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--dark); }
-::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 4px; }
-
-/* ══════════════════════════════════════
-   NOISE TEXTURE OVERLAY
-══════════════════════════════════════ */
-body::before {
+/* ── Grid BG ── */
+#grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+#grid-bg::before {
   content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
-
-/* ══════════════════════════════════════
-   TYPOGRAPHY
-══════════════════════════════════════ */
-h1, h2, h3, h4, h5 {
-  font-family: 'Syne', sans-serif;
-  line-height: 1.15;
-  font-weight: 800;
-  color: var(--white);
-}
-h1 { font-size: clamp(2rem, 5.5vw, 4rem); }
-h2 { font-size: clamp(1.6rem, 3.8vw, 2.8rem); }
-h3 { font-size: clamp(1rem, 2vw, 1.3rem); }
-p  { color: var(--muted); line-height: 1.75; }
-
-.accent  { color: var(--green); }
-.em-text { font-style: italic; }
-
-/* ══════════════════════════════════════
-   LAYOUT HELPERS
-══════════════════════════════════════ */
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--px);
-}
-section { position: relative; z-index: 1; }
-
-/* ══════════════════════════════════════
-   SECTION LABEL + HEADER
-══════════════════════════════════════ */
-.label {
-  display: inline-block;
-  font-size: .72rem;
-  font-weight: 700;
-  color: var(--green);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: .6rem;
-}
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.section-header p {
-  max-width: 540px;
-  margin: .75rem auto 0;
-  font-size: .97rem;
-}
-
-/* ══════════════════════════════════════
-   BUTTONS
-══════════════════════════════════════ */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: .45rem;
-  padding: .85rem 1.75rem;
-  border-radius: var(--radius-sm);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 700;
-  font-size: .93rem;
-  text-decoration: none;
-  transition: background .2s, border-color .2s, color .2s, transform .2s, box-shadow .2s;
-  white-space: nowrap;
-  border: none;
-}
-.btn-green {
-  background: var(--green);
-  color: var(--dark);
-  box-shadow: 0 0 28px rgba(0,200,83,.28);
-}
-.btn-green:hover {
-  background: var(--green-dim);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 36px rgba(0,200,83,.38);
-}
-.btn-outline {
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-outline:hover {
-  border-color: var(--green);
-  color: var(--green);
-  transform: translateY(-2px);
-}
-.btn-text {
-  background: transparent;
-  color: var(--green);
-  font-weight: 700;
-  font-size: .88rem;
-  padding: 0;
-  gap: .3rem;
-  transition: gap .2s;
-}
-.btn-text:hover { gap: .6rem; }
-
-/* ══════════════════════════════════════
-   TAGS / BADGES
-══════════════════════════════════════ */
-.tag {
-  display: inline-block;
-  font-size: .7rem;
-  font-weight: 700;
-  color: var(--green);
-  background: var(--green-faint);
-  border: 1px solid var(--border);
-  padding: .22rem .65rem;
-  border-radius: 100px;
-  letter-spacing: .03em;
-}
-
-/* ══════════════════════════════════════
-   NAVIGATION
-══════════════════════════════════════ */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: rgba(5,10,5,.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
-  transition: background .3s;
-}
-nav.scrolled { background: rgba(5,10,5,.97); }
-
-.nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--px);
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1.2rem;
-  color: var(--white);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: .45rem;
-  flex-shrink: 0;
-}
-.logo-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  flex-shrink: 0;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(.5rem, 2vw, 1.4rem);
-}
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: .84rem;
-  font-weight: 500;
-  transition: color .2s;
-  white-space: nowrap;
-}
-.nav-links a:hover { color: var(--green); }
-.nav-cta {
-  background: var(--green) !important;
-  color: var(--dark) !important;
-  padding: .42rem .9rem;
-  border-radius: 8px;
-  font-weight: 700 !important;
-  font-size: .8rem !important;
-}
-.nav-cta:hover { background: var(--green-dim) !important; }
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  padding: 6px;
-  cursor: pointer;
-  z-index: 1001;
-  flex-shrink: 0;
-}
-.hamburger span {
-  display: block;
-  width: 22px; height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: transform .3s, opacity .3s;
-}
-.hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-.hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-
-/* Mobile overlay menu */
-.mobile-menu {
-  display: none;
-  position: fixed;
-  inset: 0;
-  top: var(--nav-h);
-  background: rgba(5,10,5,.98);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  z-index: 999;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.75rem;
-  padding: 2rem var(--px);
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  color: var(--text);
-  text-decoration: none;
-  font-family: 'Syne', sans-serif;
-  font-size: 1.45rem;
-  font-weight: 700;
-  transition: color .2s;
-}
-.mobile-menu a:hover { color: var(--green); }
-.mobile-menu .m-cta {
-  background: var(--green);
-  color: var(--dark) !important;
-  padding: .8rem 2rem;
-  border-radius: var(--radius-sm);
-  font-size: 1rem !important;
-  margin-top: .5rem;
-}
-.mobile-menu .m-cta:hover { background: var(--green-dim); }
-
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-.hero {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: calc(var(--nav-h) + 4rem) var(--px) 4rem;
+#grid-bg::after {
+  content: '';
+  position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(0,200,83,.13) 0%, transparent 68%),
-    var(--dark);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14,165,233,.15), transparent),
+    radial-gradient(ellipse 40% 60% at 85% 60%, rgba(6,182,212,.08), transparent);
+}
+
+/* ── Typography ── */
+.font-syne { font-family: 'Syne', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Sections ── */
+section { position: relative; z-index: 1; padding: 100px 24px; }
+
+/* ── Max container ── */
+.container { max-width: 1200px; margin: 0 auto; width: 100%; }
+.container-sm { max-width: 900px; margin: 0 auto; width: 100%; }
+
+/* ── NAV ── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 24px;
+  transition: background .4s ease, backdrop-filter .4s ease, border-color .4s ease;
+}
+#nav.scrolled {
+  background: rgba(3,7,18,.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(56,189,248,.1);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg,#0ea5e9,#06b6d4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 900; color: #fff;
+  box-shadow: 0 0 20px rgba(14,165,233,.5);
+  font-family: 'Syne', sans-serif;
+}
+.logo-text { font-family: 'Syne',sans-serif; font-weight: 800; font-size: 18px; color: #f0f9ff; letter-spacing: -.02em; }
+.logo-text span { color: #38bdf8; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: rgba(186,230,253,.7); font-size: 14px; font-weight: 500;
+  transition: color .2s; letter-spacing: .01em;
+}
+.nav-links a:hover { color: #38bdf8; }
+.btn-nav {
+  background: linear-gradient(135deg,#0ea5e9,#0284c7);
+  color: #fff; padding: 10px 20px; border-radius: 10px;
+  font-size: 13px; font-weight: 700;
+  box-shadow: 0 0 20px rgba(14,165,233,.35);
+  transition: transform .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.btn-nav:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(14,165,233,.55); }
+
+/* ── Buttons ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg,#0ea5e9,#0284c7);
+  color: #fff; padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 700;
+  box-shadow: 0 0 30px rgba(14,165,233,.4);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(14,165,233,.6); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.25);
+  color: #7dd3fc; padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 600; transition: background .25s, border-color .25s;
+}
+.btn-ghost:hover { background: rgba(14,165,233,.15); border-color: rgba(14,165,233,.5); }
+.btn-green {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  color: #fff; padding: 15px 32px; border-radius: 14px;
+  font-size: 15px; font-weight: 700;
+  box-shadow: 0 0 30px rgba(34,197,94,.35);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn-green:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(34,197,94,.5); }
+
+/* ── Section heading ── */
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(14,165,233,.08); border: 1px solid rgba(14,165,233,.2);
+  border-radius: 100px; padding: 5px 14px; margin-bottom: 20px;
+  font-size: 12px; font-weight: 600; color: #7dd3fc;
+  letter-spacing: .08em; text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+.section-title {
+  font-family: 'Syne',sans-serif; font-weight: 900;
+  font-size: clamp(1.8rem,4vw,2.8rem);
+  color: #f0f9ff; margin-bottom: 16px; letter-spacing: -.02em; line-height: 1.15;
+}
+.section-title .accent {
+  background: linear-gradient(135deg,#38bdf8,#06b6d4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub {
+  color: rgba(148,163,184,.7); font-size: 1rem; max-width: 540px; margin: 0 auto; line-height: 1.7;
+}
+.section-head { text-align: center; margin-bottom: 60px; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 24px 80px; overflow: hidden;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
 }
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  background: var(--green-faint);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: .32rem 1rem;
-  font-size: .76rem;
-  font-weight: 600;
-  color: var(--green);
-  letter-spacing: .04em;
-  margin-bottom: 1.6rem;
-  animation: fadeUp .6s ease both;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(14,165,233,.1); border: 1px solid rgba(14,165,233,.25);
+  border-radius: 100px; padding: 6px 16px; margin-bottom: 32px;
 }
-.hero h1 {
-  max-width: 800px;
-  margin-bottom: 1.4rem;
-  animation: fadeUp .7s .1s ease both;
+.hero-badge .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e; box-shadow: 0 0 8px #22c55e; display: block; flex-shrink: 0;
 }
-.hero h1 .line { display: block; }
-.hero > p {
-  max-width: 540px;
-  font-size: 1rem;
-  margin-bottom: 2.5rem;
-  animation: fadeUp .7s .2s ease both;
+.hero-badge span { color: #7dd3fc; font-size: 13px; font-weight: 500; }
+.hero-h1 {
+  font-family: 'Syne',sans-serif; font-size: clamp(1.8rem,5vw,3.8rem);
+  font-weight: 900; line-height: 1.15; letter-spacing: -.03em;
+  color: #f0f9ff; margin-bottom: 24px;
+  word-break: break-word; overflow-wrap: break-word;
 }
-.hero-btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .9rem;
-  justify-content: center;
-  animation: fadeUp .7s .3s ease both;
+.hero-h1 .grad {
+  background: linear-gradient(135deg,#38bdf8,#06b6d4,#0ea5e9);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
+.hero-p { color: rgba(186,230,253,.7); font-size: 1.1rem; line-height: 1.7; max-width: 480px; margin-bottom: 40px; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 28px; margin-top: 48px; flex-wrap: wrap; }
+.hero-stat { text-align: center; }
+.hero-stat .val { font-family: 'Syne',sans-serif; font-size: 1.6rem; font-weight: 900; color: #38bdf8; line-height: 1; }
+.hero-stat .lbl { font-size: 12px; color: rgba(148,163,184,.7); margin-top: 4px; }
 
-/* Stats bar */
-.stats-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  max-width: 680px;
-  width: 100%;
-  margin: 3rem auto 0;
-  overflow: hidden;
-  animation: fadeUp .7s .4s ease both;
-}
-.stat {
-  background: var(--card);
-  padding: 1.15rem .75rem;
-  text-align: center;
-}
-.stat-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--green);
-  line-height: 1;
-}
-.stat-label {
-  font-size: .69rem;
-  color: var(--muted);
-  margin-top: .28rem;
-}
-
-/* ══════════════════════════════════════
-   MARQUEE
-══════════════════════════════════════ */
-.marquee-section {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--dark2);
-  padding: .85rem 0;
-  overflow: hidden;
+/* Hero mockup */
+.hero-mockup {
+  background: rgba(14,165,233,.06); border: 1px solid rgba(14,165,233,.2);
+  border-radius: 24px; padding: 24px; backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px rgba(14,165,233,.1), inset 0 1px 0 rgba(255,255,255,.05);
   position: relative;
-  z-index: 1;
 }
-.marquee-wrap {
-  display: flex;
-  overflow: hidden;
-  user-select: none;
+.mockup-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  padding: 12px 16px; background: rgba(0,0,0,.3); border-radius: 12px;
 }
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  /* JS will inject duplicate; CSS handles the animation */
-  animation: marquee 30s linear infinite;
-  will-change: transform;
+.mockup-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
 }
-.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
-.marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: .75rem;
-  padding: 0 1.25rem;
-  font-size: .78rem;
-  font-weight: 600;
-  color: var(--muted);
-  letter-spacing: .05em;
-  text-transform: uppercase;
+.mockup-name { color: #f0f9ff; font-size: 13px; font-weight: 700; }
+.mockup-status { color: #22c55e; font-size: 11px; display: flex; align-items: center; gap: 4px; }
+.mockup-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; display: inline-block; }
+.chat-msg { display: flex; margin-bottom: 12px; }
+.chat-msg.user { justify-content: flex-end; }
+.chat-bubble {
+  max-width: 75%; padding: 10px 14px; font-size: 13px; line-height: 1.5; color: #e2e8f0;
 }
-.marquee-dot { color: var(--green); font-size: .9rem; flex-shrink: 0; }
+.chat-bubble.user {
+  background: rgba(14,165,233,.2); border: 1px solid rgba(14,165,233,.3);
+  border-radius: 16px 16px 4px 16px;
+}
+.chat-bubble.bot {
+  background: rgba(30,41,59,.8); border: 1px solid rgba(148,163,184,.1);
+  border-radius: 16px 16px 16px 4px;
+}
+.chat-time { font-family: 'JetBrains Mono',monospace; font-size: 10px; color: rgba(148,163,184,.5); text-align: right; margin-top: 4px; }
+.mockup-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 20px; }
+.mockup-metric {
+  background: rgba(0,0,0,.3); border-radius: 10px; padding: 12px 8px; text-align: center;
+  border: 1px solid rgba(255,255,255,.05);
+}
+.mockup-metric .mv { font-family: 'Syne',sans-serif; font-weight: 900; font-size: 20px; }
+.mockup-metric .ml { color: rgba(148,163,184,.6); font-size: 11px; margin-top: 2px; }
+.mockup-badge {
+  position: absolute; top: -16px; right: -16px;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  border-radius: 12px; padding: 8px 16px;
+  box-shadow: 0 0 24px rgba(34,197,94,.4);
+  font-size: 12px; font-weight: 700; color: #fff; white-space: nowrap;
+}
 
-/* ══════════════════════════════════════
-   SERVICES
-══════════════════════════════════════ */
-.services { padding: 6rem 0; }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-  gap: 1.4rem;
+/* ── Ticker ── */
+#ticker {
+  overflow: hidden; z-index: 1; position: relative;
+  border-top: 1px solid rgba(56,189,248,.1);
+  border-bottom: 1px solid rgba(56,189,248,.1);
+  padding: 14px 0; background: rgba(14,165,233,.03);
 }
-.service-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.85rem;
-  display: flex;
-  flex-direction: column;
+.ticker-track { display: flex; gap: 48px; animation: ticker 30s linear infinite; white-space: nowrap; }
+.ticker-item { color: rgba(125,211,252,.6); font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 12px; }
+.ticker-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: #38bdf8; display: inline-block; flex-shrink: 0; }
+@keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+
+/* ── Service Cards ── */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 24px; }
+.card {
+  background: rgba(15,23,42,.6); border: 1px solid rgba(148,163,184,.1);
+  border-radius: 20px; padding: 32px; backdrop-filter: blur(20px);
+  transition: background .3s, border-color .3s, transform .3s, box-shadow .3s;
+}
+.card:hover {
+  background: rgba(14,165,233,.08); border-color: rgba(14,165,233,.4);
+  transform: translateY(-4px); box-shadow: 0 0 40px rgba(14,165,233,.1);
+}
+.card-icon {
+  width: 52px; height: 52px; border-radius: 14px; font-size: 24px;
+  background: rgba(14,165,233,.1); border: 1px solid rgba(14,165,233,.2);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+}
+.card h3 { font-family: 'Syne',sans-serif; font-weight: 800; font-size: 1.1rem; color: #f0f9ff; margin-bottom: 12px; }
+.card p { color: rgba(148,163,184,.7); font-size: .9rem; line-height: 1.7; }
+
+/* ── Results Cards ── */
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px,1fr)); gap: 24px; }
+.result-card {
+  background: rgba(15,23,42,.7); border-radius: 20px;
+  border: 1px solid rgba(148,163,184,.1); overflow: hidden;
   transition: border-color .3s, transform .3s, box-shadow .3s;
 }
-.service-card:hover {
-  border-color: var(--green);
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0,200,83,.1);
-}
-.service-icon { font-size: 1.9rem; margin-bottom: .9rem; line-height: 1; }
-.service-card h3 { margin-bottom: .65rem; }
-.service-card > p { font-size: .88rem; margin-bottom: 1.2rem; flex: 1; }
-.service-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1.2rem; }
+.result-card:hover { transform: translateY(-4px); }
+.result-top { padding: 24px 28px 0; display: flex; align-items: flex-start; justify-content: space-between; }
+.result-cat { color: rgba(148,163,184,.5); font-size: 12px; margin-bottom: 8px; }
+.result-title { font-family: 'Syne',sans-serif; font-weight: 800; font-size: 1rem; color: #f0f9ff; line-height: 1.3; }
+.result-emoji { font-size: 28px; margin-left: 16px; flex-shrink: 0; }
+.result-body { padding: 16px 28px 28px; }
+.result-metric { font-family: 'Syne',sans-serif; font-weight: 900; font-size: 1.5rem; margin-bottom: 12px; }
+.result-desc { color: rgba(148,163,184,.65); font-size: .875rem; line-height: 1.7; margin-bottom: 20px; }
+.result-link { color: #38bdf8; font-size: 13px; font-weight: 700; transition: letter-spacing .2s; display: inline-block; }
+.result-link:hover { letter-spacing: .03em; }
 
-/* ══════════════════════════════════════
-   INSTAGRAM FEATURE BAND
-══════════════════════════════════════ */
-.ig-band {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+/* ── Features ── */
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+.feat-item {
+  background: rgba(15,23,42,.5); border: 1px solid rgba(148,163,184,.08);
+  border-radius: 16px; padding: 28px 24px; display: flex; gap: 18px; align-items: flex-start;
 }
-.ig-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--px);
-}
-.ig-img {
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
-}
-.ig-content .label { margin-bottom: .5rem; }
-.ig-content h2 { margin-bottom: .9rem; }
-.ig-content > p { margin-bottom: 1.4rem; font-size: .95rem; }
-.ig-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.6rem; }
-.ig-btns { display: flex; flex-wrap: wrap; gap: .75rem; }
+.feat-icon { font-size: 28px; flex-shrink: 0; }
+.feat-item h4 { font-family: 'Syne',sans-serif; font-weight: 800; font-size: .95rem; color: #f0f9ff; margin-bottom: 8px; }
+.feat-item p { color: rgba(148,163,184,.65); font-size: .85rem; line-height: 1.65; }
 
-/* ══════════════════════════════════════
-   REGION TABS (reusable)
-══════════════════════════════════════ */
-.region-tabs {
-  display: flex;
-  gap: .4rem;
-  justify-content: center;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: .35rem;
-  width: fit-content;
-  margin: 0 auto 2.5rem;
-}
-.rtab {
-  padding: .55rem 1.4rem;
-  border-radius: 7px;
-  font-weight: 700;
-  font-size: .85rem;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  transition: background .2s, color .2s;
-}
-.rtab.active { background: var(--green); color: var(--dark); }
-.rtab:hover:not(.active) { color: var(--text); }
-
-/* ══════════════════════════════════════
-   INDUSTRIES
-══════════════════════════════════════ */
-.industries { padding: 6rem 0; }
-.ind-panel { display: none; }
-.ind-panel.active {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: 1.2rem;
-}
-.ind-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.4rem;
-  transition: border-color .3s, transform .3s;
-}
-.ind-card:hover { border-color: var(--green); transform: translateY(-3px); }
-.ind-icon { font-size: 1.65rem; margin-bottom: .65rem; line-height: 1; }
-.ind-card h3 { font-size: .95rem; margin-bottom: .5rem; }
-.ind-card ul { padding: 0; }
-.ind-card ul li {
-  font-size: .8rem;
-  color: var(--muted);
-  padding: .18rem 0;
-  display: flex;
-  align-items: flex-start;
-  gap: .38rem;
-}
-.ind-card ul li::before { content: '→'; color: var(--green); flex-shrink: 0; }
-
-/* ══════════════════════════════════════
-   PROCESS
-══════════════════════════════════════ */
-.process {
-  padding: 6rem 0;
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-  gap: 1.75rem;
-}
-.process-step {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.85rem;
-  position: relative;
-  overflow: hidden;
-}
-.process-step::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--green);
-}
-.step-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: rgba(0,200,83,.1);
-  line-height: 1;
-  margin-bottom: .4rem;
-}
-.step-icon { font-size: 1.65rem; margin-bottom: .65rem; line-height: 1; }
-.process-step h3 { margin-bottom: .65rem; }
-.process-step p { font-size: .88rem; }
-
-/* ══════════════════════════════════════
-   CASE STUDIES / RESULTS
-══════════════════════════════════════ */
-.cases { padding: 6rem 0; }
-.case-panel { display: none; }
-.case-panel.active {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
-  gap: 1.4rem;
-}
-.case-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.65rem;
-}
-.case-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: .75rem;
-  margin-bottom: .9rem;
-  flex-wrap: wrap;
-}
-.case-meta { font-size: .72rem; color: var(--muted); margin-bottom: .18rem; }
-.case-header h3 { font-size: .95rem; margin-bottom: 0; color: var(--white); }
-.case-result {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--green);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.case-label {
-  font-size: .68rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: .09em;
-  margin-bottom: .22rem;
-  margin-top: .6rem;
-}
-.case-card p { font-size: .85rem; margin-bottom: .2rem; }
-
-/* ══════════════════════════════════════
-   LIVE DEMO
-══════════════════════════════════════ */
-.demo {
-  padding: 6rem 0;
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.demo-shell {
-  max-width: 820px;
-  margin: 0 auto;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.demo-topbar {
-  background: var(--dark3);
-  padding: 1rem 1.4rem;
-  display: flex;
-  align-items: center;
-  gap: .65rem;
-  border-bottom: 1px solid var(--border);
-}
-.demo-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-  flex-shrink: 0;
-}
-.demo-topbar-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: .88rem;
-  color: var(--white);
-}
-/* Fixed padding-bottom iframe trick — use explicit height instead */
-.demo-iframe-wrap {
-  width: 100%;
-  height: 560px;
-  position: relative;
-}
-.demo-iframe-wrap iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
-.demo-bottombar {
-  padding: 1rem 1.4rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.demo-bottombar a {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: .86rem;
-  display: inline-flex;
-  align-items: center;
-  gap: .38rem;
-  transition: gap .2s;
-}
-.demo-bottombar a:hover { gap: .65rem; }
-
-/* ══════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════ */
-.testimonials { padding: 6rem 0; }
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
-  gap: 1.4rem;
-}
+/* ── Testimonials ── */
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 24px; }
 .testi-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.65rem;
-  display: flex;
-  flex-direction: column;
+  background: rgba(15,23,42,.7); border: 1px solid rgba(148,163,184,.1);
+  border-radius: 20px; padding: 28px;
+  display: flex; flex-direction: column; gap: 20px;
 }
-.stars {
-  color: var(--green);
-  font-size: .95rem;
-  letter-spacing: .08em;
-  margin-bottom: .7rem;
-}
-.testi-card > p {
-  font-size: .88rem;
-  font-style: italic;
-  color: var(--text);
-  margin-bottom: 1.2rem;
-  flex: 1;
-  line-height: 1.7;
-}
-.testi-author { display: flex; align-items: center; gap: .7rem; }
-.avatar {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: var(--green);
+.stars { display: flex; gap: 4px; }
+.stars span { color: #fbbf24; font-size: 14px; }
+.testi-text { color: rgba(186,230,253,.75); font-size: .9rem; line-height: 1.75; flex: 1; }
+.testi-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: .78rem;
-  color: var(--dark);
-  flex-shrink: 0;
+  font-family: 'Syne',sans-serif; font-weight: 800; font-size: 13px;
 }
-.testi-name { font-weight: 700; color: var(--white); font-size: .85rem; }
-.testi-role { font-size: .72rem; color: var(--muted); }
-.testi-metric {
-  margin-top: .5rem;
-  font-size: .68rem;
-  font-weight: 700;
-  color: var(--green);
-  background: var(--green-faint);
-  border: 1px solid var(--border);
-  padding: .18rem .55rem;
-  border-radius: 100px;
-  width: fit-content;
+.testi-name { color: #f0f9ff; font-size: 13px; font-weight: 700; }
+.testi-role { color: rgba(148,163,184,.5); font-size: 11px; }
+.testi-badge {
+  border-radius: 8px; padding: 4px 10px;
+  font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono',monospace;
 }
 
-/* ══════════════════════════════════════
-   PRICING
-══════════════════════════════════════ */
-.pricing {
-  padding: 6rem 0;
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+/* ── Demo ── */
+.demo-wrap {
+  background: rgba(15,23,42,.8); border: 1px solid rgba(14,165,233,.2);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 0 60px rgba(14,165,233,.08);
 }
-.pricing-tabs {
-  display: flex;
-  gap: .4rem;
-  justify-content: center;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: .35rem;
-  width: fit-content;
-  margin: 0 auto 2.5rem;
+.demo-chrome {
+  padding: 16px 20px; border-bottom: 1px solid rgba(14,165,233,.1);
+  display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,.3);
 }
-.ptab {
-  padding: .55rem 1.4rem;
-  border-radius: 7px;
-  font-weight: 700;
-  font-size: .85rem;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  transition: background .2s, color .2s;
+.chrome-dot { width: 12px; height: 12px; border-radius: 50%; }
+.chrome-bar {
+  flex: 1; background: rgba(255,255,255,.05); border-radius: 6px;
+  padding: 4px 12px; margin-left: 12px;
+  color: rgba(148,163,184,.4); font-size: 11px; font-family: 'JetBrains Mono',monospace;
 }
-.ptab.active { background: var(--green); color: var(--dark); }
-.ptab:hover:not(.active) { color: var(--text); }
 
-.price-panel { display: none; }
-.price-panel.active {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-  gap: 1.4rem;
-  align-items: start;
+/* ── Pricing ── */
+.pricing-toggle {
+  display: flex; justify-content: center; margin-bottom: 48px;
 }
+.toggle-wrap {
+  background: rgba(15,23,42,.8); border: 1px solid rgba(148,163,184,.1);
+  border-radius: 12px; padding: 4px; display: flex; gap: 4px;
+}
+.toggle-btn {
+  padding: 8px 20px; border-radius: 9px; border: 1px solid transparent;
+  cursor: pointer; font-family: 'DM Sans',sans-serif; font-weight: 700;
+  font-size: 13px; background: transparent; color: rgba(148,163,184,.5);
+  transition: all .2s;
+}
+.toggle-btn.active {
+  background: rgba(14,165,233,.2); color: #38bdf8;
+  border-color: rgba(14,165,233,.3);
+}
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr)); gap: 24px; align-items: start; }
 .price-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.85rem;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: border-color .3s, box-shadow .3s;
+  background: rgba(15,23,42,.6); border: 1px solid rgba(148,163,184,.1);
+  border-radius: 20px; padding: 32px; position: relative;
+  transition: all .3s;
 }
 .price-card.featured {
-  border-color: var(--green);
-  box-shadow: 0 0 40px rgba(0,200,83,.14);
+  background: rgba(14,165,233,.08); border: 2px solid rgba(14,165,233,.4);
+  box-shadow: 0 0 60px rgba(14,165,233,.12); transform: scale(1.02);
 }
-.price-badge {
-  position: absolute;
-  top: -1px; right: 1.25rem;
-  background: var(--green);
-  color: var(--dark);
-  font-size: .65rem;
-  font-weight: 800;
-  padding: .22rem .65rem;
-  border-radius: 0 0 7px 7px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+.price-card:not(.featured):hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(14,165,233,.05); border-color: rgba(14,165,233,.2); }
+.popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg,#0ea5e9,#0284c7);
+  border-radius: 100px; padding: 5px 18px;
+  font-size: 11px; font-weight: 800; color: #fff;
+  box-shadow: 0 0 20px rgba(14,165,233,.4); white-space: nowrap;
 }
-.price-name {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 1.05rem;
-  color: var(--white);
-  margin-bottom: .4rem;
-}
-.price-amount {
-  font-family: 'Syne', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: .22rem;
-}
-.price-period {
-  font-size: .78rem;
-  color: var(--muted);
-  margin-bottom: 1.2rem;
-}
-.price-features {
-  flex: 1;
-  list-style: none;
-  margin-bottom: 1.6rem;
-}
-.price-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: .45rem;
-  font-size: .86rem;
-  color: var(--muted);
-  padding: .32rem 0;
-  border-bottom: 1px solid var(--border-faint);
-}
-.price-features li:last-child { border-bottom: none; }
-.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+.price-name { font-family: 'Syne',sans-serif; font-weight: 800; font-size: 1.1rem; color: #f0f9ff; margin-bottom: 8px; }
+.price-amount { font-family: 'Syne',sans-serif; font-weight: 900; font-size: 2rem; margin: 12px 0 4px; }
+.price-sub { color: rgba(148,163,184,.5); font-size: 12px; margin-bottom: 24px; }
+.price-features { margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+.price-feat { display: flex; align-items: center; gap: 10px; color: rgba(186,230,253,.75); font-size: .875rem; }
+.price-feat .check { color: #22c55e; flex-shrink: 0; }
 .price-cta {
-  display: block;
-  text-align: center;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: .78rem;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: .88rem;
-  transition: border-color .2s, color .2s, background .2s;
-  margin-top: auto;
+  display: block; text-align: center; padding: 13px; border-radius: 12px;
+  font-weight: 700; font-size: 14px; transition: all .25s;
+  border: none; cursor: pointer; width: 100%;
 }
-.price-cta:hover { border-color: var(--green); color: var(--green); }
-.price-card.featured .price-cta {
-  background: var(--green);
-  color: var(--dark);
-  border-color: var(--green);
+.price-cta.featured-btn {
+  background: linear-gradient(135deg,#0ea5e9,#0284c7); color: #fff;
+  box-shadow: 0 0 30px rgba(14,165,233,.3);
 }
-.price-card.featured .price-cta:hover { background: var(--green-dim); }
+.price-cta.ghost-btn {
+  background: rgba(14,165,233,.1); border: 1px solid rgba(14,165,233,.25); color: #38bdf8;
+}
+.price-cta:hover { opacity: .9; transform: translateY(-1px); }
+[data-region] { display: none; }
+[data-region].active { display: block; }
 
-/* ══════════════════════════════════════
-   CTA BANNER
-══════════════════════════════════════ */
-.cta-banner {
-  padding: 6rem var(--px);
-  text-align: center;
-  background:
-    radial-gradient(ellipse 70% 90% at 50% 50%, rgba(0,200,83,.11) 0%, transparent 68%),
-    var(--dark);
+/* ── CTA section ── */
+.cta-box {
+  background: rgba(15,23,42,.8); border: 1px solid rgba(14,165,233,.2);
+  border-radius: 28px; padding: 60px 48px; text-align: center;
+  backdrop-filter: blur(20px); box-shadow: 0 0 80px rgba(14,165,233,.08);
 }
-.cta-banner h2 { margin-bottom: .9rem; }
-.cta-banner p { max-width: 480px; margin: 0 auto 2.25rem; }
+.cta-h2 {
+  font-family: 'Syne',sans-serif; font-weight: 900;
+  font-size: clamp(2rem,5vw,3.2rem); color: #f0f9ff;
+  margin-bottom: 16px; letter-spacing: -.03em;
+}
+.cta-h2 .grad {
+  background: linear-gradient(135deg,#38bdf8,#06b6d4);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.cta-p { color: rgba(148,163,184,.7); font-size: 1rem; max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+.social-links { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+.social-links a { color: rgba(125,211,252,.6); font-size: 13px; transition: color .2s; }
+.social-links a:hover { color: #38bdf8; }
 
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
+/* ── Footer ── */
 footer {
-  background: var(--dark2);
-  border-top: 1px solid var(--border);
-  padding: 3.5rem 0 2rem;
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(56,189,248,.1); padding: 40px 24px;
 }
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-bottom: 2.5rem;
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 24px;
+  justify-content: space-between; align-items: center;
 }
-.footer-brand .logo { font-size: 1.05rem; display: inline-flex; margin-bottom: .7rem; }
-.footer-brand > p { font-size: .83rem; margin-bottom: .9rem; }
-.footer-flags { font-size: 1.1rem; display: flex; gap: .35rem; }
-.footer-col h5 {
-  font-family: 'Syne', sans-serif;
-  font-size: .75rem;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  margin-bottom: .75rem;
-}
-.footer-col ul li { margin-bottom: .38rem; }
-.footer-col ul li a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: .83rem;
-  transition: color .2s;
-}
-.footer-col ul li a:hover { color: var(--green); }
-.footer-bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 1.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-bottom p { font-size: .76rem; color: var(--muted); }
-.footer-social { display: flex; gap: .6rem; }
-.footer-social a {
-  width: 30px; height: 30px;
-  border-radius: 7px;
-  border: 1px solid var(--border);
+.footer-copy { color: rgba(100,116,139,.6); font-size: 12px; }
+.footer-mail { color: rgba(125,211,252,.5); font-size: 13px; }
+.footer-mail:hover { color: #38bdf8; }
+
+/* ── WhatsApp FAB ── */
+#wa-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
   display: flex; align-items: center; justify-content: center;
-  color: var(--muted);
-  text-decoration: none;
-  font-size: .82rem;
-  transition: border-color .2s, color .2s;
+  font-size: 24px; text-decoration: none;
+  box-shadow: 0 0 24px rgba(34,197,94,.4);
+  transition: transform .25s, box-shadow .25s;
 }
-.footer-social a:hover { border-color: var(--green); color: var(--green); }
+#wa-fab:hover { transform: scale(1.1); box-shadow: 0 0 40px rgba(34,197,94,.6); }
 
-/* ══════════════════════════════════════
-   FLOATING WHATSAPP
-══════════════════════════════════════ */
-.wa-float {
-  position: fixed;
-  bottom: 1.4rem; right: 1.4rem;
-  z-index: 990;
-  width: 54px; height: 54px;
-  border-radius: 50%;
-  background: var(--green);
-  color: var(--dark);
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  font-size: 1.45rem;
-  box-shadow: 0 4px 18px rgba(0,200,83,.42);
-  transition: transform .2s, box-shadow .2s;
-}
-.wa-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 26px rgba(0,200,83,.55);
+/* ── Glow orbs ── */
+.orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none;
 }
 
-/* ══════════════════════════════════════
-   KEYFRAMES
-══════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+/* ── Animations ── */
+.fade-up { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
 
-/* ══════════════════════════════════════
-   RESPONSIVE — TABLET (≤ 900px)
-══════════════════════════════════════ */
-@media (max-width: 900px) {
-  .ig-inner { grid-template-columns: 1fr; }
-  .ig-img   { max-width: 480px; margin: 0 auto; }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — MOBILE (≤ 768px)
-══════════════════════════════════════ */
+/* ── Mobile ── */
 @media (max-width: 768px) {
-  .nav-links  { display: none; }
-  .hamburger  { display: flex; }
-  .stats-bar  { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; }
-  .demo-iframe-wrap { height: 480px; }
+  /* Global overflow fix */
+  body { overflow-x: hidden; }
+  section { padding: 64px 20px; }
+  .container, .container-sm { padding: 0; }
+
+  /* Nav */
+  .nav-links { display: none; }
+  #nav { padding: 0 16px; }
+  .btn-nav { padding: 8px 14px; font-size: 12px; }
+
+  /* Hero */
+  #hero { padding: 100px 20px 60px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero-right { display: none; }
+  .hero-h1 { font-size: clamp(2rem, 10vw, 2.8rem); word-break: break-word; }
+  .hero-p { font-size: 1rem; }
+  .hero-btns { flex-direction: column; gap: 12px; }
+  .hero-btns a { width: 100%; text-align: center; justify-content: center; padding: 14px 20px; }
+  .hero-stats { gap: 20px; }
+  .hero-stat .val { font-size: 1.4rem; }
+  .hero-badge { font-size: 12px; padding: 5px 12px; }
+
+  /* Grids → single column */
+  .cards-grid,
+  .results-grid,
+  .testi-grid,
+  .feat-grid,
+  .pricing-grid { grid-template-columns: 1fr; }
+
+  /* Cards */
+  .card, .result-card, .testi-card, .price-card { width: 100%; }
+  .price-card.featured { transform: none; }
+
+  /* Section headings */
+  .section-title { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+
+  /* CTA box */
+  .cta-box { padding: 36px 20px; }
+  .cta-h2 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+
+  /* Demo iframe */
+  .demo-wrap iframe { height: 460px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+
+  /* Ticker */
+  .ticker-track { gap: 32px; }
+
+  /* Feat items */
+  .feat-item { padding: 20px 16px; }
+
+  /* Result cards */
+  .result-top { padding: 20px 20px 0; }
+  .result-body { padding: 12px 20px 20px; }
+
+  /* Testi badge wrap */
+  .testi-bottom { flex-direction: column; align-items: flex-start; }
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVE — SMALL MOBILE (≤ 480px)
-══════════════════════════════════════ */
 @media (max-width: 480px) {
-  h1 { font-size: 1.85rem; }
-  h2 { font-size: 1.45rem; }
-  .hero { padding-top: calc(var(--nav-h) + 2.5rem); }
-  .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
-  .hero-btns .btn { width: 100%; }
-  .ig-btns { flex-direction: column; }
-  .ig-btns .btn { width: 100%; text-align: center; }
-  .region-tabs, .pricing-tabs { flex-direction: column; width: 88%; max-width: 280px; }
-  .rtab, .ptab { text-align: center; }
-  .price-badge { right: .75rem; font-size: .6rem; }
-  .case-header { flex-direction: column; gap: .3rem; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .wa-float { bottom: 1rem; right: 1rem; width: 48px; height: 48px; font-size: 1.25rem; }
-  .demo-iframe-wrap { height: 420px; }
-}
-
-/* ══════════════════════════════════════
-   ACCESSIBILITY — REDUCED MOTION
-══════════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-  html { scroll-behavior: auto; }
-  .marquee-track { animation: none; }
+  .social-links { gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .hero-stats { gap: 16px; }
+  .mockup-metrics { grid-template-columns: 1fr 1fr 1fr; }
+  .section-label { font-size: 11px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ════════════════════════════
-     NAVIGATION
-════════════════════════════ -->
-<nav id="mainNav" role="navigation" aria-label="Main navigation">
+<!-- Grid background -->
+<div id="grid-bg"></div>
+
+<!-- ── NAV ── -->
+<nav id="nav">
   <div class="nav-inner">
-    <a href="#home" class="logo" aria-label="Kographic AI home">
-      <span class="logo-dot" aria-hidden="true"></span> KographicAI
+    <a href="#" class="logo">
+      <div class="logo-icon">K</div>
+      <span class="logo-text">Kographic<span>AI</span></span>
     </a>
-    <ul class="nav-links" role="list">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#industries">Industries</a></li>
-      <li><a href="#how">Process</a></li>
-      <li><a href="#cases">Results</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li>
-        <a href="https://wa.me/2349138290042"
-           class="nav-cta"
-           target="_blank"
-           rel="noopener noreferrer">💬 Book a Call →</a>
-      </li>
-    </ul>
-    <button
-      class="hamburger"
-      id="hamburgerBtn"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="mobileMenu">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#results">Results</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#demo">Demo</a>
+    </div>
+    <a href="https://wa.me/2349138290042" target="_blank" rel="noopener" class="btn-nav">💬 Book Free Call</a>
   </div>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
-  <a href="#services"   onclick="closeMobile()">Services</a>
-  <a href="#industries" onclick="closeMobile()">Industries</a>
-  <a href="#how"        onclick="closeMobile()">Process</a>
-  <a href="#cases"      onclick="closeMobile()">Results</a>
-  <a href="#pricing"    onclick="closeMobile()">Pricing</a>
-  <a href="#demo"       onclick="closeMobile()">Demo</a>
-  <a href="https://wa.me/2349138290042"
-     class="m-cta"
-     target="_blank"
-     rel="noopener noreferrer"
-     onclick="closeMobile()">💬 Book Free Consultation</a>
-</div>
-
-<!-- ════════════════════════════
-     HERO
-════════════════════════════ -->
-<section class="hero" id="home">
-  <div class="hero-badge" aria-label="Now accepting clients in Nigeria and UAE">
-    🇳🇬 Nigeria &nbsp;·&nbsp; 🇦🇪 UAE &nbsp;·&nbsp; Now accepting clients
-  </div>
-  <h1>
-    <span class="line">Turn WhatsApp</span>
-    <span class="line accent">Conversations</span>
-    <span class="line">Into Paying Customers</span>
-  </h1>
-  <p>Kographic AI builds intelligent WhatsApp automation systems that capture leads, respond instantly, and convert enquiries into real revenue — 24 hours a day, 7 days a week.</p>
-  <div class="hero-btns">
-    <a href="https://wa.me/2349138290042"
-       class="btn btn-green"
-       target="_blank"
-       rel="noopener noreferrer">💬 Book Free Consultation</a>
-    <a href="#demo" class="btn btn-outline">▶ See Live Demo</a>
-  </div>
-  <div class="stats-bar" role="list">
-    <div class="stat" role="listitem">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Lead Capture</div>
-    </div>
-    <div class="stat" role="listitem">
-      <div class="stat-num">3s</div>
-      <div class="stat-label">Avg Response</div>
-    </div>
-    <div class="stat" role="listitem">
-      <div class="stat-num">4×</div>
-      <div class="stat-label">More Leads</div>
-    </div>
-    <div class="stat" role="listitem">
-      <div class="stat-num">72hrs</div>
-      <div class="stat-label">Go Live</div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════
-     MARQUEE
-════════════════════════════ -->
-<div class="marquee-section" aria-hidden="true">
-  <div class="marquee-wrap">
-    <div class="marquee-track" id="marqueeTrack">
-      <span class="marquee-item">WhatsApp Automation <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Lead Generation <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Customer Support AI <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">AI Sales Funnels <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">CRM Integration <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">24/7 Availability <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Botpress Powered <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Instagram DM Bots <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Appointment Booking <span class="marquee-dot">◆</span></span>
-      <span class="marquee-item">Cart Recovery <span class="marquee-dot">◆</span></span>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════
-     SERVICES
-════════════════════════════ -->
-<section class="services" id="services">
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="orb" style="width:600px;height:600px;top:-100px;left:50%;transform:translateX(-50%);background:rgba(14,165,233,.12)"></div>
+  <div class="orb" style="width:300px;height:300px;top:200px;right:100px;background:rgba(6,182,212,.1)"></div>
   <div class="container">
-    <div class="section-header">
-      <div class="label">What We Build</div>
-      <h2>Three Ways We <em class="accent em-text">Grow Your Business</em></h2>
-      <p>Every Nigerian business loses customers to slow replies. We automate the conversation so you never miss a lead — day or night.</p>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-icon" aria-hidden="true">🎯</div>
-        <h3>Capture WhatsApp Leads 24/7</h3>
-        <p>Stop losing customers who message at midnight and buy from your competitor by morning. Your AI bot responds instantly, qualifies intent, and captures details — even while you sleep.</p>
-        <div class="service-tags">
-          <span class="tag">Instant Reply</span>
-          <span class="tag">Auto-Qualify</span>
-          <span class="tag">Data Capture</span>
+    <div class="hero-grid">
+      <!-- Left -->
+      <div class="fade-up">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>🇳🇬 Nigeria · 🇦🇪 UAE — Now accepting clients</span>
         </div>
-        <a href="#demo" class="btn btn-text">See It Live →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon" aria-hidden="true">⚡</div>
-        <h3>Automate Customer Support</h3>
-        <p>Your team shouldn't answer "what's your price?" all day. Your WhatsApp bot handles FAQs, tracks orders, books appointments, and routes urgent issues — cutting support workload by 60%+.</p>
-        <div class="service-tags">
-          <span class="tag">FAQ Automation</span>
-          <span class="tag">Order Tracking</span>
-          <span class="tag">Booking Bot</span>
+        <h1 class="hero-h1">
+          Turn WhatsApp<br>
+          <span class="grad">Conversations Into</span><br>
+          Paying Customers
+        </h1>
+        <p class="hero-p">
+          Kographic AI builds intelligent WhatsApp automation that captures leads, responds instantly, and converts enquiries into real revenue — 24 hours a day, 7 days a week.
+        </p>
+        <div class="hero-btns">
+          <a href="https://wa.me/2349138290042" target="_blank" rel="noopener" class="btn-primary">💬 Book Free Consultation</a>
+          <a href="#demo" class="btn-ghost">▶ See Live Demo</a>
         </div>
-        <a href="#demo" class="btn btn-text">View Demo →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon" aria-hidden="true">📈</div>
-        <h3>WhatsApp Sales Automation</h3>
-        <p>Turn enquiries into sales without lifting a finger. Automated follow-up sequences, buyer qualification funnels, cart recovery messages, and smart recommendations — converting 24/7.</p>
-        <div class="service-tags">
-          <span class="tag">Follow-up Sequences</span>
-          <span class="tag">Cart Recovery</span>
-          <span class="tag">Sales Funnels</span>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="val">24/7</div><div class="lbl">Lead Capture</div></div>
+          <div class="hero-stat"><div class="val">3s</div><div class="lbl">Avg Response</div></div>
+          <div class="hero-stat"><div class="val">4×</div><div class="lbl">More Leads</div></div>
+          <div class="hero-stat"><div class="val">72h</div><div class="lbl">Go Live</div></div>
         </div>
-        <a href="https://wa.me/2349138290042"
-           class="btn btn-text"
-           target="_blank"
-           rel="noopener noreferrer">Get Pricing →</a>
       </div>
-
+      <!-- Right mockup -->
+      <div class="hero-right fade-up" style="transition-delay:.2s">
+        <div class="hero-mockup">
+          <div class="mockup-badge">⚡ 72hr Go-Live</div>
+          <div class="mockup-header">
+            <div class="mockup-avatar">🤖</div>
+            <div>
+              <div class="mockup-name">KographicAI Bot</div>
+              <div class="mockup-status">Online · Responding instantly</div>
+            </div>
+          </div>
+          <div class="chat-msg"><div class="chat-bubble user">Hi, I'm interested in your 3-bed apartment in Lekki<div class="chat-time">11:47 PM</div></div></div>
+          <div class="chat-msg"><div class="chat-bubble bot">Hello! 👋 Great choice — we have 2 units available in that area. What's your budget range?<div class="chat-time">11:47 PM</div></div></div>
+          <div class="chat-msg"><div class="chat-bubble user">Around ₦45M<div class="chat-time">11:48 PM</div></div></div>
+          <div class="chat-msg"><div class="chat-bubble bot">Perfect! I can book you a viewing for tomorrow. What time works best? ✅<div class="chat-time">11:48 PM</div></div></div>
+          <div class="mockup-metrics">
+            <div class="mockup-metric"><div class="mv" style="color:#38bdf8">4×</div><div class="ml">More Leads</div></div>
+            <div class="mockup-metric"><div class="mv" style="color:#22c55e">3s</div><div class="ml">Response</div></div>
+            <div class="mockup-metric"><div class="mv" style="color:#a78bfa">−62%</div><div class="ml">No-Shows</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     INSTAGRAM FEATURE BAND
-════════════════════════════ -->
-<div class="ig-band">
-  <div class="ig-inner">
-    <div class="ig-img">
-      <img
-        src="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png"
-        alt="ManyChat Instagram DM Automation Demo showing automated lead capture flow — Kographic AI"
-        width="600"
-        height="400"
-        loading="lazy">
-    </div>
-    <div class="ig-content">
-      <div class="label">Instagram Automation</div>
-      <h2>Turn Instagram DMs Into <span class="accent">WhatsApp Leads</span> in 60 Seconds</h2>
-      <p>Powered by ManyChat — we build Instagram comment and DM automations that instantly reply, capture buyer details, and move hot leads to WhatsApp for closing. No human needed, 24/7.</p>
-      <div class="ig-tags">
-        <span class="tag">ManyChat DM Bot</span>
-        <span class="tag">Auto-Reply</span>
-        <span class="tag">WhatsApp Handoff</span>
-        <span class="tag">Lead Capture</span>
-      </div>
-      <div class="ig-btns">
-        <a href="https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Instagram%20DM%20automation%20for%20my%20business"
-           class="btn btn-green"
-           target="_blank"
-           rel="noopener noreferrer">💬 Get This For My Business →</a>
-        <a href="#demo" class="btn btn-outline">▶ See Live Demo</a>
-      </div>
-    </div>
+<!-- ── TICKER ── -->
+<div id="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">WhatsApp Automation</span>
+    <span class="ticker-item">Lead Generation</span>
+    <span class="ticker-item">Customer Support AI</span>
+    <span class="ticker-item">Sales Funnels</span>
+    <span class="ticker-item">CRM Integration</span>
+    <span class="ticker-item">24/7 Availability</span>
+    <span class="ticker-item">Botpress Powered</span>
+    <span class="ticker-item">Instagram DM Bots</span>
+    <span class="ticker-item">Appointment Booking</span>
+    <span class="ticker-item">Cart Recovery</span>
+    <span class="ticker-item">WhatsApp Automation</span>
+    <span class="ticker-item">Lead Generation</span>
+    <span class="ticker-item">Customer Support AI</span>
+    <span class="ticker-item">Sales Funnels</span>
+    <span class="ticker-item">CRM Integration</span>
+    <span class="ticker-item">24/7 Availability</span>
+    <span class="ticker-item">Botpress Powered</span>
+    <span class="ticker-item">Instagram DM Bots</span>
+    <span class="ticker-item">Appointment Booking</span>
+    <span class="ticker-item">Cart Recovery</span>
   </div>
 </div>
 
-<!-- ════════════════════════════
-     INDUSTRIES
-════════════════════════════ -->
-<section class="industries" id="industries">
+<!-- ── SERVICES ── -->
+<section id="services">
   <div class="container">
-    <div class="section-header">
-      <div class="label">Who We Serve</div>
-      <h2>Built for the <em class="accent em-text">Fastest-Growing Sectors</em></h2>
-      <p>We specialise in industries where speed and follow-up are the difference between winning and losing a deal.</p>
+    <div class="section-head fade-up">
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title">Three Ways We <span class="accent">Grow Your Business</span></h2>
+      <p class="section-sub">Every Nigerian business loses customers to slow replies. We automate the conversation so you never miss a lead — day or night.</p>
     </div>
-
-    <div class="region-tabs" role="tablist" aria-label="Select region">
-      <button class="rtab active"
-              role="tab"
-              id="tab-ind-ng"
-              aria-selected="true"
-              aria-controls="ind-ng"
-              onclick="switchTab('ind','ng',this)">🇳🇬 Nigeria</button>
-      <button class="rtab"
-              role="tab"
-              id="tab-ind-ae"
-              aria-selected="false"
-              aria-controls="ind-ae"
-              onclick="switchTab('ind','ae',this)">🇦🇪 UAE</button>
-    </div>
-
-    <div id="ind-ng" class="ind-panel active" role="tabpanel" aria-labelledby="tab-ind-ng">
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🏡</div>
-        <h3>Real Estate Agents</h3>
-        <ul>
-          <li>Instant WhatsApp lead response</li>
-          <li>Property search &amp; filtering bot</li>
-          <li>Automated viewing scheduling</li>
-          <li>Cold lead follow-up sequences</li>
-        </ul>
+    <div class="cards-grid">
+      <div class="card fade-up">
+        <div class="card-icon">💬</div>
+        <h3>WhatsApp AI Chatbots</h3>
+        <p>Instantly respond to every WhatsApp enquiry — 24/7. Qualify leads, answer FAQs, and route conversations without lifting a finger.</p>
       </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🛍️</div>
-        <h3>E-commerce Stores</h3>
-        <ul>
-          <li>Instagram DM lead automation</li>
-          <li>WhatsApp cart recovery</li>
-          <li>Order status &amp; delivery bots</li>
-          <li>Post-purchase review requests</li>
-        </ul>
+      <div class="card fade-up" style="transition-delay:.1s">
+        <div class="card-icon">🎯</div>
+        <h3>AI Lead Generation</h3>
+        <p>Never lose a lead to slow response again. Capture buyer intent, collect contact details, and qualify prospects automatically.</p>
       </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🏫</div>
-        <h3>Schools &amp; Training Centres</h3>
-        <ul>
-          <li>Admission inquiry handling</li>
-          <li>Fee payment reminders</li>
-          <li>Parent communication bot</li>
-          <li>Course enrollment automation</li>
-        </ul>
+      <div class="card fade-up" style="transition-delay:.2s">
+        <div class="card-icon">⚡</div>
+        <h3>Automated Customer Support</h3>
+        <p>Cut support workload by 60%+. Your bot handles FAQs, tracks orders, and escalates only complex issues to your team.</p>
       </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">📦</div>
-        <h3>Logistics &amp; Delivery</h3>
-        <ul>
-          <li>Order tracking chatbot</li>
-          <li>Delivery status automation</li>
-          <li>Issue reporting bot</li>
-          <li>Driver dispatch notifications</li>
-        </ul>
+      <div class="card fade-up" style="transition-delay:.3s">
+        <div class="card-icon">🔗</div>
+        <h3>CRM & Workflow Automation</h3>
+        <p>Sync every conversation to Google Sheets or your CRM automatically. Full audit trail, zero manual data entry.</p>
       </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">💆</div>
-        <h3>Clinics, Salons &amp; Wellness</h3>
-        <ul>
-          <li>24/7 appointment booking</li>
-          <li>WhatsApp reminder sequences</li>
-          <li>Patient re-engagement</li>
-          <li>Treatment inquiry handling</li>
-        </ul>
+      <div class="card fade-up" style="transition-delay:.4s">
+        <div class="card-icon">📅</div>
+        <h3>AI Appointment Booking</h3>
+        <p>Fill slots and slash no-shows with automated WhatsApp booking, 48hr reminders, and instant reschedule options.</p>
       </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🏢</div>
-        <h3>Service Businesses</h3>
-        <ul>
-          <li>Enquiry qualification bot</li>
-          <li>Quote request automation</li>
-          <li>Appointment booking</li>
-          <li>Follow-up sequences</li>
-        </ul>
+      <div class="card fade-up" style="transition-delay:.5s">
+        <div class="card-icon">📈</div>
+        <h3>Sales Funnel Automation</h3>
+        <p>Turn enquiries into sales with automated follow-up sequences, cart recovery messages, and buyer qualification funnels.</p>
       </div>
     </div>
-
-    <div id="ind-ae" class="ind-panel" role="tabpanel" aria-labelledby="tab-ind-ae">
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🏢</div>
-        <h3>Real Estate — Dubai &amp; Abu Dhabi</h3>
-        <ul>
-          <li>Instant multilingual response</li>
-          <li>Arabic + English support</li>
-          <li>Property search bot</li>
-          <li>CRM sync with agent routing</li>
-        </ul>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">💆</div>
-        <h3>Clinics &amp; Aesthetic Centres</h3>
-        <ul>
-          <li>24/7 appointment booking</li>
-          <li>Arabic + English reminders</li>
-          <li>Patient re-engagement</li>
-          <li>Review generation automation</li>
-        </ul>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🛍️</div>
-        <h3>E-commerce &amp; Retail</h3>
-        <ul>
-          <li>WhatsApp cart recovery</li>
-          <li>Order status chatbot</li>
-          <li>Product recommendation bot</li>
-          <li>Return &amp; exchange automation</li>
-        </ul>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🔐</div>
-        <h3>Security &amp; Corporate FM</h3>
-        <ul>
-          <li>Incident reporting chatbot</li>
-          <li>Staff escalation automation</li>
-          <li>Shift notification systems</li>
-          <li>Compliance audit trail</li>
-        </ul>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">🏨</div>
-        <h3>Hospitality &amp; Tourism</h3>
-        <ul>
-          <li>Booking inquiry handling</li>
-          <li>Bilingual guest support</li>
-          <li>Feedback automation</li>
-          <li>Review generation</li>
-        </ul>
-      </div>
-      <div class="ind-card">
-        <div class="ind-icon" aria-hidden="true">📱</div>
-        <h3>Marketing Agencies</h3>
-        <ul>
-          <li>White-label chatbot builds</li>
-          <li>Client lead gen automation</li>
-          <li>Campaign follow-up bots</li>
-          <li>Social DM automation</li>
-        </ul>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ════════════════════════════
-     PROCESS
-════════════════════════════ -->
-<section class="process" id="how">
+<!-- ── RESULTS ── -->
+<section id="results">
+  <div class="orb" style="width:500px;height:400px;bottom:0;left:-100px;background:rgba(6,182,212,.06)"></div>
   <div class="container">
-    <div class="section-header">
-      <div class="label">Our Process</div>
-      <h2>From Brief to Bot <em class="accent em-text">in Three Steps</em></h2>
-      <p>We handle everything. You go live in 72 hours with zero technical knowledge required on your end.</p>
+    <div class="section-head fade-up">
+      <div class="section-label">Proven Results</div>
+      <h2 class="section-title">Real Projects. <span class="accent">Measurable Outcomes.</span></h2>
+      <p class="section-sub">Every number below reflects an actual automation built for a real business challenge — in Nigeria and the UAE.</p>
     </div>
-    <div class="process-grid">
+    <div class="results-grid">
 
-      <div class="process-step">
-        <div class="step-num" aria-hidden="true">01</div>
-        <div class="step-icon" aria-hidden="true">🗺️</div>
-        <h3>Strategy &amp; Flow Design</h3>
-        <p>We start with a free 30-minute call to understand your business and the exact leads you're losing. We then design a custom conversation flow mapped to your sales process — not a generic template.</p>
+      <div class="result-card fade-up" style="--hover-color:#38bdf8" onmouseenter="this.style.borderColor='rgba(56,189,248,.4)';this.style.boxShadow='0 0 40px rgba(56,189,248,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">Real Estate · Lagos</div><div class="result-title">24/7 WhatsApp Lead Capture Bot</div></div><div class="result-emoji">🏡</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#38bdf8">4× More Leads</div>
+          <p class="result-desc">Lagos agent was losing 60%+ of after-hours leads. Bot responds in seconds, qualifies buyer intent, and books viewings — 24/7 with zero manual effort.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
       </div>
 
-      <div class="process-step">
-        <div class="step-num" aria-hidden="true">02</div>
-        <div class="step-icon" aria-hidden="true">🤖</div>
-        <h3>Bot Development</h3>
-        <p>We build your chatbot on Botpress — the most powerful open-source AI platform — and connect it directly to your WhatsApp Business account. You review a live demo before anything goes public.</p>
+      <div class="result-card fade-up" style="transition-delay:.1s" onmouseenter="this.style.borderColor='rgba(34,197,94,.4)';this.style.boxShadow='0 0 40px rgba(34,197,94,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">E-commerce · Abuja</div><div class="result-title">Instagram DM Sales Automation</div></div><div class="result-emoji">👗</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#22c55e">+38% Revenue</div>
+          <p class="result-desc">Fashion store losing hot buyers to slow Instagram DM replies. ManyChat bot captures lead, shares catalogue, and moves buyer to WhatsApp in under 60 seconds.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
       </div>
 
-      <div class="process-step">
-        <div class="step-num" aria-hidden="true">03</div>
-        <div class="step-icon" aria-hidden="true">🚀</div>
-        <h3>Launch &amp; Optimise</h3>
-        <p>Your bot goes live within 72 hours. We monitor real conversations for the first two weeks, refine performance, and deliver a lead report showing exactly how many customers your automation captured.</p>
+      <div class="result-card fade-up" style="transition-delay:.2s" onmouseenter="this.style.borderColor='rgba(167,139,250,.4)';this.style.boxShadow='0 0 40px rgba(167,139,250,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">Clinic · Port Harcourt</div><div class="result-title">Appointment & No-Show Reduction</div></div><div class="result-emoji">🏥</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#a78bfa">−62% No-Shows</div>
+          <p class="result-desc">35% no-show rate costing revenue monthly. WhatsApp reminder sequence: 48hr → 3hr → instant reschedule option. No-shows dropped 62% with zero staff effort.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
+      </div>
+
+      <div class="result-card fade-up" style="transition-delay:.3s" onmouseenter="this.style.borderColor='rgba(245,158,11,.4)';this.style.boxShadow='0 0 40px rgba(245,158,11,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">Private School · Abuja</div><div class="result-title">Admission Inquiry Automation</div></div><div class="result-emoji">🏫</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#f59e0b">−80% Manual Replies</div>
+          <p class="result-desc">Admin team overwhelmed with 200+ daily inquiries about admission, fees, and programs during resumption. Bot auto-answers and routes serious leads to admin.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
+      </div>
+
+      <div class="result-card fade-up" style="transition-delay:.4s" onmouseenter="this.style.borderColor='rgba(6,182,212,.4)';this.style.boxShadow='0 0 40px rgba(6,182,212,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">Logistics · Lagos</div><div class="result-title">Order Tracking & Support Bot</div></div><div class="result-emoji">📦</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#06b6d4">−70% Support Volume</div>
+          <p class="result-desc">Delivery company flooded with "where is my order?" messages. WhatsApp chatbot handles tracking, delivery ETA, and issue reporting — reducing agent load by 70%.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
+      </div>
+
+      <div class="result-card fade-up" style="transition-delay:.5s" onmouseenter="this.style.borderColor='rgba(239,68,68,.4)';this.style.boxShadow='0 0 40px rgba(239,68,68,.1)'" onmouseleave="this.style.borderColor='rgba(148,163,184,.1)';this.style.boxShadow='none'">
+        <div class="result-top"><div><div class="result-cat">Security Company · UAE</div><div class="result-title">Incident Reporting & Escalation</div></div><div class="result-emoji">🛡️</div></div>
+        <div class="result-body">
+          <div class="result-metric" style="color:#ef4444">−85% Response Time</div>
+          <p class="result-desc">Guards using WhatsApp manually — inconsistent reports, delayed escalation. Bot classifies severity, creates tickets, alerts manager: 22 min → 3 min response.</p>
+          <a href="https://wa.me/2349138290042" target="_blank" class="result-link">Get This For My Business →</a>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     RESULTS / CASE STUDIES
-════════════════════════════ -->
-<section class="cases" id="cases">
+<!-- ── FEATURES ── -->
+<section id="features">
+  <div class="orb" style="width:600px;height:400px;top:0;right:-200px;background:rgba(14,165,233,.07)"></div>
   <div class="container">
-    <div class="section-header">
-      <div class="label">Proven Results</div>
-      <h2>Real Projects. <em class="accent em-text">Measurable Outcomes.</em></h2>
-      <p>Every number below reflects an actual automation built for a real business challenge — in Nigeria and the UAE.</p>
+    <div class="section-head fade-up">
+      <div class="section-label">Why It Works</div>
+      <h2 class="section-title">Everything Your Business <span class="accent">Needs to Automate</span></h2>
     </div>
-
-    <div class="region-tabs" role="tablist" aria-label="Select region for case studies">
-      <button class="rtab active"
-              role="tab"
-              id="tab-case-ng"
-              aria-selected="true"
-              aria-controls="case-ng"
-              onclick="switchTab('case','ng',this)">🇳🇬 Nigeria</button>
-      <button class="rtab"
-              role="tab"
-              id="tab-case-ae"
-              aria-selected="false"
-              aria-controls="case-ae"
-              onclick="switchTab('case','ae',this)">🇦🇪 UAE</button>
+    <div class="feat-grid">
+      <div class="feat-item fade-up"><span class="feat-icon">🕐</span><div><h4>24/7 Automated Replies</h4><p>Your business never sleeps. Bot handles every enquiry the moment it arrives — midnight, weekends, public holidays.</p></div></div>
+      <div class="feat-item fade-up" style="transition-delay:.1s"><span class="feat-icon">⚡</span><div><h4>Faster Lead Conversion</h4><p>Reply in 3 seconds, not 3 hours. Speed is the single biggest factor in whether a lead converts to a customer.</p></div></div>
+      <div class="feat-item fade-up" style="transition-delay:.2s"><span class="feat-icon">🔌</span><div><h4>Multi-Platform Integration</h4><p>WhatsApp, Instagram DMs, website chat, and your CRM — all connected in one seamless automation system.</p></div></div>
+      <div class="feat-item fade-up" style="transition-delay:.3s"><span class="feat-icon">🧠</span><div><h4>Smart AI Responses</h4><p>Powered by Botpress AI — the bot understands intent, asks the right qualifying questions, and responds naturally.</p></div></div>
+      <div class="feat-item fade-up" style="transition-delay:.4s"><span class="feat-icon">📊</span><div><h4>Analytics Dashboard</h4><p>See exactly how many leads your bot captured, conversion rates, busiest hours, and where drop-offs happen.</p></div></div>
+      <div class="feat-item fade-up" style="transition-delay:.5s"><span class="feat-icon">🚀</span><div><h4>72-Hour Go-Live</h4><p>From kick-off call to live bot in 72 hours. Zero technical knowledge required on your end. We handle everything.</p></div></div>
     </div>
-
-    <div id="case-ng" class="case-panel active" role="tabpanel" aria-labelledby="tab-case-ng">
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Real Estate · Lagos</div>
-            <h3>24/7 WhatsApp Lead Capture Bot</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 4 times more leads">4× Leads</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Lagos agent was losing 60%+ of after-hours WhatsApp leads. Hot buyers went cold overnight because no one replied until morning.</p>
-        <div class="case-label">Solution</div>
-        <p>Bot responds in seconds, qualifies buyer intent (budget, area, type), and books viewings — 24/7 with zero manual effort.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">E-commerce · Abuja</div>
-            <h3>Instagram DM Sales Automation</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 38 percent revenue increase">+38% Revenue</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Fashion store spending money on ads but manually replying to Instagram DMs hours later — losing hot buyers to faster competitors.</p>
-        <div class="case-label">Solution</div>
-        <p>ManyChat DM bot captures lead, shares catalogue, and moves buyer to WhatsApp checkout in under 60 seconds automatically.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Clinic · Port Harcourt</div>
-            <h3>Appointment &amp; No-Show Reduction</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 62 percent fewer no-shows">−62% No-Shows</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Private clinic had 35% no-show rate costing revenue monthly. Staff spent hours manually calling patients to confirm appointments.</p>
-        <div class="case-label">Solution</div>
-        <p>WhatsApp automation: 48hr reminder → 3hr reminder → instant reschedule option. No-shows dropped 62% with zero staff effort.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Private School · Abuja</div>
-            <h3>Admission Inquiry Automation</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 80 percent fewer manual replies">−80% Manual</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Admin team overwhelmed with 200+ daily WhatsApp and Instagram inquiries about admission, fees, and programs during resumption.</p>
-        <div class="case-label">Solution</div>
-        <p>Instagram DM bot + WhatsApp FAQ chatbot auto-answers inquiries, collects parent info, and routes serious leads to admin team.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Logistics · Lagos</div>
-            <h3>Order Tracking &amp; Support Bot</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 70 percent support volume reduction">−70% Support</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Delivery company flooded with "where is my order?" messages daily — pulling agents away from resolving actual complaints.</p>
-        <div class="case-label">Solution</div>
-        <p>WhatsApp chatbot handles order tracking, estimated delivery, and issue reporting — reducing agent load by 70% from day one.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Church · Lagos</div>
-            <h3>Member Communication Bot</h3>
-          </div>
-          <div class="case-result" aria-label="Result: over 5000 members served">5,000+ Members</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Large church with 5,000+ members had no system for event registrations, tithe reminders, or member inquiries — all manual on WhatsApp.</p>
-        <div class="case-label">Solution</div>
-        <p>Botpress bot handles event registrations, announcements, FAQ, and giving reminders — saving admin team 20+ hours every week.</p>
-      </div>
-    </div>
-
-    <div id="case-ae" class="case-panel" role="tabpanel" aria-labelledby="tab-case-ae">
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Real Estate · Dubai</div>
-            <h3>24/7 Lead Capture &amp; Viewing Bot</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 4 times more leads">4× Leads</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Dubai agency losing 60%+ of after-hours leads. Inquiries sat unread for hours while hot buyers went to faster-responding agents.</p>
-        <div class="case-label">Solution</div>
-        <p>WhatsApp AI chatbot instantly responds in Arabic/English, qualifies intent, and books viewings into the agent's calendar automatically.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Aesthetic Clinic · Abu Dhabi</div>
-            <h3>Booking &amp; No-Show Reduction</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 62 percent fewer no-shows">−62% No-Shows</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Cosmetic clinic had 35% no-show rate costing thousands monthly. Staff manually called every patient to confirm appointments.</p>
-        <div class="case-label">Solution</div>
-        <p>WhatsApp reminder sequence recovered AED 22,000 in additional monthly revenue. Response: 48hr → 3hr → instant reschedule.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Security Company · UAE</div>
-            <h3>Incident Reporting &amp; Escalation</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 85 percent faster response">−85% Response</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Guards using WhatsApp manually — inconsistent incident reports, delayed escalation, non-compliant audit trail.</p>
-        <div class="case-label">Solution</div>
-        <p>Botpress + Make.com: guards report via chat, system classifies severity, creates tickets, alerts manager. 22 min → 3 min response time.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">E-commerce · Dubai</div>
-            <h3>Instagram DM to WhatsApp Sales Bot</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 41 percent revenue increase">+41% Revenue</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Dubai fashion retailer running paid Instagram ads but losing buyers who DM'd and got no reply for hours — ad spend wasted on cold leads.</p>
-        <div class="case-label">Solution</div>
-        <p>ManyChat bot auto-replies to DMs in Arabic/English, shares the product catalogue, and moves hot buyers to WhatsApp checkout in under 60 seconds.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Hospitality · Dubai</div>
-            <h3>Guest Inquiry &amp; Booking Automation</h3>
-          </div>
-          <div class="case-result" aria-label="Result: 3 times more bookings">3× Bookings</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Boutique hotel receiving WhatsApp inquiries around the clock — front desk couldn't keep up, losing direct bookings to OTA platforms.</p>
-        <div class="case-label">Solution</div>
-        <p>Bilingual WhatsApp bot handles availability checks, room FAQs, and direct booking requests 24/7 — tripling direct reservations in 60 days.</p>
-      </div>
-      <div class="case-card">
-        <div class="case-header">
-          <div>
-            <div class="case-meta">Marketing Agency · Abu Dhabi</div>
-            <h3>White-Label Chatbot Programme</h3>
-          </div>
-          <div class="case-result" aria-label="Result: AED 18,000 new monthly recurring revenue">AED 18k MRR</div>
-        </div>
-        <div class="case-label">Problem</div>
-        <p>Abu Dhabi agency offering social media management but losing clients to competitors who bundled automation — no chatbot capability in-house.</p>
-        <div class="case-label">Solution</div>
-        <p>We built a white-label WhatsApp + Instagram automation stack the agency resells as a premium add-on — adding AED 18,000 in recurring monthly revenue.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ════════════════════════════
-     LIVE DEMO
-════════════════════════════ -->
-<section class="demo" id="demo">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">Try It Yourself</div>
-      <h2>Live <em class="accent em-text">Demo</em></h2>
-      <p>Interact with the real Kographic AI chatbot below — the same technology we deploy for your business. Try asking about pricing, services, or booking a call.</p>
+<!-- ── DEMO ── -->
+<section id="demo">
+  <div class="orb" style="width:600px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(14,165,233,.06)"></div>
+  <div class="container-sm">
+    <div class="section-head fade-up">
+      <div class="section-label">Try It Yourself</div>
+      <h2 class="section-title">Live <span class="accent">Demo</span></h2>
+      <p class="section-sub">Chat with our AI bot right now — the same technology we deploy for your business. Click the button below to start.</p>
     </div>
-    <div class="demo-shell">
-      <div class="demo-topbar">
-        <div class="demo-dot" aria-hidden="true"></div>
-        <span class="demo-topbar-title">🤖 Kographic AI — Live Bot</span>
+
+    <div class="fade-up" style="text-align:center">
+      <!-- Demo launch card -->
+      <div style="background:rgba(15,23,42,.8);border:1px solid rgba(14,165,233,.2);border-radius:24px;padding:48px 32px;max-width:560px;margin:0 auto;box-shadow:0 0 60px rgba(14,165,233,.08)">
+        <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#0ea5e9,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 24px;box-shadow:0 0 30px rgba(14,165,233,.4)">🤖</div>
+        <h3 style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:#f0f9ff;margin-bottom:12px">KographicAI Live Bot</h3>
+        <p style="color:rgba(148,163,184,.6);font-size:.9rem;line-height:1.6;margin-bottom:32px">Ask about pricing, services, or book a free strategy call — our AI responds instantly, 24/7.</p>
+        <button onclick="openBot()" style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;border:none;padding:14px 32px;border-radius:12px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;box-shadow:0 0 30px rgba(14,165,233,.4);transition:all .25s" onmouseenter="this.style.transform='translateY(-2px)';this.style.boxShadow='0 0 50px rgba(14,165,233,.6)'" onmouseleave="this.style.transform='none';this.style.boxShadow='0 0 30px rgba(14,165,233,.4)'">
+          💬 Chat With Our AI Bot
+        </button>
+        <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:20px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;display:block"></span>
+          <span style="color:rgba(148,163,184,.5);font-size:12px">Online · Responding in under 3 seconds</span>
+        </div>
       </div>
-      <div class="demo-iframe-wrap">
-        <iframe
-          src="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/11/09/20250111091038-EU5FGBLZ.json"
-          title="Kographic AI Live Chatbot Demo"
-          allow="microphone"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-      <div class="demo-bottombar">
-        <a href="https://wa.me/2349138290042"
-           target="_blank"
-           rel="noopener noreferrer">
-          💬 Or Chat Directly on WhatsApp →
-        </a>
+
+      <div style="margin-top:24px">
+        <a href="https://wa.me/2349138290042" target="_blank" rel="noopener" class="btn-green">💬 Or Chat on WhatsApp →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     TESTIMONIALS
-════════════════════════════ -->
-<section class="testimonials" id="testimonials">
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
   <div class="container">
-    <div class="section-header">
-      <div class="label">Client Results</div>
-      <h2>Businesses That <em class="accent em-text">Already Automate</em></h2>
-      <p>Real businesses. Real numbers. Real revenue from WhatsApp automation.</p>
+    <div class="section-head fade-up">
+      <div class="section-label">Client Results</div>
+      <h2 class="section-title">Businesses That <span class="accent">Already Automate</span></h2>
+      <p class="section-sub">Real Nigerian and UAE businesses. Real numbers. Real revenue from WhatsApp automation.</p>
     </div>
     <div class="testi-grid">
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"The chatbot increased our lead capture rate significantly within the very first month. We stopped losing leads to slow response times overnight. Every morning I wake up to qualified buyers in my inbox."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">AS</div>
-          <div>
-            <div class="testi-name">Ahmed S.</div>
-            <div class="testi-role">Real Estate · Lagos</div>
-            <div class="testi-metric">+3 deals/mo</div>
+      <div class="testi-card fade-up">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"The chatbot increased our lead capture rate significantly within the very first month. We stopped losing leads to slow response times overnight. Every morning I wake up to qualified buyers in my inbox."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(56,189,248,.2);border:1px solid rgba(56,189,248,.3);color:#38bdf8">AS</div>
+            <div><div class="testi-name">Ahmed S.</div><div class="testi-role">Real Estate · Lagos</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);color:#38bdf8">+3 deals/mo</div>
         </div>
-      </article>
+      </div>
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"Customer response time dropped from hours to seconds. Our support team now only handles complex escalations — the bot handles everything else. It paid for itself in week two."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">CO</div>
-          <div>
-            <div class="testi-name">Chinwe O.</div>
-            <div class="testi-role">Ecommerce · Abuja</div>
-            <div class="testi-metric">34% cart recovery</div>
+      <div class="testi-card fade-up" style="transition-delay:.1s">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Customer response time dropped from hours to seconds. Our support team now only handles complex escalations — the bot handles everything else. Truly amazing automation that paid for itself in week two."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.3);color:#22c55e">CO</div>
+            <div><div class="testi-name">Chinwe O.</div><div class="testi-role">Ecommerce · Abuja</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:#22c55e">34% cart recovery</div>
         </div>
-      </article>
+      </div>
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"We handle support queries 24/7 without adding a single staff member. The ROI paid for itself within the first two weeks of going live. Delivery complaints dropped and the team is focused on real work."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">DA</div>
-          <div>
-            <div class="testi-name">David A.</div>
-            <div class="testi-role">Logistics · Port Harcourt</div>
-            <div class="testi-metric">−70% tickets</div>
+      <div class="testi-card fade-up" style="transition-delay:.2s">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"We handle support queries 24/7 without adding a single staff member. The ROI paid for itself within the first two weeks. Delivery complaints dropped and the team is finally focused on real work."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(167,139,250,.2);border:1px solid rgba(167,139,250,.3);color:#a78bfa">DA</div>
+            <div><div class="testi-name">David A.</div><div class="testi-role">Logistics · Port Harcourt</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);color:#a78bfa">−70% tickets</div>
         </div>
-      </article>
+      </div>
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"We were losing Dubai buyers who messaged at midnight and got no reply until morning. The bilingual bot changed everything — it qualifies in Arabic and English and books viewings automatically."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">KA</div>
-          <div>
-            <div class="testi-name">Khalid A.</div>
-            <div class="testi-role">Real Estate · Dubai</div>
-            <div class="testi-metric">+4 viewings/wk</div>
+      <div class="testi-card fade-up" style="transition-delay:.3s">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"The bilingual bot changed everything — it qualifies in Arabic and English and books viewings automatically. Our close rate jumped within weeks of going live."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.3);color:#f59e0b">KA</div>
+            <div><div class="testi-name">Khalid A.</div><div class="testi-role">Real Estate · Dubai</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:#f59e0b">+4 viewings/wk</div>
         </div>
-      </article>
+      </div>
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"No-shows were costing us thousands every month. The WhatsApp reminder sequence cut no-shows by more than half. We recovered AED 22,000 in the first month alone. Worth every dirham."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">LM</div>
-          <div>
-            <div class="testi-name">Layla M.</div>
-            <div class="testi-role">Aesthetic Clinic · Abu Dhabi</div>
-            <div class="testi-metric">AED 22k recovered</div>
+      <div class="testi-card fade-up" style="transition-delay:.4s">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"No-shows were costing us thousands every month. The WhatsApp reminder sequence cut no-shows by more than half. We recovered AED 22,000 in the first month alone. Worth every dirham."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(6,182,212,.2);border:1px solid rgba(6,182,212,.3);color:#06b6d4">LM</div>
+            <div><div class="testi-name">Layla M.</div><div class="testi-role">Aesthetic Clinic · Abu Dhabi</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2);color:#06b6d4">AED 22k recovered</div>
         </div>
-      </article>
+      </div>
 
-      <article class="testi-card">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p>"Incident reports used to take 22 minutes to reach the right manager. Now the bot classifies severity, raises a ticket, and alerts the team in under 3 minutes. Compliance sorted."</p>
-        <div class="testi-author">
-          <div class="avatar" aria-hidden="true">OM</div>
-          <div>
-            <div class="testi-name">Omar M.</div>
-            <div class="testi-role">Security Company · UAE</div>
-            <div class="testi-metric">−85% response time</div>
+      <div class="testi-card fade-up" style="transition-delay:.5s">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Incident reports used to take 22 minutes to reach the right manager. Now the bot classifies severity, raises a ticket, and alerts the team in under 3 minutes. Compliance sorted."</p>
+        <div class="testi-bottom">
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);color:#ef4444">OM</div>
+            <div><div class="testi-name">Omar M.</div><div class="testi-role">Security Company · UAE</div></div>
           </div>
+          <div class="testi-badge" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#ef4444">−85% response time</div>
         </div>
-      </article>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════
-     PRICING
-════════════════════════════ -->
-<section class="pricing" id="pricing">
+<!-- ── PRICING ── -->
+<section id="pricing">
   <div class="container">
-    <div class="section-header">
-      <div class="label">Investment</div>
-      <h2>Pick Your <em class="accent em-text">Growth Plan</em></h2>
-      <p>One-time setup fee. You own your bot from day one. No hidden monthly platform costs.</p>
+    <div class="section-head fade-up">
+      <div class="section-label">Investment</div>
+      <h2 class="section-title">Pick Your <span class="accent">Growth Plan</span></h2>
+      <p class="section-sub">One-time setup fee. You own your bot from day one. No hidden monthly platform costs.</p>
     </div>
 
-    <div class="pricing-tabs" role="tablist" aria-label="Select currency region">
-      <button class="ptab active"
-              role="tab"
-              id="tab-price-ng"
-              aria-selected="true"
-              aria-controls="price-ng"
-              onclick="switchPricing('ng',this)">🇳🇬 Nigeria (₦)</button>
-      <button class="ptab"
-              role="tab"
-              id="tab-price-ae"
-              aria-selected="false"
-              aria-controls="price-ae"
-              onclick="switchPricing('ae',this)">🇦🇪 UAE (AED)</button>
-    </div>
-
-    <div id="price-ng" class="price-panel active" role="tabpanel" aria-labelledby="tab-price-ng">
-      <div class="price-card">
-        <div class="price-name">Starter Bot</div>
-        <div class="price-amount">₦120,000</div>
-        <div class="price-period">One-time setup · 2 weeks support</div>
-        <ul class="price-features">
-          <li>Basic Chatbot Flow</li>
-          <li>Lead Capture &amp; Storage</li>
-          <li>1 Platform Integration</li>
-          <li>FAQ Automation</li>
-          <li>2 Weeks of Support</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Get Started →</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-badge" aria-label="Most Popular plan">Most Popular</div>
-        <div class="price-name">Growth Bot</div>
-        <div class="price-amount">₦280,000</div>
-        <div class="price-period">One-time setup · 30 days support</div>
-        <ul class="price-features">
-          <li>Advanced Flow Logic &amp; Qualification</li>
-          <li>WhatsApp Business API Integration</li>
-          <li>CRM or Google Sheets Sync</li>
-          <li>Follow-up Sequences</li>
-          <li>Monthly Analytics Report</li>
-          <li>30 Days Priority Support</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Get Started →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Full Automation</div>
-        <div class="price-amount">₦500,000</div>
-        <div class="price-period">One-time setup · 60 days support</div>
-        <ul class="price-features">
-          <li>Full Business Automation System</li>
-          <li>Multi-platform (WA + IG + Web)</li>
-          <li>Custom AI Integrations</li>
-          <li>E-commerce &amp; Cart Recovery</li>
-          <li>Advanced CRM Workflows</li>
-          <li>Ongoing Optimisation (2 months)</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Get Started →</a>
+    <div class="pricing-toggle fade-up">
+      <div class="toggle-wrap">
+        <button class="toggle-btn active" onclick="switchRegion('ng',this)">🇳🇬 Nigeria</button>
+        <button class="toggle-btn" onclick="switchRegion('ae',this)">🇦🇪 UAE</button>
       </div>
     </div>
 
-    <div id="price-ae" class="price-panel" role="tabpanel" aria-labelledby="tab-price-ae">
-      <div class="price-card">
-        <div class="price-name">Starter</div>
-        <div class="price-amount">AED 1,500</div>
-        <div class="price-period">One-time setup · 2 weeks support</div>
-        <ul class="price-features">
-          <li>1 WhatsApp or website bot</li>
-          <li>Up to 5 conversation flows</li>
-          <li>Lead capture &amp; FAQ</li>
-          <li>Arabic + English support</li>
-          <li>2 weeks post-launch support</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Get Started →</a>
+    <!-- Nigeria -->
+    <div data-region="ng" class="active">
+      <div class="pricing-grid">
+        <div class="price-card fade-up">
+          <div class="price-name">Starter Bot</div>
+          <div class="price-amount" style="color:#f0f9ff">₦120,000</div>
+          <div class="price-sub">One-time setup · 2 weeks support</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> Basic Chatbot Flow</li>
+            <li class="price-feat"><span class="check">✓</span> Lead Capture & Storage</li>
+            <li class="price-feat"><span class="check">✓</span> 1 Platform Integration</li>
+            <li class="price-feat"><span class="check">✓</span> FAQ Automation</li>
+            <li class="price-feat"><span class="check">✓</span> 2 Weeks of Support</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta ghost-btn">Get Started →</a>
+        </div>
+        <div class="price-card featured fade-up" style="transition-delay:.1s">
+          <div class="popular-badge">⭐ Most Popular</div>
+          <div class="price-name">Growth Bot</div>
+          <div class="price-amount" style="color:#38bdf8">₦280,000</div>
+          <div class="price-sub">One-time setup · 30 days support</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> Advanced Flow Logic & Qualification</li>
+            <li class="price-feat"><span class="check">✓</span> WhatsApp Business API Integration</li>
+            <li class="price-feat"><span class="check">✓</span> CRM or Google Sheets Sync</li>
+            <li class="price-feat"><span class="check">✓</span> Follow-up Sequences</li>
+            <li class="price-feat"><span class="check">✓</span> Monthly Analytics Report</li>
+            <li class="price-feat"><span class="check">✓</span> 30 Days Priority Support</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta featured-btn">Get Started →</a>
+        </div>
+        <div class="price-card fade-up" style="transition-delay:.2s">
+          <div class="price-name">Full Automation</div>
+          <div class="price-amount" style="color:#f0f9ff">₦500,000</div>
+          <div class="price-sub">One-time setup · 60 days support</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> Full Business Automation System</li>
+            <li class="price-feat"><span class="check">✓</span> Multi-platform (WA + IG + Web)</li>
+            <li class="price-feat"><span class="check">✓</span> Custom AI Integrations</li>
+            <li class="price-feat"><span class="check">✓</span> E-commerce & Cart Recovery</li>
+            <li class="price-feat"><span class="check">✓</span> Advanced CRM Workflows</li>
+            <li class="price-feat"><span class="check">✓</span> Ongoing Optimisation (2 months)</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta ghost-btn">Get Started →</a>
+        </div>
       </div>
-      <div class="price-card featured">
-        <div class="price-badge" aria-label="Most Popular plan">Most Popular</div>
-        <div class="price-name">Growth</div>
-        <div class="price-amount">AED 3,500</div>
-        <div class="price-period">One-time + AED 800/month</div>
-        <ul class="price-features">
-          <li>WhatsApp + Instagram automation</li>
-          <li>Arabic &amp; English bilingual</li>
-          <li>Full lead capture &amp; qualification</li>
-          <li>Appointment booking integration</li>
-          <li>CRM sync &amp; analytics</li>
-          <li>30 days support + optimisation</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Get Growth Plan →</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name">Enterprise</div>
-        <div class="price-amount">AED 7,000+</div>
-        <div class="price-period">Custom build + retainer</div>
-        <ul class="price-features">
-          <li>Full multi-channel automation</li>
-          <li>Security &amp; incident workflows</li>
-          <li>Advanced CRM integration</li>
-          <li>Compliance &amp; analytics reporting</li>
-          <li>Dedicated account manager</li>
-          <li>Bilingual priority support</li>
-        </ul>
-        <a href="https://wa.me/2349138290042"
-           class="price-cta"
-           target="_blank"
-           rel="noopener noreferrer">Let's Talk →</a>
+    </div>
+
+    <!-- UAE -->
+    <div data-region="ae">
+      <div class="pricing-grid">
+        <div class="price-card fade-up">
+          <div class="price-name">Starter</div>
+          <div class="price-amount" style="color:#f0f9ff">AED 1,500</div>
+          <div class="price-sub">One-time setup · 2 weeks support</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> 1 WhatsApp or website bot</li>
+            <li class="price-feat"><span class="check">✓</span> Up to 5 conversation flows</li>
+            <li class="price-feat"><span class="check">✓</span> Lead capture & FAQ</li>
+            <li class="price-feat"><span class="check">✓</span> Arabic + English support</li>
+            <li class="price-feat"><span class="check">✓</span> 2 weeks post-launch support</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta ghost-btn">Get Started →</a>
+        </div>
+        <div class="price-card featured fade-up" style="transition-delay:.1s">
+          <div class="popular-badge">⭐ Most Popular</div>
+          <div class="price-name">Growth</div>
+          <div class="price-amount" style="color:#38bdf8">AED 3,500</div>
+          <div class="price-sub">One-time + AED 800/month</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> WhatsApp + Instagram automation</li>
+            <li class="price-feat"><span class="check">✓</span> Arabic & English bilingual</li>
+            <li class="price-feat"><span class="check">✓</span> Full lead capture & qualification</li>
+            <li class="price-feat"><span class="check">✓</span> Appointment booking integration</li>
+            <li class="price-feat"><span class="check">✓</span> CRM sync & analytics</li>
+            <li class="price-feat"><span class="check">✓</span> 30 days support + optimisation</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta featured-btn">Get Growth Plan →</a>
+        </div>
+        <div class="price-card fade-up" style="transition-delay:.2s">
+          <div class="price-name">Enterprise</div>
+          <div class="price-amount" style="color:#f0f9ff">AED 7,000+</div>
+          <div class="price-sub">Custom build + retainer</div>
+          <ul class="price-features">
+            <li class="price-feat"><span class="check">✓</span> Full multi-channel automation</li>
+            <li class="price-feat"><span class="check">✓</span> Security & incident workflows</li>
+            <li class="price-feat"><span class="check">✓</span> Advanced CRM integration</li>
+            <li class="price-feat"><span class="check">✓</span> Compliance & analytics reporting</li>
+            <li class="price-feat"><span class="check">✓</span> Dedicated account manager</li>
+            <li class="price-feat"><span class="check">✓</span> Bilingual priority support</li>
+          </ul>
+          <a href="https://wa.me/2349138290042" target="_blank" class="price-cta ghost-btn">Let's Talk →</a>
+        </div>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ════════════════════════════
-     CTA BANNER
-════════════════════════════ -->
-<section class="cta-banner" aria-label="Call to action">
-  <div class="label">Ready to Automate?</div>
-  <h2>Ready to Stop Losing <span class="accent">WhatsApp Customers?</span></h2>
-  <p>Book a free 30-minute strategy call and see exactly how a chatbot can grow your specific business. No tech jargon — just a clear plan and real numbers.</p>
-  <a href="https://wa.me/2349138290042"
-     class="btn btn-green"
-     style="font-size:1rem;padding:1rem 2.25rem;"
-     target="_blank"
-     rel="noopener noreferrer">💬 Chat on WhatsApp Now →</a>
+<!-- ── CTA / CONTACT ── -->
+<section id="contact">
+  <div class="orb" style="width:700px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(14,165,233,.07)"></div>
+  <div class="container-sm">
+    <div class="cta-box fade-up">
+      <h2 class="cta-h2">Let AI Work<br><span class="grad">While You Sleep</span></h2>
+      <p class="cta-p">Book a free 30-minute strategy call and see exactly how a chatbot can grow your specific business. No tech jargon — just a clear plan and real numbers.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="https://wa.me/2349138290042" target="_blank" rel="noopener" class="btn-green">💬 Chat on WhatsApp Now →</a>
+      </div>
+      <div class="social-links">
+        <a href="https://instagram.com/kograhic" target="_blank" rel="noopener">📸 Instagram</a>
+        <a href="https://tiktok.com/@kog.co" target="_blank" rel="noopener">🎵 TikTok</a>
+        <a href="https://x.com/kolaolaide266" target="_blank" rel="noopener">𝕏 Twitter</a>
+        <a href="https://linktr.ee/kograhic" target="_blank" rel="noopener">🔗 All Links</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ════════════════════════════
-     FOOTER
-════════════════════════════ -->
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#home" class="logo" aria-label="Back to top">
-          <span class="logo-dot" aria-hidden="true"></span> KographicAI
-        </a>
-        <p>AI-powered WhatsApp chatbots helping businesses in Nigeria and the UAE capture leads, automate support, and increase sales — 24/7.</p>
-        <div class="footer-flags" aria-label="Serving Nigeria and UAE">🇳🇬 🇦🇪</div>
+  <div style="max-width:1200px;margin:0 auto;padding:60px 24px 40px">
+
+    <!-- Top grid -->
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px" class="footer-grid">
+
+      <!-- Brand -->
+      <div>
+        <div class="logo" style="margin-bottom:20px">
+          <div class="logo-icon">K</div>
+          <span class="logo-text">Kographic<span>AI</span></span>
+        </div>
+        <p style="color:rgba(148,163,184,.6);font-size:.875rem;line-height:1.7;max-width:280px;margin-bottom:24px">
+          AI-powered WhatsApp chatbots that help businesses in Nigeria and the UAE capture leads, automate support, and increase sales — 24/7.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="https://instagram.com/kograhic" target="_blank" rel="noopener" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s" onmouseenter="this.style.background='rgba(14,165,233,.15)'" onmouseleave="this.style.background='rgba(255,255,255,.05)'">📸</a>
+          <a href="https://tiktok.com/@kog.co" target="_blank" rel="noopener" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s" onmouseenter="this.style.background='rgba(14,165,233,.15)'" onmouseleave="this.style.background='rgba(255,255,255,.05)'">🎵</a>
+          <a href="https://x.com/kolaolaide266" target="_blank" rel="noopener" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s" onmouseenter="this.style.background='rgba(14,165,233,.15)'" onmouseleave="this.style.background='rgba(255,255,255,.05)'">𝕏</a>
+          <a href="https://wa.me/2349138290042" target="_blank" rel="noopener" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s" onmouseenter="this.style.background='rgba(34,197,94,.2)'" onmouseleave="this.style.background='rgba(255,255,255,.05)'">💬</a>
+          <a href="https://linktr.ee/kograhic" target="_blank" rel="noopener" style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s" onmouseenter="this.style.background='rgba(14,165,233,.15)'" onmouseleave="this.style.background='rgba(255,255,255,.05)'">🔗</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#services">Lead Capture Bots</a></li>
-          <li><a href="#services">Support Automation</a></li>
-          <li><a href="#services">WhatsApp Sales Bots</a></li>
-          <li><a href="#demo">Live Demo</a></li>
+
+      <!-- Services -->
+      <div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:800;font-size:.875rem;color:#f0f9ff;margin-bottom:20px;letter-spacing:.05em;text-transform:uppercase">Services</h4>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <li><a href="#services" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Lead Capture Bots</a></li>
+          <li><a href="#services" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Support Automation</a></li>
+          <li><a href="#services" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">WhatsApp Sales Bots</a></li>
+          <li><a href="#services" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">CRM Integration</a></li>
+          <li><a href="#demo" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Live Demo</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Industries</h5>
-        <ul>
-          <li><a href="#industries">Real Estate</a></li>
-          <li><a href="#industries">E-commerce</a></li>
-          <li><a href="#industries">Schools &amp; Training</a></li>
-          <li><a href="#industries">Logistics</a></li>
+
+      <!-- Industries -->
+      <div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:800;font-size:.875rem;color:#f0f9ff;margin-bottom:20px;letter-spacing:.05em;text-transform:uppercase">Industries</h4>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <li><a href="#results" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Real Estate</a></li>
+          <li><a href="#results" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">E-commerce</a></li>
+          <li><a href="#results" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Clinics & Wellness</a></li>
+          <li><a href="#results" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Logistics</a></li>
+          <li><a href="#results" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">Schools</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:kograhic@gmail.com">kograhic@gmail.com</a></li>
-          <li><a href="https://wa.me/2349138290042" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a></li>
-          <li><a href="https://instagram.com/kograhic" target="_blank" rel="noopener noreferrer">📸 Instagram</a></li>
-          <li><a href="https://tiktok.com/@kog.co" target="_blank" rel="noopener noreferrer">🎵 TikTok</a></li>
-          <li><a href="https://x.com/kolaolaide266" target="_blank" rel="noopener noreferrer">𝕏 Twitter / X</a></li>
-          <li><a href="https://linktr.ee/kograhic" target="_blank" rel="noopener noreferrer">🔗 All Links</a></li>
+
+      <!-- Contact -->
+      <div>
+        <h4 style="font-family:'Syne',sans-serif;font-weight:800;font-size:.875rem;color:#f0f9ff;margin-bottom:20px;letter-spacing:.05em;text-transform:uppercase">Contact</h4>
+        <ul style="display:flex;flex-direction:column;gap:12px">
+          <li><a href="mailto:kograhic@gmail.com" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">kograhic@gmail.com</a></li>
+          <li><a href="https://wa.me/2349138290042" target="_blank" rel="noopener" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#22c55e'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">💬 WhatsApp</a></li>
+          <li><a href="https://instagram.com/kograhic" target="_blank" rel="noopener" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">📸 Instagram</a></li>
+          <li><a href="https://tiktok.com/@kog.co" target="_blank" rel="noopener" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">🎵 TikTok</a></li>
+          <li><a href="https://linktr.ee/kograhic" target="_blank" rel="noopener" style="color:rgba(148,163,184,.6);font-size:.875rem;transition:color .2s" onmouseenter="this.style.color='#38bdf8'" onmouseleave="this.style.color='rgba(148,163,184,.6)'">🔗 All Links</a></li>
         </ul>
       </div>
+
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Kographic AI. All rights reserved. · Powered by Botpress &amp; ManyChat · 🇳🇬 Nigeria &amp; 🇦🇪 UAE</p>
-      <nav class="footer-social" aria-label="Social media links">
-        <a href="https://instagram.com/kograhic" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
-        <a href="https://tiktok.com/@kog.co" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
-        <a href="https://x.com/kolaolaide266" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X">𝕏</a>
-        <a href="https://wa.me/2349138290042" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">💬</a>
-      </nav>
+
+    <!-- Divider -->
+    <div style="border-top:1px solid rgba(56,189,248,.08);padding-top:32px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+      <p style="color:rgba(100,116,139,.5);font-size:12px">© 2026 Kographic AI. All rights reserved.</p>
+      <p style="color:rgba(100,116,139,.4);font-size:12px">Powered by Botpress & ManyChat · 🇳🇬 Nigeria · 🇦🇪 UAE</p>
     </div>
+
   </div>
 </footer>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/2349138290042"
-   class="wa-float"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Chat on WhatsApp">💬</a>
+<style>
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+}
+</style>
 
-<!-- ════════════════════════════
-     JAVASCRIPT
-════════════════════════════ -->
+<!-- ── WhatsApp FAB ── -->
+<a href="https://wa.me/2349138290042" target="_blank" rel="noopener" id="wa-fab" title="Chat on WhatsApp">💬</a>
+
+<!-- ── Botpress Webchat ── -->
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/01/03/12/20260103124937-IIZOQ5NM.js" defer></script>
 <script>
-(function () {
-  'use strict';
-
-  /* ── Hamburger / mobile menu ── */
-  var btn  = document.getElementById('hamburgerBtn');
-  var menu = document.getElementById('mobileMenu');
-
-  function openMobile() {
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Close navigation menu');
-    menu.classList.add('open');
-    document.body.style.overflow = 'hidden';
+function openBot() {
+  if (window.botpress) {
+    window.botpress.open();
   }
-  function closeMobile() {
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open navigation menu');
-    menu.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  // Expose closeMobile globally for inline onclick on menu links
-  window.closeMobile = closeMobile;
+}
+</script>
 
-  btn.addEventListener('click', function () {
-    if (menu.classList.contains('open')) {
-      closeMobile();
-    } else {
-      openMobile();
-    }
-  });
+<!-- ── JS ── -->
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
 
-  // Close on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && menu.classList.contains('open')) {
-      closeMobile();
-      btn.focus();
-    }
-  });
+// Pricing region toggle
+function switchRegion(region, btn) {
+  document.querySelectorAll('[data-region]').forEach(el => el.classList.remove('active'));
+  document.querySelector('[data-region="' + region + '"]').classList.add('active');
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-  // Close on resize to desktop
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768 && menu.classList.contains('open')) {
-      closeMobile();
-    }
-  });
-
-  /* ── Nav scroll tint ── */
-  var nav = document.getElementById('mainNav');
-  function onScroll() {
-    if (window.scrollY > 50) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* ── Tab switcher (industries & case studies) ── */
-  window.switchTab = function (prefix, region, clickedBtn) {
-    // Hide all panels for this prefix
-    document.querySelectorAll('[id^="' + prefix + '-"]').forEach(function (panel) {
-      panel.classList.remove('active');
-    });
-    // Deactivate all tab buttons in the same tablist
-    clickedBtn.closest('[role="tablist"]').querySelectorAll('.rtab').forEach(function (b) {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    // Activate selected panel and button
-    var target = document.getElementById(prefix + '-' + region);
-    if (target) target.classList.add('active');
-    clickedBtn.classList.add('active');
-    clickedBtn.setAttribute('aria-selected', 'true');
-  };
-
-  /* ── Pricing tab switcher ── */
-  window.switchPricing = function (region, clickedBtn) {
-    document.querySelectorAll('[id^="price-"]').forEach(function (panel) {
-      panel.classList.remove('active');
-    });
-    clickedBtn.closest('[role="tablist"]').querySelectorAll('.ptab').forEach(function (b) {
-      b.classList.remove('active');
-      b.setAttribute('aria-selected', 'false');
-    });
-    var target = document.getElementById('price-' + region);
-    if (target) target.classList.add('active');
-    clickedBtn.classList.add('active');
-    clickedBtn.setAttribute('aria-selected', 'true');
-  };
-
-  /* ── Marquee: duplicate content for seamless loop ── */
-  var track = document.getElementById('marqueeTrack');
-  if (track) {
-    // Clone all children and append so we have a seamless 50% loop
-    var clone = track.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    track.parentNode.appendChild(clone);
-  }
-
-  /* ── Intersection Observer: fade-up on scroll for cards ── */
-  if ('IntersectionObserver' in window) {
-    var fadeEls = document.querySelectorAll(
-      '.service-card, .ind-card, .process-step, .case-card, .testi-card, .price-card'
-    );
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-
-    fadeEls.forEach(function (el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(18px)';
-      el.style.transition = 'opacity .55s ease, transform .55s ease';
-      observer.observe(el);
-    });
-  }
-
-})();
+// Fade-up on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
