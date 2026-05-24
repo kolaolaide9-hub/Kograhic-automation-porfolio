@@ -258,10 +258,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 /* ══════════════════════════════════════
    WA FLOAT
 ══════════════════════════════════════ */
-.wa-float{position:fixed;bottom:24px;right:16px;z-index:800;background:var(--wa);color:#fff;border:none;border-radius:14px;padding:0 18px;height:48px;display:flex;align-items:center;gap:9px;font-weight:700;font-size:.83rem;font-family:'Bricolage Grotesque',sans-serif;cursor:pointer;box-shadow:0 6px 26px rgba(37,211,102,.42);animation:wapop .5s 2s cubic-bezier(.175,.885,.32,1.275) both;transition:opacity .3s ease,transform .25s ease,box-shadow .25s ease;text-decoration:none}
+.wa-float{position:fixed;bottom:90px;right:16px;z-index:800;background:var(--wa);color:#fff;border:none;border-radius:14px;padding:0 18px;height:48px;display:flex;align-items:center;gap:9px;font-weight:700;font-size:.83rem;font-family:'Bricolage Grotesque',sans-serif;cursor:pointer;box-shadow:0 6px 26px rgba(37,211,102,.42);opacity:0;animation:wapop .6s 2s cubic-bezier(.175,.885,.32,1.275) forwards;transition:transform .25s ease,box-shadow .25s ease;text-decoration:none}
 .wa-float.show{opacity:1}
-.wa-float:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 34px rgba(37,211,102,.52)}
-@keyframes wapop{from{opacity:0;transform:translateY(18px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+.wa-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 36px rgba(37,211,102,.6)}
+.wa-float::after{content:'';position:absolute;inset:0;border-radius:inherit;animation:waping 2.5s 3s ease-out infinite}
+@keyframes wapop{
+  0%{opacity:0;transform:translateY(28px) scale(.8)}
+  70%{opacity:1;transform:translateY(-4px) scale(1.05)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes waping{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}
+  70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+@keyframes bppop{
+  0%{opacity:0;transform:translateY(28px) scale(.8)}
+  70%{opacity:1;transform:translateY(-4px) scale(1.05)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes bpping{
+  0%{box-shadow:0 0 0 0 rgba(37,99,235,.5)}
+  70%{box-shadow:0 0 0 14px rgba(37,99,235,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,99,235,0)}
+}
+[id^="bp-web-widget"],[class*="bpw-floating-button"]{
+  animation:bppop .6s 2.3s cubic-bezier(.175,.885,.32,1.275) both,bpping 2.5s 3.5s ease-out infinite !important;
+}
 /* wa-float xs handled in responsive block */
 
 /* ══════════════════════════════════════
@@ -319,12 +342,13 @@ img,iframe,video,table{max-width:100%}
 /* ── MOBILE XS (< 400px) ── */
 @media(max-width:399px){
   .hero h1{font-size:1.65rem}
-  .hero-stats{flex-wrap:wrap;gap:12px}
-  .sdiv{display:none}
-  .hstat-n{font-size:1.2rem}
+  .hero-stats{flex-wrap:nowrap;gap:0;justify-content:space-between;width:100%}
+  .hstat-n{font-size:1rem}
+  .hstat-l{font-size:.5rem}
+  .sdiv{display:block}
   .plan-price{font-size:1.55rem}
   .wa-float span:last-child{display:none}
-  .wa-float{border-radius:50%;width:50px;height:50px;padding:0;justify-content:center}
+  .wa-float{border-radius:50%;width:50px;height:50px;padding:0;justify-content:center;left:auto;right:16px}
   .tres{font-size:.62rem;padding:3px 7px}
   .about-values{grid-template-columns:1fr}
 }
@@ -346,10 +370,11 @@ img,iframe,video,table{max-width:100%}
   .hero-p{font-size:.875rem;margin-bottom:26px;max-width:100%;width:100%}
   .hero-btns{flex-direction:column;align-items:stretch;gap:10px;margin-bottom:28px;width:100%}
   .hero-btns .btn{width:100%;justify-content:center;font-size:.88rem;padding:13px 18px;white-space:normal;box-sizing:border-box}
-  .hero-stats{gap:16px;flex-wrap:wrap;padding-right:64px}
-  .hstat-n{font-size:1.3rem}
-  .hstat-l{font-size:.6rem}
-  .sdiv{display:none}
+  .hero-stats{gap:0;flex-wrap:nowrap;padding-right:0;justify-content:space-between;width:100%}
+  .hstat{flex:1;align-items:center;text-align:center}
+  .hstat-n{font-size:1.2rem}
+  .hstat-l{font-size:.55rem}
+  .sdiv{display:block;width:1px;background:var(--border);align-self:stretch}
   .hero-badge{font-size:.66rem;padding:5px 11px;max-width:100%}
 
   /* Market toggle */
@@ -1261,13 +1286,42 @@ var obs=new IntersectionObserver(function(entries){
 document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
 
 /* ── WA FLOAT SHOW ON SCROLL ── */
+/* ── WA FLOAT SHOW ON SCROLL ── */
 var waFloat=document.getElementById('waFloat');
-// Show after scroll, animation handles initial reveal on page load
 window.addEventListener('scroll',function(){
   if(window.scrollY>200) waFloat.classList.add('show');
 },{passive:true});
-// Also show after animation completes regardless of scroll position
 setTimeout(function(){waFloat.classList.add('show');},2600);
+
+/* ── BOTPRESS BUBBLE ANIMATION ── */
+(function(){
+  var style=document.createElement('style');
+  style.textContent=[
+    '@keyframes bppop{0%{opacity:0;transform:translateY(28px) scale(.8)}70%{opacity:1;transform:translateY(-4px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}',
+    '@keyframes bpping{0%{box-shadow:0 0 0 0 rgba(37,99,235,.5)}70%{box-shadow:0 0 0 14px rgba(37,99,235,0)}100%{box-shadow:0 0 0 0 rgba(37,99,235,0)}}'
+  ].join('');
+  document.head.appendChild(style);
+
+  function animateBP(){
+    var sel=[
+      '[id^="bp-web-widget"] button',
+      '[class*="bpw-floating"]',
+      '[class*="bp-widget-btn"]',
+      'iframe[id*="bp"]'
+    ];
+    var el=null;
+    for(var i=0;i<sel.length;i++){
+      el=document.querySelector(sel[i]);
+      if(el) break;
+    }
+    if(el){
+      el.style.animation='bppop .6s cubic-bezier(.175,.885,.32,1.275) both, bpping 2.5s 1s ease-out infinite';
+    } else {
+      setTimeout(animateBP,500);
+    }
+  }
+  setTimeout(animateBP, 2300);
+})();
 </script>
 
 <!-- Botpress Webchat -->
