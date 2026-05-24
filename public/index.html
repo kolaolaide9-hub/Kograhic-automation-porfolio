@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-13209534811"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WDP2JCJFTV"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-13209534811');
+  gtag('config', 'G-WDP2JCJFTV');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,7 +95,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 .mob-menu a{display:block;padding:13px 0;font-size:.96rem;font-weight:500;color:var(--textm);border-bottom:1px solid var(--border);transition:color .2s}
 .mob-menu a:hover{color:var(--text)}
 .mob-cta-a{margin-top:16px;background:var(--accent);color:#fff!important;text-align:center;padding:14px!important;border-radius:var(--r);font-weight:700;border:none!important}
+/* Desktop nav reveal */
 @media(min-width:768px){
+  .nav-links{display:flex}
+  .nav-cta{display:inline-flex}
+  .hbg{display:none}
   .ig-showcase{flex-direction:row!important}
   .ig-showcase .ig-img{min-height:380px!important;flex:1 1 45%}
   .ig-showcase .ig-content{flex:1 1 55%;border-bottom:none!important;border-right:1px solid var(--border)}
@@ -126,7 +130,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 .hero h1{font-size:clamp(1.85rem,6.5vw,4.4rem);font-weight:800;line-height:1.06;margin-bottom:22px;animation:fadeup .7s .1s ease both}
 .hero h1 .hl{background:linear-gradient(135deg,#3b82f6,#60a5fa,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-p{font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--textm);max-width:560px;margin-bottom:36px;line-height:1.8;font-weight:300;animation:fadeup .7s .2s ease both}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;animation:fadeup .7s .3s ease both}
+.hero-btns{display:flex;flex-direction:row;gap:12px;flex-wrap:wrap;margin-bottom:52px;animation:fadeup .7s .3s ease both}
 .hero-stats{display:flex;gap:36px;flex-wrap:wrap;animation:fadeup .7s .4s ease both}
 .hstat{display:flex;flex-direction:column;gap:3px}
 .hstat-n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.7rem;color:var(--text);line-height:1}
@@ -204,7 +208,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 .demo-dots span{width:10px;height:10px;border-radius:50%}
 .dr{background:#ff5f57}.dy{background:#ffbd2e}.dg{background:#28ca41}
 .demo-title{font-size:.76rem;color:var(--textm);font-weight:500;flex:1;text-align:center}
-.demo-body iframe{display:block;width:100%;border:none}
+.demo-body iframe{display:block;width:100%;border:none;height:600px}
 
 /* ══════════════════════════════════════
    TESTIMONIALS
@@ -258,7 +262,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 .wa-float.show{opacity:1}
 .wa-float:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 34px rgba(37,211,102,.52)}
 @keyframes wapop{from{opacity:0;transform:translateY(18px) scale(.9)}to{opacity:1;transform:none}}
-@media(max-width:380px){.wa-float span:last-child{display:none}.wa-float{border-radius:50%;width:50px;padding:0;justify-content:center}}
+/* wa-float xs handled in responsive block */
 
 /* ══════════════════════════════════════
    FOOTER
@@ -275,6 +279,27 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
 .footer-bottom p{font-size:.74rem;color:var(--textd)}
 
 /* ══════════════════════════════════════
+   ABOUT
+══════════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+@media(min-width:768px){.about-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.about-img-wrap{position:relative;border-radius:var(--r2);overflow:hidden;aspect-ratio:4/3;background:var(--card2);border:1px solid var(--border)}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.about-img-badge{position:absolute;bottom:16px;left:16px;background:rgba(15,23,42,.92);backdrop-filter:blur(12px);border:1px solid var(--border2);border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.about-img-badge-icon{font-size:1.3rem}
+.about-img-badge-text{display:flex;flex-direction:column;gap:2px}
+.about-img-badge-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.92rem;color:var(--text);line-height:1}
+.about-img-badge-lbl{font-size:.64rem;color:var(--textm);font-weight:500}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.about-val{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px;display:flex;flex-direction:column;gap:6px;transition:border-color .25s}
+.about-val:hover{border-color:rgba(37,99,235,.3)}
+.about-val-ico{font-size:1.2rem}
+.about-val-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.83rem;color:var(--text)}
+.about-val-desc{font-size:.74rem;color:var(--textm);line-height:1.6}
+.about-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.about-tool{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);color:var(--accent2);font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px}
+
+/* ══════════════════════════════════════
    SCROLL REVEAL
 ══════════════════════════════════════ */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -285,126 +310,132 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
    RESPONSIVE
 ══════════════════════════════════════ */
 
+/* ── GLOBAL OVERFLOW GUARD ── */
+img,iframe,video,table{max-width:100%}
+.btn{white-space:normal;word-break:break-word}
+
+/* ── MOBILE XS (< 400px) ── */
+@media(max-width:399px){
+  .hero h1{font-size:1.65rem}
+  .hero-stats{flex-wrap:wrap;gap:12px}
+  .sdiv{display:none}
+  .hstat-n{font-size:1.2rem}
+  .plan-price{font-size:1.55rem}
+  .wa-float span:last-child{display:none}
+  .wa-float{border-radius:50%;width:50px;height:50px;padding:0;justify-content:center}
+  .tres{font-size:.62rem;padding:3px 7px}
+}
+
 /* ── MOBILE BASE (< 640px) ── */
 @media(max-width:639px){
-  /* Section spacing */
+  /* Layout */
   section{padding:56px 0}
   .wrap{padding:0 16px}
 
-  /* Typography scale */
-  .stitle{font-size:1.55rem;margin-bottom:10px}
-  .ssub{font-size:.88rem;margin-bottom:32px;max-width:100%}
+  /* Typography */
+  .stitle{font-size:clamp(1.45rem,6vw,1.75rem);margin-bottom:10px}
+  .ssub{font-size:.875rem;margin-bottom:28px;max-width:100%}
   .slbl{font-size:10px;letter-spacing:2px}
 
   /* Hero */
-  .hero{padding:80px 0 52px}
-  .hero h1{font-size:2rem;margin-bottom:16px}
-  .hero-p{font-size:.9rem;margin-bottom:28px}
-  .hero-btns{gap:10px;margin-bottom:36px}
-  .hero-btns .btn{font-size:.82rem;padding:12px 18px}
-  .hero-stats{gap:20px}
-  .hstat-n{font-size:1.35rem}
-  .hstat-l{font-size:.62rem}
-
-  /* Cards */
-  .svc-card{padding:24px 20px}
-  .svc-card h3{font-size:.98rem}
-  .svc-card p{font-size:.82rem}
-  .ind-card{padding:20px}
-  .ind-card h3{font-size:.88rem}
-  .ind-card p{font-size:.78rem}
-  .ind-list li{font-size:.74rem}
-
-  /* Steps */
-  .step{padding:22px 20px}
-  .step h3{font-size:.95rem}
-  .step p{font-size:.81rem}
-
-  /* Case cards */
-  .case-top{flex-direction:column;gap:8px}
-  .rbadge{align-self:flex-start}
-  .case-sector{font-size:.62rem}
-  .case-title{font-size:.84rem}
-  .pstext{font-size:.77rem}
-  .rnum{font-size:.95rem}
-
-  /* Testimonials */
-  .testi-card{padding:22px 18px}
-  .testi-q{font-size:.83rem}
-  .tname{font-size:.83rem}
-  .trole{font-size:.68rem}
-  .tres{font-size:.65rem;padding:3px 8px}
-
-  /* Pricing */
-  .plan{padding:24px 20px}
-  .plan-price{font-size:2rem}
-  .plan-name{font-size:1rem}
-  .plan-feats li{font-size:.8rem}
-
-  /* Buttons — prevent overflow */
-  .btn{font-size:.8rem;padding:11px 16px;white-space:normal;text-align:center}
-  .btn-sm{font-size:.76rem;padding:8px 13px}
-  .hero-btns{flex-direction:column;align-items:flex-start}
+  .hero{padding:78px 0 48px}
+  .hero h1{font-size:clamp(1.7rem,7.5vw,2.2rem);margin-bottom:14px}
+  .hero-p{font-size:.875rem;margin-bottom:26px;max-width:100%}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:10px;margin-bottom:32px}
+  .hero-btns .btn{width:100%;justify-content:center;font-size:.88rem;padding:13px 18px}
+  .hero-stats{gap:16px;flex-wrap:wrap}
+  .hstat-n{font-size:1.3rem}
+  .hstat-l{font-size:.6rem}
+  .sdiv{display:none}
+  .hero-badge{font-size:.68rem;padding:5px 13px}
 
   /* Market toggle */
-  .mkt-toggle{margin-bottom:16px}
-  .mtb{font-size:.68rem;padding:.3rem .85rem}
+  .mkt-toggle{margin-bottom:14px;width:100%;justify-content:center}
+  .mtb{font-size:.7rem;padding:.32rem .9rem;flex:1;text-align:center}
+
+  /* Service cards */
+  .svc-card{padding:22px 18px}
+  .svc-card h3{font-size:.96rem}
+  .svc-card p{font-size:.82rem}
+  .svc-ico{width:42px;height:42px;font-size:1.25rem;margin-bottom:14px}
+
+  /* Industry cards */
+  .ind-card{padding:18px 16px}
+  .ind-card h3{font-size:.88rem}
+  .ind-card p{font-size:.78rem}
+  .ind-list li{font-size:.73rem}
+  .ind-ico{font-size:1.3rem;margin-bottom:10px}
+
+  /* Steps */
+  .step{padding:20px 18px;gap:16px}
+  .step h3{font-size:.93rem}
+  .step p{font-size:.8rem}
+  .step-n{width:40px;height:40px;font-size:.95rem;flex-shrink:0}
+
+  /* Case cards */
+  .case-top{flex-wrap:wrap;gap:8px;padding:14px 16px}
+  .case-body{padding:14px 16px}
+  .rbadge{align-self:flex-start;padding:5px 10px}
+  .case-sector{font-size:.61rem}
+  .case-title{font-size:.83rem}
+  .pstext{font-size:.76rem}
+  .rnum{font-size:.92rem}
+  .rlbl{font-size:.57rem}
+  .pslbl{font-size:.62rem}
+
+  /* Testimonials */
+  .testi-card{padding:20px 16px}
+  .testi-q{font-size:.82rem;line-height:1.75}
+  .tname{font-size:.82rem}
+  .trole{font-size:.67rem}
+  .testi-foot{flex-wrap:wrap;gap:8px}
+  .tres{margin-left:0;margin-top:2px;font-size:.64rem;padding:3px 8px}
+
+  /* Pricing */
+  .plan{padding:22px 18px}
+  .plan-price{font-size:clamp(1.6rem,7vw,2rem)}
+  .plan-name{font-size:.98rem}
+  .plan-feats li{font-size:.79rem}
+  .plan-note{font-size:.7rem}
+  .plan-badge{font-size:.6rem;padding:4px 9px}
+
+  /* Buttons */
+  .btn{font-size:.82rem;padding:11px 16px}
+  .btn-sm{font-size:.76rem;padding:8px 13px}
+  .plan-btn{font-size:.84rem}
 
   /* Instagram showcase */
-  .ig-content{padding:24px 20px!important}
-  .ig-content h3{font-size:1.1rem!important}
-  .ig-content p{font-size:.82rem!important}
-
-  /* CTA section */
-  .cta-sec h2{font-size:1.6rem}
-  .cta-sec>div>p{font-size:.86rem}
-
-  /* Footer */
-  .footer-brand p{font-size:.78rem}
-  .fcol h4{font-size:.7rem}
-  .fcol a{font-size:.78rem}
-  .footer-bottom p{font-size:.7rem}
+  .ig-content{padding:22px 18px!important}
+  .ig-content h3{font-size:clamp(1rem,5.5vw,1.25rem)!important}
+  .ig-content p{font-size:.81rem!important;line-height:1.75!important}
 
   /* Demo iframe */
-  .demo-body iframe{height:480px}
-
-  /* Tags */
-  .tag{font-size:.64rem;padding:2px 7px}
-
-  /* CTA section button */
-  .cta-sec .btn{font-size:.88rem;padding:14px 24px;width:100%;justify-content:center}
-
-  /* Plan price */
-  .plan-price{font-size:1.75rem}
-
-  /* Hero stats — tighter on small screens */
-  .hero-stats{gap:14px}
-  .sdiv{display:none}
-
-  /* Linktree footer button */
-  .fcol .ltree-btn{white-space:normal!important;font-size:.74rem!important;padding:9px 12px!important}
-
-  /* Tres badge — sit below name on very small */
-  .testi-foot{flex-wrap:wrap}
-  .tres{margin-left:0;margin-top:4px}
-
-  /* Step icons — smaller on mobile */
-  .step-n{width:40px;height:40px;font-size:1rem}
-
-  /* Demo iframe height */
   .demo-body iframe{height:420px}
 
-  /* Plan badge */
-  .plan-badge{font-size:.6rem}
+  /* Tags */
+  .tag{font-size:.63rem;padding:2px 7px}
 
-  /* Case top — stack on mobile */
-  .case-top{flex-wrap:wrap}
-  .rbadge{padding:5px 10px}
-  .rnum{font-size:.9rem}
+  /* CTA section */
+  .cta-sec h2{font-size:clamp(1.5rem,6.5vw,1.85rem)}
+  .cta-sec>div>p{font-size:.85rem;max-width:100%}
+  .cta-sec .btn{width:100%;justify-content:center;font-size:.9rem}
+
+  /* Footer */
+  .footer-brand p{font-size:.78rem;max-width:100%}
+  .fcol h4{font-size:.69rem}
+  .fcol a{font-size:.78rem}
+  .footer-bottom p{font-size:.7rem}
+  .fcol .ltree-btn{white-space:normal!important;font-size:.74rem!important;padding:9px 12px!important;line-height:1.5}
+
+  /* Demo bar */
+  .demo-title{font-size:.7rem}
 }
 
 /* ── TABLET (640px – 899px) ── */
-@media(min-width:640px){
+@media(min-width:640px) and (max-width:899px){
+  section{padding:72px 0}
+  .stitle{font-size:clamp(1.75rem,4vw,2.2rem)}
+  .hero h1{font-size:clamp(2.2rem,6vw,3rem)}
   .svc-grid{grid-template-columns:1fr 1fr}
   .ind-grid{grid-template-columns:1fr 1fr}
   .testi-grid{grid-template-columns:1fr 1fr}
@@ -414,8 +445,22 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
   .footer-bottom{flex-direction:row;justify-content:space-between}
 }
 
+/* ── TABLET SHARED (≥ 640px) ── */
+@media(min-width:640px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr 1fr}
+  .cases-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:row;flex-wrap:wrap;gap:44px;align-items:flex-start}
+  .footer-bottom{flex-direction:row;justify-content:space-between}
+  .hero-btns{flex-direction:row;align-items:center}
+  .hero-btns .btn{width:auto}
+}
+
 /* ── DESKTOP (≥ 900px) ── */
 @media(min-width:900px){
+  section{padding:88px 0}
   .svc-grid{grid-template-columns:repeat(3,1fr)}
   .ind-grid{grid-template-columns:repeat(3,1fr)}
   .testi-grid{grid-template-columns:repeat(3,1fr)}
@@ -426,6 +471,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
   .step:hover{transform:translateY(-5px)}
   .stitle{font-size:clamp(2rem,4vw,2.75rem)}
   .ssub{font-size:1rem}
+  .hero h1{font-size:clamp(2.8rem,6.5vw,4.4rem)}
+  .plan-price{font-size:2.5rem}
+}
+
+/* ── WIDE DESKTOP (≥ 1200px) ── */
+@media(min-width:1200px){
+  .wrap{padding:0 24px}
+  .hero h1{font-size:4.4rem}
 }
 </style>
 </head>
@@ -442,6 +495,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
       <li><a href="#services">Services</a></li>
       <li><a href="#industries">Industries</a></li>
       <li><a href="#how">Process</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#cases">Results</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#demo">Demo</a></li>
@@ -459,6 +513,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#industries" onclick="closeMenu()">Industries</a>
   <a href="#how" onclick="closeMenu()">Process</a>
+  <a href="#about" onclick="closeMenu()">About</a>
   <a href="#cases" onclick="closeMenu()">Results</a>
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
   <a href="#demo" onclick="closeMenu()">Demo</a>
@@ -668,6 +723,87 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 2
           <p>Your bot goes live within 72 hours. We monitor real conversations for the first two weeks, refine performance, and deliver a lead report showing exactly how many customers your automation captured.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--card2)">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Image side -->
+      <div class="rv">
+        <div class="about-img-wrap">
+          <img
+            src="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png"
+            alt="Kola Olaide — Founder, Kographic AI"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e293b,#0f172a)'"
+          />
+          <!-- Overlay gradient -->
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,16,32,.72) 0%,transparent 55%);pointer-events:none"></div>
+          <!-- Floating badge -->
+          <div class="about-img-badge">
+            <div class="about-img-badge-icon">🇳🇬</div>
+            <div class="about-img-badge-text">
+              <span class="about-img-badge-num">Nigeria & UAE</span>
+              <span class="about-img-badge-lbl">Serving clients remotely</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content side -->
+      <div>
+        <div class="slbl rv">Who We Are</div>
+        <h2 class="stitle rv">Built by Someone Who<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Understands Your Market</em></h2>
+        <p class="ssub rv" style="margin-bottom:24px">Kographic AI was founded by <strong style="color:var(--text);font-weight:600">Kola Olaide</strong> — a WhatsApp automation specialist and Botpress developer who's helped Nigerian and UAE businesses stop losing leads to slow response times. Every system we build is rooted in how businesses actually sell in these markets.</p>
+
+        <p class="rv" style="font-size:.88rem;color:var(--textm);line-height:1.8;margin-bottom:28px">We're not a big agency with generic templates. We're a focused team that obsesses over one thing: building automation that <em style="color:var(--text);font-style:normal">converts conversations into customers</em>. Our bots are custom-designed to match your sales flow, your audience, and your market — whether that's Lagos, Abuja, Dubai, or Abu Dhabi.</p>
+
+        <!-- Tools we use -->
+        <div class="rv">
+          <p style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--textm);margin-bottom:10px">Tools & Platforms We Use</p>
+          <div class="about-tools">
+            <span class="about-tool">🤖 Botpress</span>
+            <span class="about-tool">💬 WhatsApp Business API</span>
+            <span class="about-tool">📲 ManyChat</span>
+            <span class="about-tool">⚙️ Make.com</span>
+            <span class="about-tool">📊 Google Sheets CRM</span>
+            <span class="about-tool">🔗 Zapier</span>
+          </div>
+        </div>
+
+        <!-- Values grid -->
+        <div class="about-values rv">
+          <div class="about-val">
+            <span class="about-val-ico">⚡</span>
+            <span class="about-val-title">Fast Delivery</span>
+            <span class="about-val-desc">Your bot goes live in 72 hours — not weeks.</span>
+          </div>
+          <div class="about-val">
+            <span class="about-val-ico">🎯</span>
+            <span class="about-val-title">Custom-Built</span>
+            <span class="about-val-desc">No generic templates. Every flow is mapped to your business.</span>
+          </div>
+          <div class="about-val">
+            <span class="about-val-ico">🔒</span>
+            <span class="about-val-title">You Own It</span>
+            <span class="about-val-desc">One-time fee. You keep the bot forever, no lock-in.</span>
+          </div>
+          <div class="about-val">
+            <span class="about-val-ico">📈</span>
+            <span class="about-val-title">Results-Focused</span>
+            <span class="about-val-desc">We track leads captured and report real ROI numbers.</span>
+          </div>
+        </div>
+
+        <div class="rv" style="margin-top:28px;display:flex;flex-wrap:wrap;gap:10px">
+          <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-blue">💬 Work With Us →</a>
+          <a href="https://instagram.com/kograhic" target="_blank" class="btn btn-ghost">📸 Follow on Instagram</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
