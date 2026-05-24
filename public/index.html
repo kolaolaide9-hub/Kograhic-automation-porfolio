@@ -1,1762 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7." />
-<meta name="keywords" content="WhatsApp chatbot Nigeria, WhatsApp automation Lagos, lead capture bot Nigeria, Botpress developer Nigeria, chatbot for Nigerian business, Instagram automation Nigeria" />
-<meta property="og:title" content="Kographic AI | WhatsApp Automation for Nigerian Businesses" />
-<meta property="og:description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://kograhic.web.app" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-13209534811"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-13209534811');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kographic AI | WhatsApp Automation for Nigerian Businesses</title>
+<meta name="description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7.">
+<meta name="keywords" content="WhatsApp chatbot Nigeria, WhatsApp automation Lagos, lead capture bot Nigeria, Botpress developer Nigeria, chatbot for Nigerian business, Instagram automation Nigeria">
+<meta name="author" content="Kographic AI">
+<meta property="og:title" content="Kographic AI | WhatsApp Automation for Nigerian Businesses">
+<meta property="og:description" content="Kographic AI builds high-converting WhatsApp chatbots for Nigerian businesses. Capture leads, automate support, and increase sales 24/7.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kograhic.web.app">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #25D366;
-    --green-dark: #128C7E;
-    --green-light: #dcfce7;
-    --black: #0a0a0a;
-    --gray-900: #111827;
-    --gray-800: #1f2937;
-    --gray-700: #374151;
-    --gray-400: #9ca3af;
-    --gray-200: #e5e7eb;
-    --gray-100: #f3f4f6;
-    --white: #ffffff;
-    --accent: #22c55e;
-    --radius: 12px;
-    --radius-lg: 20px;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5 {
-    font-family: 'Syne', sans-serif;
-    line-height: 1.15;
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .nav-logo span {
-    background: var(--green);
-    color: #000;
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    display: grid;
-    place-items: center;
-    font-size: 0.85rem;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.9rem;
-    color: var(--gray-400);
-    transition: color .2s;
-  }
-
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-cta {
-    background: var(--green);
-    color: #000;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 9px 18px;
-    border-radius: 8px;
-    transition: background .2s, transform .15s;
-    white-space: nowrap;
-  }
-
-  .nav-cta:hover { background: #1ebe5a; transform: translateY(-1px); }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-  }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 96px 5% 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; padding: 60px 5% 48px; }
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(37,211,102,0.12);
-    border: 1px solid rgba(37,211,102,0.3);
-    color: var(--green);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 999px;
-    margin-bottom: 24px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-    letter-spacing: -0.02em;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--green);
-  }
-
-  .hero p {
-    font-size: 1.1rem;
-    color: var(--gray-400);
-    max-width: 520px;
-    margin-bottom: 36px;
-    line-height: 1.75;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--green);
-    color: #000;
-    font-weight: 700;
-    padding: 14px 24px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    transition: background .2s, transform .15s;
-  }
-
-  .btn-primary:hover { background: #1ebe5a; transform: translateY(-2px); }
-
-  .btn-secondary {
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-    font-weight: 500;
-    padding: 14px 24px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    transition: border-color .2s, transform .15s;
-  }
-
-  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-2px); }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 48px;
-  }
-
-  .stat-card {
-    background: var(--gray-900);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius);
-    padding: 20px;
-  }
-
-  .stat-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--green);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* ── TICKER ── */
-  .ticker {
-    background: var(--green);
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .ticker-track {
-    display: inline-flex;
-    gap: 40px;
-    animation: ticker-scroll 28s linear infinite;
-  }
-
-  .ticker-track:hover { animation-play-state: paused; }
-
-  @keyframes ticker-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  .ticker-item {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: #000;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .ticker-dot {
-    color: rgba(0,0,0,0.4);
-    margin: 0 4px;
-  }
-
-  /* ── SECTIONS ── */
-  section {
-    padding: 96px 5%;
-  }
-
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--green);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-  }
-
-  .section-title em {
-    font-style: normal;
-    color: var(--green);
-  }
-
-  .section-subtitle {
-    color: var(--gray-400);
-    font-size: 1.05rem;
-    max-width: 600px;
-    line-height: 1.75;
-    margin-bottom: 56px;
-  }
-
-  /* ── SERVICES ── */
-  #services { background: var(--gray-900); }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-  }
-
-  .service-card {
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius-lg);
-    padding: 36px;
-    transition: border-color .2s, transform .2s;
-  }
-
-  .service-card:hover {
-    border-color: rgba(37,211,102,0.3);
-    transform: translateY(-4px);
-  }
-
-  .service-icon {
-    width: 52px;
-    height: 52px;
-    background: rgba(37,211,102,0.1);
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-  }
-
-  .service-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .service-card p {
-    color: var(--gray-400);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .tag {
-    background: rgba(37,211,102,0.1);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-
-  .card-link {
-    color: var(--green);
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    transition: gap .2s;
-  }
-
-  .card-link:hover { gap: 8px; }
-
-  /* ── INSTAGRAM FEATURE ── */
-  .ig-feature {
-    background: var(--gray-900);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius-lg);
-    padding: 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-top: 40px;
-  }
-
-  @media (max-width: 768px) {
-    .ig-feature { grid-template-columns: 1fr; }
-  }
-
-  .ig-feature img {
-    width: 100%;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .ig-feature h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-  }
-
-  .ig-feature p {
-    color: var(--gray-400);
-    line-height: 1.75;
-    margin-bottom: 24px;
-  }
-
-  /* ── INDUSTRIES ── */
-  .market-tabs {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-
-  .market-tab {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.15);
-    color: var(--gray-400);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 10px 22px;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: all .2s;
-  }
-
-  .market-tab.active, .market-tab:hover {
-    background: var(--green);
-    border-color: var(--green);
-    color: #000;
-  }
-
-  .industries-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-  }
-
-  .industry-card {
-    background: var(--gray-900);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius);
-    padding: 28px;
-    transition: border-color .2s, transform .2s;
-  }
-
-  .industry-card:hover {
-    border-color: rgba(37,211,102,0.25);
-    transform: translateY(-3px);
-  }
-
-  .industry-icon {
-    font-size: 1.8rem;
-    margin-bottom: 14px;
-    display: block;
-  }
-
-  .industry-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .industry-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .industry-card ul li {
-    font-size: 0.85rem;
-    color: var(--gray-400);
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .industry-card ul li::before {
-    content: '✓';
-    color: var(--green);
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-
-  .market-panel { display: none; }
-  .market-panel.active { display: block; }
-
-  /* ── PROCESS ── */
-  #how { background: var(--gray-900); }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    position: relative;
-  }
-
-  .step-card {
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius-lg);
-    padding: 36px;
-  }
-
-  .step-number {
-    font-family: 'Syne', sans-serif;
-    font-size: 3rem;
-    font-weight: 800;
-    color: rgba(37,211,102,0.15);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .step-icon {
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .step-card h3 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-
-  .step-card p {
-    color: var(--gray-400);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  /* ── RESULTS ── */
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-  }
-
-  .result-card {
-    background: var(--gray-900);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-
-  .result-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-
-  .result-meta {
-    font-size: 0.78rem;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .result-metric {
-    background: rgba(37,211,102,0.1);
-    border: 1px solid rgba(37,211,102,0.2);
-    color: var(--green);
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    padding: 4px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  .result-card h3 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  .problem-solution {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .ps-block {
-    background: rgba(255,255,255,0.03);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
-
-  .ps-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .ps-label.problem { color: #f87171; }
-  .ps-label.solution { color: var(--green); }
-
-  .ps-block p {
-    font-size: 0.88rem;
-    color: var(--gray-400);
-    line-height: 1.6;
-  }
-
-  /* ── DEMO ── */
-  #demo { background: var(--gray-900); }
-
-  .demo-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-
-  @media (max-width: 900px) {
-    .demo-container { grid-template-columns: 1fr; }
-  }
-
-  .demo-frame-wrapper {
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    height: 560px;
-  }
-
-  .demo-frame-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  .demo-info h3 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-  }
-
-  .demo-info p {
-    color: var(--gray-400);
-    line-height: 1.75;
-    margin-bottom: 28px;
-  }
-
-  .demo-prompts {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 32px;
-  }
-
-  .demo-prompt {
-    background: rgba(37,211,102,0.06);
-    border: 1px solid rgba(37,211,102,0.15);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 0.88rem;
-    color: var(--gray-300);
-  }
-
-  .demo-prompt span {
-    color: var(--green);
-    font-weight: 600;
-    margin-right: 6px;
-  }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .testimonial-card {
-    background: var(--gray-900);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius);
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .stars { color: #fbbf24; font-size: 0.9rem; letter-spacing: 2px; }
-
-  .testimonial-text {
-    color: var(--gray-400);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    flex: 1;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .author-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--green);
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 0.85rem;
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-  }
-
-  .author-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  .author-meta {
-    font-size: 0.78rem;
-    color: var(--gray-400);
-  }
-
-  .author-result {
-    margin-left: auto;
-    background: rgba(37,211,102,0.1);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  /* ── PRICING ── */
-  #pricing { background: var(--gray-900); }
-
-  .currency-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 999px;
-    padding: 4px;
-    width: fit-content;
-    margin-bottom: 48px;
-  }
-
-  .currency-btn {
-    background: transparent;
-    border: none;
-    color: var(--gray-400);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 20px;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: all .2s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .currency-btn.active {
-    background: var(--green);
-    color: #000;
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
-  .price-card {
-    background: var(--black);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: var(--radius-lg);
-    padding: 36px;
-    position: relative;
-    transition: transform .2s, border-color .2s;
-  }
-
-  .price-card:hover { transform: translateY(-4px); }
-
-  .price-card.popular {
-    border-color: var(--green);
-    background: linear-gradient(145deg, rgba(37,211,102,0.05), var(--black));
-  }
-
-  .popular-badge {
-    position: absolute;
-    top: -13px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--green);
-    color: #000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    padding: 4px 16px;
-    border-radius: 999px;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .price-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: var(--gray-400);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .price-amount {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.6rem;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .price-period {
-    font-size: 0.82rem;
-    color: var(--gray-400);
-    margin-bottom: 28px;
-  }
-
-  .price-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 32px;
-  }
-
-  .price-features li {
-    font-size: 0.9rem;
-    color: var(--gray-400);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .price-features li::before {
-    content: '✓';
-    color: var(--green);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .price-cta {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: all .2s;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: var(--white);
-  }
-
-  .price-card.popular .price-cta {
-    background: var(--green);
-    border-color: var(--green);
-    color: #000;
-  }
-
-  .price-cta:hover { opacity: 0.85; transform: translateY(-2px); }
-
-  .pricing-panel { display: none; }
-  .pricing-panel.active { display: block; }
-
-  /* ── CTA BANNER ── */
-  .cta-section {
-    background: linear-gradient(135deg, rgba(37,211,102,0.08) 0%, rgba(18,140,126,0.08) 100%);
-    border-top: 1px solid rgba(37,211,102,0.15);
-    border-bottom: 1px solid rgba(37,211,102,0.15);
-    padding: 96px 5%;
-    text-align: center;
-  }
-
-  .cta-section h2 {
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    max-width: 640px;
-    margin: 0 auto 16px;
-    letter-spacing: -0.02em;
-  }
-
-  .cta-section p {
-    color: var(--gray-400);
-    font-size: 1.05rem;
-    max-width: 520px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--gray-900);
-    border-top: 1px solid rgba(255,255,255,0.07);
-    padding: 64px 5% 32px;
-  }
-
-  .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
-  }
-
-  @media (max-width: 900px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-  }
-
-  @media (max-width: 560px) {
-    .footer-grid { grid-template-columns: 1fr; }
-  }
-
-  .footer-brand p {
-    color: var(--gray-400);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin-top: 16px;
-    max-width: 300px;
-  }
-
-  .footer-col h4 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--gray-400);
-    margin-bottom: 16px;
-  }
-
-  .footer-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .footer-col ul li a {
-    color: var(--gray-400);
-    font-size: 0.9rem;
-    transition: color .2s;
-  }
-
-  .footer-col ul li a:hover { color: var(--white); }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.07);
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: gap;
-    gap: 12px;
-  }
-
-  .footer-bottom p {
-    font-size: 0.82rem;
-    color: var(--gray-400);
-  }
-
-  .footer-flags { display: flex; gap: 8px; font-size: 1.1rem; }
-
-  /* ── FLOATING CTA ── */
-  .floating-cta {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 99;
-    background: var(--green);
-    color: #000;
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 14px 20px;
-    border-radius: 999px;
-    box-shadow: 0 8px 32px rgba(37,211,102,0.35);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform .2s, box-shadow .2s;
-  }
-
-  .floating-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(37,211,102,0.45);
-  }
-
-  @media (max-width: 600px) {
-    .floating-cta span.label { display: none; }
-  }
+/* ══════════════════════════════════════
+   TOKENS
+══════════════════════════════════════ */
+:root {
+  --bg:      #0f172a;
+  --bg2:     #0a1020;
+  --card:    #1e293b;
+  --card2:   #162032;
+  --accent:  #2563eb;
+  --accent2: #3b82f6;
+  --glow:    rgba(37,99,235,0.15);
+  --green:   #22c55e;
+  --gold:    #f59e0b;
+  --red:     #ef4444;
+  --wa:      #25D366;
+  --text:    #f8fafc;
+  --textm:   #94a3b8;
+  --textd:   #475569;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(37,99,235,0.25);
+  --r:       12px;
+  --r2:      18px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;font-size:16px}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* ══════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════ */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:88px 0}
+.slbl{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:10px}
+.stitle{font-size:clamp(1.75rem,4vw,2.75rem);font-weight:800;margin-bottom:14px}
+.ssub{font-size:.95rem;color:var(--textm);max-width:520px;margin-bottom:48px;line-height:1.8;font-weight:300}
+
+/* ══════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.88rem;border-radius:var(--r);padding:13px 22px;transition:all .25s ease;cursor:pointer;border:none;font-family:'Inter',sans-serif;white-space:nowrap}
+.btn-blue{background:var(--accent);color:#fff;box-shadow:0 4px 20px rgba(37,99,235,.3)}
+.btn-blue:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,99,235,.4)}
+.btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 4px 18px rgba(37,211,102,.3)}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 26px rgba(37,211,102,.4)}
+.btn-out{background:transparent;color:var(--accent2);border:1px solid var(--border2)}
+.btn-out:hover{background:var(--glow);transform:translateY(-2px)}
+.btn-sm{padding:9px 16px;font-size:.8rem}
+
+/* ══════════════════════════════════════
+   NAV
+══════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:62px;display:flex;align-items:center}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1rem;color:var(--text)}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(37,99,235,.2)}
+.nav-links{display:none;list-style:none;gap:1.8rem;align-items:center}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--textm);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cta{display:none}
+.hbg{background:none;border:none;display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--textm);border-radius:2px;transition:all .3s}
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(10,16,32,.98);backdrop-filter:blur(20px);flex-direction:column;padding:0 20px 24px;z-index:899;border-bottom:1px solid var(--border)}
+.mob-menu.open{display:flex}
+.mob-menu a{display:block;padding:13px 0;font-size:.96rem;font-weight:500;color:var(--textm);border-bottom:1px solid var(--border);transition:color .2s}
+.mob-menu a:hover{color:var(--text)}
+.mob-cta-a{margin-top:16px;background:var(--accent);color:#fff!important;text-align:center;padding:14px!important;border-radius:var(--r);font-weight:700;border:none!important}
+@media(min-width:768px){
+  .ig-showcase{flex-direction:row!important}
+  .ig-showcase .ig-img{min-height:380px!important;flex:1 1 45%}
+  .ig-showcase .ig-content{flex:1 1 55%;border-bottom:none!important;border-right:1px solid var(--border)}
+}
+
+/* ══════════════════════════════════════
+   MARKET TOGGLE
+══════════════════════════════════════ */
+.mkt-toggle{display:inline-flex;background:var(--card2);border-radius:50px;border:1px solid var(--border);padding:3px;margin-bottom:20px}
+.mtb{padding:.36rem 1rem;border-radius:50px;font-size:.72rem;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;cursor:pointer;border:none;transition:all .25s;color:var(--textm);background:transparent}
+.mtb.on{background:var(--accent);color:#fff}
+.ms{display:none}.ms.on{display:block}
+
+/* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:90px 0 72px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 65% 55% at 70% 20%,rgba(37,99,235,.11) 0%,transparent 65%),radial-gradient(ellipse 45% 65% at 5% 90%,rgba(37,99,235,.06) 0%,transparent 65%),var(--bg2)}
+.hero-grid{position:absolute;inset:0;z-index:0;opacity:.04;background-image:linear-gradient(rgba(248,250,252,1) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,252,1) 1px,transparent 1px);background-size:55px 55px}
+.orb{position:absolute;border-radius:50%;filter:blur(72px);animation:odrift 18s ease-in-out infinite alternate;pointer-events:none}
+.orb1{width:400px;height:400px;background:rgba(37,99,235,.13);top:-80px;right:-60px}
+.orb2{width:260px;height:260px;background:rgba(59,130,246,.07);bottom:-50px;left:8%;animation-delay:-9s}
+@keyframes odrift{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,18px) scale(1.05)}}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.28);border-radius:50px;padding:6px 16px;font-size:.73rem;font-weight:600;color:var(--accent2);margin-bottom:22px;animation:fadeup .7s ease both}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.5)}}
+.hero h1{font-size:clamp(1.85rem,6.5vw,4.4rem);font-weight:800;line-height:1.06;margin-bottom:22px;animation:fadeup .7s .1s ease both}
+.hero h1 .hl{background:linear-gradient(135deg,#3b82f6,#60a5fa,#2563eb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-p{font-size:clamp(.95rem,2.2vw,1.1rem);color:var(--textm);max-width:560px;margin-bottom:36px;line-height:1.8;font-weight:300;animation:fadeup .7s .2s ease both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;animation:fadeup .7s .3s ease both}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;animation:fadeup .7s .4s ease both}
+.hstat{display:flex;flex-direction:column;gap:3px}
+.hstat-n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.7rem;color:var(--text);line-height:1}
+.hstat-l{font-size:.68rem;color:var(--textd);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.sdiv{width:1px;background:var(--border);align-self:stretch}
+.ticker-wrap{position:relative;z-index:2;margin-top:52px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
+.ticker{display:flex;gap:0;animation:tick 30s linear infinite;width:max-content}
+.ticker-inner{display:flex;gap:0;flex-shrink:0}
+.ticker span{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;color:var(--textd);padding:0 20px;white-space:nowrap}
+.ticker span::after{content:'·';color:var(--accent)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ══════════════════════════════════════
+   SERVICES
+══════════════════════════════════════ */
+.svc-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:32px 28px;position:relative;overflow:hidden;transition:all .3s ease}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .3s}
+.svc-card:hover{border-color:rgba(37,99,235,.28);transform:translateY(-5px);box-shadow:0 20px 56px rgba(0,0,0,.35)}
+.svc-card:hover::before{opacity:1}
+.svc-ico{width:48px;height:48px;border-radius:12px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.18);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+.svc-card h3{font-size:1.08rem;font-weight:700;margin-bottom:10px}
+.svc-card p{font-size:.85rem;color:var(--textm);line-height:1.75;margin-bottom:20px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.tag{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.15);color:var(--accent2);font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:5px}
+
+/* ══════════════════════════════════════
+   INDUSTRIES
+══════════════════════════════════════ */
+.ind-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.ind-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:26px;transition:all .3s}
+.ind-card:hover{border-color:rgba(37,99,235,.22);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.28)}
+.ind-ico{font-size:1.5rem;margin-bottom:12px}
+.ind-card h3{font-size:.92rem;font-weight:700;margin-bottom:8px}
+.ind-card p{font-size:.8rem;color:var(--textm);line-height:1.7;margin-bottom:12px}
+.ind-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.ind-list li{font-size:.76rem;color:var(--textm);display:flex;align-items:flex-start;gap:7px}
+.ind-list li::before{content:'→';color:var(--accent2);flex-shrink:0}
+
+/* ══════════════════════════════════════
+   STEPS
+══════════════════════════════════════ */
+.steps-wrap{display:flex;flex-direction:column;gap:18px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:28px;display:flex;gap:20px;align-items:flex-start;transition:all .3s}
+.step:hover{border-color:rgba(37,99,235,.22);transform:translateX(5px);box-shadow:0 8px 36px rgba(0,0,0,.25)}
+.step-n{width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 5px rgba(37,99,235,.15)}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:7px}
+.step p{font-size:.83rem;color:var(--textm);line-height:1.7}
+
+/* ══════════════════════════════════════
+   CASE STUDIES
+══════════════════════════════════════ */
+.cases-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s}
+.case-card:hover{border-color:rgba(37,99,235,.22);transform:translateY(-3px);box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.case-top{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.case-sector{font-size:.66rem;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.case-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.88rem}
+.rbadge{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.22);border-radius:8px;padding:6px 12px;text-align:center;flex-shrink:0}
+.rnum{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.05rem;color:var(--green);display:block}
+.rlbl{font-size:.6rem;color:var(--textm)}
+.case-body{padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+.ps{display:flex;flex-direction:column;gap:3px}
+.pslbl{font-size:.65rem;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;text-transform:uppercase;letter-spacing:1px}
+.pslbl.p{color:var(--red)}.pslbl.s{color:var(--green)}
+.pstext{font-size:.79rem;color:var(--textm);line-height:1.6}
+
+/* ══════════════════════════════════════
+   DEMO
+══════════════════════════════════════ */
+.demo-wrap{background:var(--card);border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;box-shadow:0 32px 100px rgba(0,0,0,.45),0 0 0 1px rgba(37,99,235,.1)}
+.demo-bar{background:var(--card2);padding:13px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border)}
+.demo-dots{display:flex;gap:7px}
+.demo-dots span{width:10px;height:10px;border-radius:50%}
+.dr{background:#ff5f57}.dy{background:#ffbd2e}.dg{background:#28ca41}
+.demo-title{font-size:.76rem;color:var(--textm);font-weight:500;flex:1;text-align:center}
+.demo-body iframe{display:block;width:100%;border:none}
+
+/* ══════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════ */
+.testi-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:18px;transition:all .3s}
+.testi-card:hover{border-color:rgba(37,99,235,.22);transform:translateY(-4px);box-shadow:0 14px 44px rgba(0,0,0,.3)}
+.stars{color:var(--gold);font-size:.82rem;letter-spacing:2px}
+.testi-q{font-size:.88rem;color:var(--textm);line-height:1.8;font-style:italic;flex:1}
+.testi-q::before{content:'"';font-size:2rem;color:var(--accent);font-style:normal;font-family:'Bricolage Grotesque',sans-serif;line-height:0;vertical-align:-.5rem;margin-right:3px}
+.testi-foot{display:flex;align-items:center;gap:12px;border-top:1px solid var(--border);padding-top:18px;flex-wrap:wrap}
+.tav{width:40px;height:40px;border-radius:50%;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.18);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.85rem;color:var(--accent2);flex-shrink:0}
+.tname{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.88rem}
+.trole{font-size:.72rem;color:var(--textd);margin-top:2px}
+.tres{margin-left:auto;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--green);font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+
+/* ══════════════════════════════════════
+   PRICING
+══════════════════════════════════════ */
+.pricing-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.plan{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:32px 28px;display:flex;flex-direction:column;transition:all .3s}
+.plan:hover{transform:translateY(-5px);box-shadow:0 20px 52px rgba(0,0,0,.3)}
+.plan.feat{border-color:var(--accent);background:linear-gradient(145deg,#18284a 0%,var(--card) 100%);box-shadow:0 0 0 1px rgba(37,99,235,.25),0 20px 52px rgba(37,99,235,.12)}
+.plan.feat:hover{box-shadow:0 0 0 1px rgba(37,99,235,.35),0 28px 70px rgba(37,99,235,.18)}
+.plan-badge{display:inline-block;background:var(--accent);color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 11px;border-radius:6px;margin-bottom:18px;align-self:flex-start}
+.plan-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:7px}
+.plan-price{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.5rem;line-height:1;margin-bottom:4px}
+.plan-note{font-size:.73rem;color:var(--textd);margin-bottom:22px}
+.plan-div{height:1px;background:var(--border);margin-bottom:22px}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex:1}
+.plan-feats li{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:var(--textm);line-height:1.5}
+.plan-feats li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.plan-btn{width:100%;padding:13px;border-radius:var(--r);font-weight:700;font-size:.88rem;cursor:pointer;transition:all .25s;border:none;font-family:'Bricolage Grotesque',sans-serif}
+.pbtn-out{background:transparent;border:1px solid var(--border);color:var(--text)}
+.pbtn-out:hover{border-color:var(--accent);color:var(--accent2)}
+.pbtn-fill{background:var(--accent);color:#fff;box-shadow:0 4px 18px rgba(37,99,235,.3)}
+.pbtn-fill:hover{background:var(--accent2);box-shadow:0 8px 26px rgba(37,99,235,.4);transform:translateY(-2px)}
+
+/* ══════════════════════════════════════
+   FINAL CTA
+══════════════════════════════════════ */
+.cta-sec{background:linear-gradient(135deg,#0d1b3e 0%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.11) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-sec h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;margin-bottom:14px;position:relative;z-index:1}
+.cta-sec>div>p{font-size:.95rem;color:var(--textm);max-width:460px;margin:0 auto 36px;line-height:1.8;font-weight:300;position:relative;z-index:1}
+
+/* ══════════════════════════════════════
+   WA FLOAT
+══════════════════════════════════════ */
+.wa-float{position:fixed;bottom:24px;right:20px;z-index:800;background:var(--wa);color:#fff;border:none;border-radius:14px;padding:0 20px;height:50px;display:flex;align-items:center;gap:9px;font-weight:700;font-size:.83rem;font-family:'Bricolage Grotesque',sans-serif;cursor:pointer;box-shadow:0 6px 26px rgba(37,211,102,.42);animation:wapop .5s 1s cubic-bezier(.175,.885,.32,1.275) both;transition:all .25s ease;text-decoration:none;opacity:0}
+.wa-float.show{opacity:1}
+.wa-float:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 34px rgba(37,211,102,.52)}
+@keyframes wapop{from{opacity:0;transform:translateY(18px) scale(.9)}to{opacity:1;transform:none}}
+@media(max-width:380px){.wa-float span:last-child{display:none}.wa-float{border-radius:50%;width:50px;padding:0;justify-content:center}}
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px}
+.footer-inner{display:flex;flex-direction:column;gap:36px}
+.footer-brand .fn{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1rem;margin-bottom:10px}
+.footer-brand p{font-size:.8rem;color:var(--textd);line-height:1.7;max-width:280px}
+.fcol h4{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--textm);margin-bottom:14px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fcol a{font-size:.8rem;color:var(--textd);transition:color .2s}
+.fcol a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:22px;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.footer-bottom p{font-size:.74rem;color:var(--textd)}
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.17s}.d3{transition-delay:.26s}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+
+/* ── MOBILE BASE (< 640px) ── */
+@media(max-width:639px){
+  /* Section spacing */
+  section{padding:56px 0}
+  .wrap{padding:0 16px}
+
+  /* Typography scale */
+  .stitle{font-size:1.55rem;margin-bottom:10px}
+  .ssub{font-size:.88rem;margin-bottom:32px;max-width:100%}
+  .slbl{font-size:10px;letter-spacing:2px}
+
+  /* Hero */
+  .hero{padding:80px 0 52px}
+  .hero h1{font-size:2rem;margin-bottom:16px}
+  .hero-p{font-size:.9rem;margin-bottom:28px}
+  .hero-btns{gap:10px;margin-bottom:36px}
+  .hero-btns .btn{font-size:.82rem;padding:12px 18px}
+  .hero-stats{gap:20px}
+  .hstat-n{font-size:1.35rem}
+  .hstat-l{font-size:.62rem}
+
+  /* Cards */
+  .svc-card{padding:24px 20px}
+  .svc-card h3{font-size:.98rem}
+  .svc-card p{font-size:.82rem}
+  .ind-card{padding:20px}
+  .ind-card h3{font-size:.88rem}
+  .ind-card p{font-size:.78rem}
+  .ind-list li{font-size:.74rem}
+
+  /* Steps */
+  .step{padding:22px 20px}
+  .step h3{font-size:.95rem}
+  .step p{font-size:.81rem}
+
+  /* Case cards */
+  .case-top{flex-direction:column;gap:8px}
+  .rbadge{align-self:flex-start}
+  .case-sector{font-size:.62rem}
+  .case-title{font-size:.84rem}
+  .pstext{font-size:.77rem}
+  .rnum{font-size:.95rem}
+
+  /* Testimonials */
+  .testi-card{padding:22px 18px}
+  .testi-q{font-size:.83rem}
+  .tname{font-size:.83rem}
+  .trole{font-size:.68rem}
+  .tres{font-size:.65rem;padding:3px 8px}
+
+  /* Pricing */
+  .plan{padding:24px 20px}
+  .plan-price{font-size:2rem}
+  .plan-name{font-size:1rem}
+  .plan-feats li{font-size:.8rem}
+
+  /* Buttons — prevent overflow */
+  .btn{font-size:.8rem;padding:11px 16px;white-space:normal;text-align:center}
+  .btn-sm{font-size:.76rem;padding:8px 13px}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+
+  /* Market toggle */
+  .mkt-toggle{margin-bottom:16px}
+  .mtb{font-size:.68rem;padding:.3rem .85rem}
+
+  /* Instagram showcase */
+  .ig-content{padding:24px 20px!important}
+  .ig-content h3{font-size:1.1rem!important}
+  .ig-content p{font-size:.82rem!important}
+
+  /* CTA section */
+  .cta-sec h2{font-size:1.6rem}
+  .cta-sec>div>p{font-size:.86rem}
+
+  /* Footer */
+  .footer-brand p{font-size:.78rem}
+  .fcol h4{font-size:.7rem}
+  .fcol a{font-size:.78rem}
+  .footer-bottom p{font-size:.7rem}
+
+  /* Demo iframe */
+  .demo-body iframe{height:480px}
+
+  /* Tags */
+  .tag{font-size:.64rem;padding:2px 7px}
+
+  /* CTA section button */
+  .cta-sec .btn{font-size:.88rem;padding:14px 24px;width:100%;justify-content:center}
+
+  /* Plan price */
+  .plan-price{font-size:1.75rem}
+
+  /* Hero stats — tighter on small screens */
+  .hero-stats{gap:14px}
+  .sdiv{display:none}
+
+  /* Linktree footer button */
+  .fcol .ltree-btn{white-space:normal!important;font-size:.74rem!important;padding:9px 12px!important}
+
+  /* Tres badge — sit below name on very small */
+  .testi-foot{flex-wrap:wrap}
+  .tres{margin-left:0;margin-top:4px}
+
+  /* Step icons — smaller on mobile */
+  .step-n{width:40px;height:40px;font-size:1rem}
+
+  /* Demo iframe height */
+  .demo-body iframe{height:420px}
+
+  /* Plan badge */
+  .plan-badge{font-size:.6rem}
+
+  /* Case top — stack on mobile */
+  .case-top{flex-wrap:wrap}
+  .rbadge{padding:5px 10px}
+  .rnum{font-size:.9rem}
+}
+
+/* ── TABLET (640px – 899px) ── */
+@media(min-width:640px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .ind-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr 1fr}
+  .cases-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:row;flex-wrap:wrap;gap:44px;align-items:flex-start}
+  .footer-bottom{flex-direction:row;justify-content:space-between}
+}
+
+/* ── DESKTOP (≥ 900px) ── */
+@media(min-width:900px){
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .ind-grid{grid-template-columns:repeat(3,1fr)}
+  .testi-grid{grid-template-columns:repeat(3,1fr)}
+  .pricing-grid{grid-template-columns:repeat(3,1fr)}
+  .cases-grid{grid-template-columns:repeat(3,1fr)}
+  .steps-wrap{flex-direction:row;gap:18px}
+  .step{flex-direction:column;flex:1}
+  .step:hover{transform:translateY(-5px)}
+  .stitle{font-size:clamp(2rem,4vw,2.75rem)}
+  .ssub{font-size:1rem}
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <span>K</span> KographicAI
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#industries">Industries</a></li>
-    <li><a href="#how">Process</a></li>
-    <li><a href="#cases">Results</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#demo">Demo</a></li>
-  </ul>
-  <a href="https://wa.me/2349138290042" class="nav-cta">💬 Book a Call →</a>
+  <div class="wrap nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">K</div>
+      KographicAI
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#how">Process</a></li>
+      <li><a href="#cases">Results</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#demo">Demo</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-blue btn-sm nav-cta">💬 Book a Call →</a>
+      <button class="hbg" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
 </nav>
 
+<div class="mob-menu" id="mobMenu">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#industries" onclick="closeMenu()">Industries</a>
+  <a href="#how" onclick="closeMenu()">Process</a>
+  <a href="#cases" onclick="closeMenu()">Results</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#demo" onclick="closeMenu()">Demo</a>
+  <a href="https://wa.me/2349138290042" target="_blank" class="mob-cta-a" onclick="closeMenu()">💬 Book Free Consultation</a>
+</div>
+
 <!-- HERO -->
-<section style="padding: 0;">
-  <div class="hero">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="wrap">
     <div class="hero-content">
-      <div class="hero-badge">🇳🇬 Nigeria &amp; 🇦🇪 UAE · Now Accepting Clients</div>
-      <h1>Turn WhatsApp Conversations Into <em>Paying Customers</em></h1>
-      <p>Kographic AI builds intelligent WhatsApp automation systems that capture leads, respond instantly, and convert enquiries into real revenue for Nigerian businesses — 24 hours a day, 7 days a week.</p>
+
+      <div class="mkt-toggle">
+        <button class="mtb on" onclick="setMkt('ng')" id="btn-ng">🇳🇬 Nigeria</button>
+        <button class="mtb" onclick="setMkt('uae')" id="btn-uae">🇦🇪 UAE</button>
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span id="h-badge">Now accepting Nigerian business clients</span>
+      </div>
+
+      <h1 id="h-title">
+        Turn WhatsApp<br>
+        Conversations Into<br>
+        <span class="hl">Paying Customers</span>
+      </h1>
+
+      <p class="hero-p" id="h-sub">Kographic AI builds intelligent WhatsApp automation systems that capture leads, respond instantly, and convert enquiries into real revenue for Nigerian businesses — 24 hours a day, 7 days a week.</p>
+
       <div class="hero-btns">
-        <a href="https://wa.me/2349138290042" class="btn-primary">💬 Book Free Consultation</a>
-        <a href="#demo" class="btn-secondary">▶ See Live Demo</a>
+        <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-blue">💬 Book Free Consultation</a>
+        <a href="#demo" class="btn btn-ghost">▶ See Live Demo</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hstat"><span class="hstat-n">24/7</span><span class="hstat-l">Lead Capture</span></div>
+        <div class="sdiv"></div>
+        <div class="hstat"><span class="hstat-n">3s</span><span class="hstat-l">Avg Response</span></div>
+        <div class="sdiv"></div>
+        <div class="hstat"><span class="hstat-n">4×</span><span class="hstat-l">More Leads</span></div>
+        <div class="sdiv"></div>
+        <div class="hstat"><span class="hstat-n">72hrs</span><span class="hstat-l">Go Live</span></div>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-value">24/7</div>
-        <div class="stat-label">Lead Capture</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">3s</div>
-        <div class="stat-label">Avg Response Time</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">4×</div>
-        <div class="stat-label">More Leads</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">72hrs</div>
-        <div class="stat-label">Go Live</div>
+
+    <!-- Ticker -->
+    <div class="ticker-wrap" style="margin-top:56px">
+      <div class="ticker">
+        <div class="ticker-inner">
+          <span>WhatsApp Automation</span><span>Lead Generation</span><span>Customer Support AI</span>
+          <span>Sales Funnels</span><span>CRM Integration</span><span>24/7 Availability</span>
+          <span>Nigerian Businesses</span><span>Botpress Powered</span><span>Instagram DM Bots</span>
+          <span>Appointment Booking</span><span>Cart Recovery</span><span>E-commerce Bots</span>
+        </div>
+        <div class="ticker-inner" aria-hidden="true">
+          <span>WhatsApp Automation</span><span>Lead Generation</span><span>Customer Support AI</span>
+          <span>Sales Funnels</span><span>CRM Integration</span><span>24/7 Availability</span>
+          <span>Nigerian Businesses</span><span>Botpress Powered</span><span>Instagram DM Bots</span>
+          <span>Appointment Booking</span><span>Cart Recovery</span><span>E-commerce Bots</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">WhatsApp Automation</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Lead Generation</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Customer Support AI</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">AI Sales Funnels</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">CRM Integration</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">24/7 Availability</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Nigerian Businesses</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Botpress Powered</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Instagram DM Bots</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Appointment Booking</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Cart Recovery</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">E-commerce Bots</span><span class="ticker-dot">·</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">WhatsApp Automation</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Lead Generation</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Customer Support AI</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">AI Sales Funnels</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">CRM Integration</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">24/7 Availability</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Nigerian Businesses</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Botpress Powered</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Instagram DM Bots</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Appointment Booking</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">Cart Recovery</span><span class="ticker-dot">·</span>
-    <span class="ticker-item">E-commerce Bots</span><span class="ticker-dot">·</span>
-  </div>
-</div>
-
 <!-- SERVICES -->
 <section id="services">
-  <div class="section-inner">
-    <span class="section-label">What We Build</span>
-    <h2 class="section-title">Three Ways We <em>Grow Your Business</em></h2>
-    <p class="section-subtitle">Every Nigerian business loses customers to slow replies. We automate the conversation so you never miss a lead — day or night.</p>
-
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🎯</div>
+  <div class="wrap">
+    <div class="slbl rv">What We Build</div>
+    <h2 class="stitle rv">Three Ways We<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Grow Your Business</em></h2>
+    <p class="ssub rv">Every Nigerian business loses customers to slow replies. We automate the conversation so you never miss a lead — day or night.</p>
+    <div class="svc-grid">
+      <div class="svc-card rv d1">
+        <div class="svc-ico">🎯</div>
         <h3>Capture WhatsApp Leads 24/7</h3>
         <p>Stop losing customers who message at midnight and buy from your competitor by morning. Your AI bot responds instantly, qualifies intent, and captures their details — even while you sleep.</p>
-        <div class="tags">
-          <span class="tag">Instant Reply</span>
-          <span class="tag">Auto-Qualify</span>
-          <span class="tag">Data Capture</span>
-        </div>
-        <a href="#demo" class="card-link">See It Live →</a>
+        <div class="tags"><span class="tag">Instant Reply</span><span class="tag">Auto-Qualify</span><span class="tag">Data Capture</span></div>
+        <a href="#demo" class="btn btn-out btn-sm">See It Live →</a>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">⚡</div>
+      <div class="svc-card rv d2">
+        <div class="svc-ico">⚡</div>
         <h3>Automate Customer Support</h3>
         <p>Your team shouldn't answer "what's your price?" all day. Your WhatsApp bot handles FAQs, tracks orders, books appointments, and routes urgent issues — cutting support workload by 60%+.</p>
-        <div class="tags">
-          <span class="tag">FAQ Automation</span>
-          <span class="tag">Order Tracking</span>
-          <span class="tag">Booking Bot</span>
-        </div>
-        <a href="#demo" class="card-link">View Demo →</a>
+        <div class="tags"><span class="tag">FAQ Automation</span><span class="tag">Order Tracking</span><span class="tag">Booking Bot</span></div>
+        <a href="#demo" class="btn btn-out btn-sm">View Demo →</a>
       </div>
-
-      <div class="service-card">
-        <div class="service-icon">📈</div>
+      <div class="svc-card rv d3">
+        <div class="svc-ico">📈</div>
         <h3>WhatsApp Sales Automation</h3>
         <p>Turn enquiries into sales without lifting a finger. Automated follow-up sequences, buyer qualification funnels, cart recovery messages, and smart recommendations — converting 24/7.</p>
-        <div class="tags">
-          <span class="tag">Follow-up Sequences</span>
-          <span class="tag">Cart Recovery</span>
-          <span class="tag">Sales Funnels</span>
-        </div>
-        <a href="https://wa.me/2349138290042" class="card-link">Get Pricing →</a>
+        <div class="tags"><span class="tag">Follow-up Sequences</span><span class="tag">Cart Recovery</span><span class="tag">Sales Funnels</span></div>
+        <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-out btn-sm">Get Pricing →</a>
       </div>
     </div>
 
-    <!-- Instagram Feature -->
-    <div class="ig-feature">
-      <img src="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png" alt="ManyChat Instagram DM Automation Demo — Kographic AI" loading="lazy" />
-      <div>
-        <span class="section-label">Instagram Automation</span>
-        <h3>Turn Instagram DMs Into WhatsApp Leads in 60 Seconds</h3>
-        <p>Powered by ManyChat — we build Instagram comment and DM automations that instantly reply, capture buyer details, and move hot leads to WhatsApp for closing. No human needed, 24/7.</p>
-        <div class="tags">
-          <span class="tag">ManyChat</span>
-          <span class="tag">Instagram DM Bot</span>
-          <span class="tag">Auto-Reply</span>
-          <span class="tag">WhatsApp Handoff</span>
-          <span class="tag">Lead Capture</span>
+    <!-- ManyChat Instagram Automation Showcase -->
+    <div class="rv" style="margin-top:56px;border:1px solid var(--border2);border-radius:var(--r2);overflow:hidden;background:linear-gradient(135deg,#0d1b3e 0%,var(--card) 100%);box-shadow:0 0 0 1px rgba(37,99,235,.12),0 24px 72px rgba(0,0,0,.4)">
+      <div style="display:flex;flex-direction:column-reverse;gap:0" class="ig-showcase">
+
+        <!-- Image -->
+        <div style="position:relative;overflow:hidden;min-height:260px;flex:1" class="ig-img">
+          <img
+            src="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png"
+            alt="ManyChat Instagram DM Automation Demo — Kographic AI"
+            style="width:100%;height:100%;display:block;object-fit:cover;object-position:top;min-height:260px;"
+          />
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,62,.55) 0%,transparent 60%);pointer-events:none"></div>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
-          <a href="https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Instagram%20DM%20automation%20for%20my%20business" class="btn-primary" style="font-size:0.9rem;padding:12px 20px;">💬 Get This For My Business →</a>
-          <a href="#demo" class="btn-secondary" style="font-size:0.9rem;padding:12px 20px;">▶ See Live Demo</a>
+
+        <!-- Content -->
+        <div style="padding:36px 32px;flex:1;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--border)" class="ig-content">
+          <div class="slbl" style="margin-bottom:10px">Instagram Automation</div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.15rem,3vw,1.6rem);font-weight:800;line-height:1.15;margin-bottom:14px">
+            Turn Instagram DMs Into<br>
+            <span style="background:linear-gradient(135deg,#e879f9,#a855f7,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">WhatsApp Leads in 60 Seconds</span>
+          </h3>
+          <p style="font-size:.88rem;color:var(--textm);line-height:1.8;margin-bottom:22px">Powered by ManyChat — we build Instagram comment and DM automations that instantly reply, capture buyer details, and move hot leads to WhatsApp for closing. No human needed, 24/7.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px">
+            <span class="tag" style="background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.25);color:#c084fc">ManyChat</span>
+            <span class="tag" style="background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.25);color:#c084fc">Instagram DM Bot</span>
+            <span class="tag">Auto-Reply</span>
+            <span class="tag">WhatsApp Handoff</span>
+            <span class="tag">Lead Capture</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+            <a href="https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Instagram%20DM%20automation%20for%20my%20business" target="_blank" class="btn btn-wa btn-sm">💬 Get This For My Business →</a>
+            <a href="#demo" class="btn btn-ghost btn-sm">▶ See Live Demo</a>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 </section>
 
 <!-- INDUSTRIES -->
-<section id="industries" style="background: var(--black);">
-  <div class="section-inner">
-    <span class="section-label">Who We Serve</span>
-    <h2 class="section-title">Built for <em>Fast-Growing Sectors</em></h2>
-    <p class="section-subtitle">We specialise in industries where speed and follow-up are the difference between winning and losing a deal.</p>
+<section id="industries" style="background:var(--card2)">
+  <div class="wrap">
+    <div class="slbl rv">Who We Serve</div>
+    <h2 class="stitle rv" id="ind-title">Built for Nigeria's<br>Fastest-Growing Sectors</h2>
+    <p class="ssub rv" id="ind-sub">We specialise in industries where speed and follow-up are the difference between winning and losing a deal.</p>
 
-    <div class="market-tabs">
-      <button class="market-tab active" onclick="switchMarket('ng', this)">🇳🇬 Nigeria</button>
-      <button class="market-tab" onclick="switchMarket('ae', this)">🇦🇪 UAE</button>
-    </div>
-
-    <!-- Nigeria -->
-    <div class="market-panel active" id="market-ng">
-      <div class="industries-grid">
-        <div class="industry-card">
-          <span class="industry-icon">🏡</span>
-          <h3>Real Estate Agents</h3>
-          <ul>
-            <li>Instant WhatsApp lead response</li>
-            <li>Property search &amp; filtering bot</li>
-            <li>Automated viewing scheduling</li>
-            <li>Cold lead follow-up sequences</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🛍️</span>
-          <h3>E-commerce Stores</h3>
-          <ul>
-            <li>Instagram DM lead automation</li>
-            <li>WhatsApp cart recovery</li>
-            <li>Order status &amp; delivery bots</li>
-            <li>Post-purchase review requests</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🏫</span>
-          <h3>Schools &amp; Training Centres</h3>
-          <ul>
-            <li>Admission inquiry handling</li>
-            <li>Fee payment reminders</li>
-            <li>Parent communication bot</li>
-            <li>Course enrollment automation</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">📦</span>
-          <h3>Logistics &amp; Delivery</h3>
-          <ul>
-            <li>Order tracking chatbot</li>
-            <li>Delivery status automation</li>
-            <li>Issue reporting bot</li>
-            <li>Driver dispatch notifications</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">💆</span>
-          <h3>Clinics, Salons &amp; Wellness</h3>
-          <ul>
-            <li>24/7 appointment booking</li>
-            <li>WhatsApp reminder sequences</li>
-            <li>Patient re-engagement</li>
-            <li>Treatment inquiry handling</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🏢</span>
-          <h3>Service Businesses</h3>
-          <ul>
-            <li>Enquiry qualification bot</li>
-            <li>Quote request automation</li>
-            <li>Appointment booking</li>
-            <li>Follow-up sequences</li>
-          </ul>
-        </div>
+    <!-- Nigeria industries -->
+    <div class="ms on" id="ind-ng">
+      <div class="ind-grid">
+        <div class="ind-card rv d1"><div class="ind-ico">🏡</div><h3>Real Estate Agents</h3><p>Never lose a WhatsApp lead again. Instant response, automatic viewing booking, lead qualification — 24/7 for Lagos, Abuja and PH agents.</p><ul class="ind-list"><li>Instant WhatsApp lead response</li><li>Property search & filtering bot</li><li>Automated viewing scheduling</li><li>Cold lead follow-up sequences</li></ul></div>
+        <div class="ind-card rv d2"><div class="ind-ico">🛍️</div><h3>E-commerce Stores</h3><p>Turn Instagram browsers into buyers. Automate cart recovery, order updates, and post-purchase follow-up via WhatsApp — while you sleep.</p><ul class="ind-list"><li>Instagram DM lead automation</li><li>WhatsApp cart recovery</li><li>Order status & delivery bots</li><li>Post-purchase review requests</li></ul></div>
+        <div class="ind-card rv d3"><div class="ind-ico">🏫</div><h3>Schools & Training Centres</h3><p>Handle 200+ parent inquiries during resumption without overloading your team. One bot manages admission, fees, and scheduling.</p><ul class="ind-list"><li>Admission inquiry handling</li><li>Fee payment reminders</li><li>Parent communication bot</li><li>Course enrollment automation</li></ul></div>
+        <div class="ind-card rv d1"><div class="ind-ico">📦</div><h3>Logistics & Delivery</h3><p>Let customers track orders and get updates via WhatsApp — without your team answering the same question all day long.</p><ul class="ind-list"><li>Order tracking chatbot</li><li>Delivery status automation</li><li>Issue reporting bot</li><li>Driver dispatch notifications</li></ul></div>
+        <div class="ind-card rv d2"><div class="ind-ico">💆</div><h3>Clinics, Salons & Wellness</h3><p>Fill appointment slots and slash no-shows with automated WhatsApp booking, reminders, and re-engagement sequences.</p><ul class="ind-list"><li>24/7 appointment booking</li><li>WhatsApp reminder sequences</li><li>Patient re-engagement</li><li>Treatment inquiry handling</li></ul></div>
+        <div class="ind-card rv d3"><div class="ind-ico">🏢</div><h3>Service Businesses</h3><p>From law firms to cleaning services — automate enquiry handling, quote requests, and appointment booking via WhatsApp.</p><ul class="ind-list"><li>Enquiry qualification bot</li><li>Quote request automation</li><li>Appointment booking</li><li>Follow-up sequences</li></ul></div>
       </div>
     </div>
 
-    <!-- UAE -->
-    <div class="market-panel" id="market-ae">
-      <div class="industries-grid">
-        <div class="industry-card">
-          <span class="industry-icon">🏢</span>
-          <h3>Real Estate — Dubai &amp; Abu Dhabi</h3>
-          <ul>
-            <li>Instant multilingual response</li>
-            <li>Arabic + English support</li>
-            <li>Property search bot</li>
-            <li>CRM sync with agent routing</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">💆</span>
-          <h3>Clinics &amp; Aesthetic Centres</h3>
-          <ul>
-            <li>24/7 appointment booking</li>
-            <li>Arabic + English reminders</li>
-            <li>Patient re-engagement</li>
-            <li>Review generation automation</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🛍️</span>
-          <h3>E-commerce &amp; Retail</h3>
-          <ul>
-            <li>WhatsApp cart recovery</li>
-            <li>Order status chatbot</li>
-            <li>Product recommendation bot</li>
-            <li>Return &amp; exchange automation</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🔐</span>
-          <h3>Security &amp; Corporate FM</h3>
-          <ul>
-            <li>Incident reporting chatbot</li>
-            <li>Staff escalation automation</li>
-            <li>Shift notification systems</li>
-            <li>Compliance audit trail</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">🏨</span>
-          <h3>Hospitality &amp; Tourism</h3>
-          <ul>
-            <li>Booking inquiry handling</li>
-            <li>Bilingual guest support</li>
-            <li>Feedback automation</li>
-            <li>Review generation</li>
-          </ul>
-        </div>
-        <div class="industry-card">
-          <span class="industry-icon">📱</span>
-          <h3>Marketing Agencies</h3>
-          <ul>
-            <li>White-label chatbot builds</li>
-            <li>Client lead gen automation</li>
-            <li>Campaign follow-up bots</li>
-            <li>Social DM automation</li>
-          </ul>
-        </div>
+    <!-- UAE industries -->
+    <div class="ms" id="ind-uae">
+      <div class="ind-grid">
+        <div class="ind-card rv d1"><div class="ind-ico">🏢</div><h3>Real Estate — Dubai & Abu Dhabi</h3><p>Never lose a lead again. Instant WhatsApp response in Arabic and English, property filtering, and viewing booking — fully automated.</p><ul class="ind-list"><li>Instant multilingual response</li><li>Arabic + English support</li><li>Property search bot</li><li>CRM sync with agent routing</li></ul></div>
+        <div class="ind-card rv d2"><div class="ind-ico">💆</div><h3>Clinics & Aesthetic Centres</h3><p>Fill slots, cut no-shows, and automate the entire patient journey from inquiry to post-treatment review generation.</p><ul class="ind-list"><li>24/7 appointment booking</li><li>Arabic + English reminders</li><li>Patient re-engagement</li><li>Review generation automation</li></ul></div>
+        <div class="ind-card rv d3"><div class="ind-ico">🛍️</div><h3>E-commerce & Retail</h3><p>Abandoned cart recovery, order status bots, and personalised product recommendations — all via WhatsApp.</p><ul class="ind-list"><li>WhatsApp cart recovery</li><li>Order status chatbot</li><li>Product recommendation bot</li><li>Return & exchange automation</li></ul></div>
+        <div class="ind-card rv d1"><div class="ind-ico">🔐</div><h3>Security & Corporate FM</h3><p>Enterprise incident reporting, staff escalation, and compliance workflows — built from direct UAE security operations experience.</p><ul class="ind-list"><li>Incident reporting chatbot</li><li>Staff escalation automation</li><li>Shift notification systems</li><li>Compliance audit trail</li></ul></div>
+        <div class="ind-card rv d2"><div class="ind-ico">🏨</div><h3>Hospitality & Tourism</h3><p>Automate the full guest journey in Arabic and English — from inquiry to booking to post-stay review generation.</p><ul class="ind-list"><li>Booking inquiry handling</li><li>Bilingual guest support</li><li>Feedback automation</li><li>Review generation</li></ul></div>
+        <div class="ind-card rv d3"><div class="ind-ico">📱</div><h3>Marketing Agencies</h3><p>White-label automation systems you resell to clients as a premium service — increasing agency revenue and retention.</p><ul class="ind-list"><li>White-label chatbot builds</li><li>Client lead gen automation</li><li>Campaign follow-up bots</li><li>Social DM automation</li></ul></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- HOW IT WORKS -->
 <section id="how">
-  <div class="section-inner">
-    <span class="section-label">Our Process</span>
-    <h2 class="section-title">From Brief to Bot <em>in Three Steps</em></h2>
-    <p class="section-subtitle">We handle everything. You go live in 72 hours with zero technical knowledge required on your end.</p>
-
-    <div class="process-steps">
-      <div class="step-card">
-        <div class="step-number">01</div>
-        <span class="step-icon">🗺️</span>
-        <h3>Strategy &amp; Flow Design</h3>
-        <p>We start with a free 30-minute call to understand your business and the exact leads you're losing. We then design a custom conversation flow mapped to your sales process — not a generic template.</p>
+  <div class="wrap">
+    <div class="slbl rv">Our Process</div>
+    <h2 class="stitle rv">From Brief to Bot<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">in Three Steps</em></h2>
+    <p class="ssub rv">We handle everything. You go live in 72 hours with zero technical knowledge required on your end.</p>
+    <div class="steps-wrap">
+      <div class="step rv d1">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <div class="step-n">1</div>
+          <span style="font-size:1.4rem">🗺️</span>
+        </div>
+        <div>
+          <h3>Strategy & Flow Design</h3>
+          <p>We start with a free 30-minute call to understand your business and the exact leads you're losing. We then design a custom conversation flow mapped to your sales process — not a generic template.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">02</div>
-        <span class="step-icon">🤖</span>
-        <h3>Bot Development</h3>
-        <p>We build your chatbot on Botpress — the most powerful open-source AI platform — and connect it directly to your WhatsApp Business account. You review a live demo before anything goes public.</p>
+      <div class="step rv d2">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <div class="step-n">2</div>
+          <span style="font-size:1.4rem">🤖</span>
+        </div>
+        <div>
+          <h3>Bot Development</h3>
+          <p>We build your chatbot on Botpress — the most powerful open-source AI platform — and connect it directly to your WhatsApp Business account. You review a live demo before anything goes public.</p>
+        </div>
       </div>
-      <div class="step-card">
-        <div class="step-number">03</div>
-        <span class="step-icon">🚀</span>
-        <h3>Launch &amp; Optimise</h3>
-        <p>Your bot goes live within 72 hours. We monitor real conversations for the first two weeks, refine performance, and deliver a lead report showing exactly how many customers your automation captured.</p>
+      <div class="step rv d3">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <div class="step-n">3</div>
+          <span style="font-size:1.4rem">🚀</span>
+        </div>
+        <div>
+          <h3>Launch & Optimise</h3>
+          <p>Your bot goes live within 72 hours. We monitor real conversations for the first two weeks, refine performance, and deliver a lead report showing exactly how many customers your automation captured.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- RESULTS -->
-<section id="cases" style="background: var(--black);">
-  <div class="section-inner">
-    <span class="section-label">Proven Results</span>
-    <h2 class="section-title">Real Projects. <em>Measurable Outcomes.</em></h2>
-    <p class="section-subtitle">Every number below reflects an actual automation built for a real business challenge — in Nigeria and the UAE.</p>
+<!-- CASE STUDIES -->
+<section id="cases" style="background:var(--card2)">
+  <div class="wrap">
+    <div class="slbl rv">Proven Results</div>
+    <h2 class="stitle rv" id="cases-title">Real Projects.<br>Measurable Outcomes.</h2>
+    <p class="ssub rv">Every number below reflects an actual automation built for a real business challenge — in Nigeria and the UAE.</p>
 
-    <div class="results-grid">
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Real Estate · Lagos</div></div>
-          <span class="result-metric">4× More Leads</span>
+    <div class="ms on" id="cases-ng">
+      <div class="cases-grid">
+        <div class="case-card rv d1">
+          <div class="case-top"><div><div class="case-sector">Real Estate · Lagos</div><div class="case-title">24/7 WhatsApp Lead Capture Bot</div></div><div class="rbadge"><span class="rnum">4×</span><span class="rlbl">More Leads</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Lagos agent was losing 60%+ of after-hours WhatsApp leads. Hot buyers went cold overnight because no one replied until morning.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">Bot responds in seconds, qualifies buyer intent (budget, area, type), and books viewings — 24/7 with zero manual effort.</div></div>
+          </div>
         </div>
-        <h3>24/7 WhatsApp Lead Capture Bot</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Lagos agent was losing 60%+ of after-hours WhatsApp leads. Hot buyers went cold overnight because no one replied until morning.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>Bot responds in seconds, qualifies buyer intent (budget, area, type), and books viewings — 24/7 with zero manual effort.</p></div>
+        <div class="case-card rv d2">
+          <div class="case-top"><div><div class="case-sector">E-commerce · Abuja</div><div class="case-title">Instagram DM Sales Automation</div></div><div class="rbadge"><span class="rnum">+38%</span><span class="rlbl">Revenue</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Fashion store spending money on ads but manually replying to Instagram DMs hours later — losing hot buyers to faster competitors.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">ManyChat DM bot captures lead, shares catalogue, and moves buyer to WhatsApp checkout in under 60 seconds automatically.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv d3">
+          <div class="case-top"><div><div class="case-sector">Clinic · Port Harcourt</div><div class="case-title">Appointment & No-Show Reduction</div></div><div class="rbadge"><span class="rnum">−62%</span><span class="rlbl">No-Shows</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Private clinic had 35% no-show rate costing revenue monthly. Staff spent hours manually calling patients to confirm appointments.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">WhatsApp automation: 48hr reminder → 3hr reminder → instant reschedule option. No-shows dropped 62% with zero staff effort.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv d1">
+          <div class="case-top"><div><div class="case-sector">Private School · Abuja</div><div class="case-title">Admission Inquiry Automation</div></div><div class="rbadge"><span class="rnum">−80%</span><span class="rlbl">Manual Replies</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Admin team overwhelmed with 200+ daily WhatsApp and Instagram inquiries about admission, fees, and programs during resumption.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">Instagram DM bot + WhatsApp FAQ chatbot auto-answers inquiries, collects parent info, and routes serious leads to admin team.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv d2">
+          <div class="case-top"><div><div class="case-sector">Logistics · Lagos</div><div class="case-title">Order Tracking & Support Bot</div></div><div class="rbadge"><span class="rnum">−70%</span><span class="rlbl">Support Volume</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Delivery company flooded with "where is my order?" messages daily — pulling agents away from resolving actual complaints.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">WhatsApp chatbot handles order tracking, estimated delivery, and issue reporting — reducing agent load by 70% from day one.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv d3">
+          <div class="case-top"><div><div class="case-sector">Church · Lagos</div><div class="case-title">Member Communication Bot</div></div><div class="rbadge"><span class="rnum">5,000+</span><span class="rlbl">Members Served</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Large church with 5,000+ members had no system for event registrations, tithe reminders, or member inquiries — all manual on WhatsApp.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">Botpress bot handles event registrations, announcements, FAQ, and giving reminders — saving admin team 20+ hours every week.</div></div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">E-commerce · Abuja</div></div>
-          <span class="result-metric">+38% Revenue</span>
+    <div class="ms" id="cases-uae">
+      <div class="cases-grid">
+        <div class="case-card rv vis d1">
+          <div class="case-top"><div><div class="case-sector">Real Estate · Dubai</div><div class="case-title">24/7 Lead Capture & Viewing Bot</div></div><div class="rbadge"><span class="rnum">4×</span><span class="rlbl">More Leads</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Dubai agency losing 60%+ of after-hours leads. Inquiries sat unread for hours while hot buyers went to faster-responding agents.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">WhatsApp AI chatbot instantly responds in Arabic/English, qualifies intent, and books viewings into the agent's calendar automatically.</div></div>
+          </div>
         </div>
-        <h3>Instagram DM Sales Automation</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Fashion store spending money on ads but manually replying to Instagram DMs hours later — losing hot buyers to faster competitors.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>ManyChat DM bot captures lead, shares catalogue, and moves buyer to WhatsApp checkout in under 60 seconds automatically.</p></div>
+        <div class="case-card rv vis d2">
+          <div class="case-top"><div><div class="case-sector">Aesthetic Clinic · Abu Dhabi</div><div class="case-title">Booking & No-Show Reduction</div></div><div class="rbadge"><span class="rnum">−62%</span><span class="rlbl">No-Shows</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Cosmetic clinic had 35% no-show rate costing thousands monthly. Staff manually called every patient to confirm appointments.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">WhatsApp reminder sequence recovered AED 22,000 in additional monthly revenue. Response: 48hr → 3hr → instant reschedule.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv vis d3">
+          <div class="case-top"><div><div class="case-sector">Security Company · UAE</div><div class="case-title">Incident Reporting & Escalation</div></div><div class="rbadge"><span class="rnum">−85%</span><span class="rlbl">Response Time</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Guards using WhatsApp manually — inconsistent incident reports, delayed escalation, non-compliant audit trail.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">Botpress + Make.com: guards report via chat, system classifies severity, creates tickets, alerts manager. 22 min → 3 min response time.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv vis d1">
+          <div class="case-top"><div><div class="case-sector">E-commerce · Dubai</div><div class="case-title">Instagram DM to WhatsApp Sales Bot</div></div><div class="rbadge"><span class="rnum">+41%</span><span class="rlbl">Revenue</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Dubai fashion retailer running paid Instagram ads but losing buyers who DM'd and got no reply for hours — ad spend wasted on cold leads.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">ManyChat bot auto-replies to DMs in Arabic/English, shares the product catalogue, and moves hot buyers to WhatsApp checkout in under 60 seconds.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv vis d2">
+          <div class="case-top"><div><div class="case-sector">Hospitality · Dubai</div><div class="case-title">Guest Inquiry & Booking Automation</div></div><div class="rbadge"><span class="rnum">3×</span><span class="rlbl">Bookings</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Boutique hotel receiving WhatsApp inquiries around the clock — front desk couldn't keep up, losing direct bookings to OTA platforms.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">Bilingual WhatsApp bot handles availability checks, room FAQs, and direct booking requests 24/7 — tripling direct reservations in 60 days.</div></div>
+          </div>
+        </div>
+        <div class="case-card rv vis d3">
+          <div class="case-top"><div><div class="case-sector">Marketing Agency · Abu Dhabi</div><div class="case-title">White-Label Chatbot Programme</div></div><div class="rbadge"><span class="rnum">AED 18k</span><span class="rlbl">New MRR</span></div></div>
+          <div class="case-body">
+            <div class="ps"><div class="pslbl p">Problem</div><div class="pstext">Abu Dhabi agency offering social media management but losing clients to competitors who bundled automation — no chatbot capability in-house.</div></div>
+            <div class="ps"><div class="pslbl s">Solution</div><div class="pstext">We built a white-label WhatsApp + Instagram automation stack the agency resells as a premium add-on — adding AED 18,000 in recurring monthly revenue.</div></div>
+          </div>
         </div>
       </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Clinic · Port Harcourt</div></div>
-          <span class="result-metric">−62% No-Shows</span>
-        </div>
-        <h3>Appointment &amp; No-Show Reduction</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Private clinic had 35% no-show rate costing revenue monthly. Staff spent hours manually calling patients to confirm appointments.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>WhatsApp automation: 48hr reminder → 3hr reminder → instant reschedule option. No-shows dropped 62% with zero staff effort.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Private School · Abuja</div></div>
-          <span class="result-metric">−80% Manual Replies</span>
-        </div>
-        <h3>Admission Inquiry Automation</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Admin team overwhelmed with 200+ daily WhatsApp and Instagram inquiries about admission, fees, and programs during resumption.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>Instagram DM bot + WhatsApp FAQ chatbot auto-answers inquiries, collects parent info, and routes serious leads to admin team.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Logistics · Lagos</div></div>
-          <span class="result-metric">−70% Support Volume</span>
-        </div>
-        <h3>Order Tracking &amp; Support Bot</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Delivery company flooded with "where is my order?" messages daily — pulling agents away from resolving actual complaints.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>WhatsApp chatbot handles order tracking, estimated delivery, and issue reporting — reducing agent load by 70% from day one.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Church · Lagos</div></div>
-          <span class="result-metric">5,000+ Members Served</span>
-        </div>
-        <h3>Member Communication Bot</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Large church with 5,000+ members had no system for event registrations, tithe reminders, or member inquiries — all manual on WhatsApp.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>Botpress bot handles event registrations, announcements, FAQ, and giving reminders — saving admin team 20+ hours every week.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Real Estate · Dubai</div></div>
-          <span class="result-metric">4× More Leads</span>
-        </div>
-        <h3>24/7 Lead Capture &amp; Viewing Bot</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Dubai agency losing 60%+ of after-hours leads. Inquiries sat unread for hours while hot buyers went to faster-responding agents.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>WhatsApp AI chatbot instantly responds in Arabic/English, qualifies intent, and books viewings into the agent's calendar automatically.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Aesthetic Clinic · Abu Dhabi</div></div>
-          <span class="result-metric">−62% No-Shows</span>
-        </div>
-        <h3>Booking &amp; No-Show Reduction</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Cosmetic clinic had 35% no-show rate costing thousands monthly. Staff manually called every patient to confirm appointments.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>WhatsApp reminder sequence recovered AED 22,000 in additional monthly revenue with a 48hr → 3hr → instant reschedule flow.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Security Company · UAE</div></div>
-          <span class="result-metric">−85% Response Time</span>
-        </div>
-        <h3>Incident Reporting &amp; Escalation</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Guards using WhatsApp manually — inconsistent incident reports, delayed escalation, non-compliant audit trail.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>Botpress + Make.com: guards report via chat, system classifies severity, creates tickets, alerts manager. Response dropped from 22 min to 3 min.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">E-commerce · Dubai</div></div>
-          <span class="result-metric">+41% Revenue</span>
-        </div>
-        <h3>Instagram DM to WhatsApp Sales Bot</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Dubai fashion retailer running paid Instagram ads but losing buyers who DM'd and got no reply for hours — ad spend wasted on cold leads.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>ManyChat bot auto-replies to DMs in Arabic/English, shares the product catalogue, and moves hot buyers to WhatsApp checkout in under 60 seconds.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Hospitality · Dubai</div></div>
-          <span class="result-metric">3× Bookings</span>
-        </div>
-        <h3>Guest Inquiry &amp; Booking Automation</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Boutique hotel receiving WhatsApp inquiries around the clock — front desk couldn't keep up, losing direct bookings to OTA platforms.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>Bilingual WhatsApp bot handles availability checks, room FAQs, and direct booking requests 24/7 — tripling direct reservations in 60 days.</p></div>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <div class="result-header">
-          <div><div class="result-meta">Marketing Agency · Abu Dhabi</div></div>
-          <span class="result-metric">AED 18k New MRR</span>
-        </div>
-        <h3>White-Label Chatbot Programme</h3>
-        <div class="problem-solution">
-          <div class="ps-block"><div class="ps-label problem">Problem</div><p>Abu Dhabi agency offering social media management but losing clients to competitors who bundled automation — no chatbot capability in-house.</p></div>
-          <div class="ps-block"><div class="ps-label solution">Solution</div><p>We built a white-label WhatsApp + Instagram automation stack the agency resells as a premium add-on — adding AED 18,000 in recurring monthly revenue.</p></div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
 <!-- DEMO -->
 <section id="demo">
-  <div class="section-inner">
-    <span class="section-label">Try It Yourself</span>
-    <h2 class="section-title">Live <em>Demo</em></h2>
-    <p class="section-subtitle">Interact with the real Kographic AI chatbot — the same technology we deploy for your business.</p>
-
-    <div class="demo-container">
-      <div class="demo-frame-wrapper">
-        <iframe
-          src="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/11/09/20250111091038-EU5FGBLZ.json"
-          title="Kographic AI — Live Chatbot Demo"
-          allow="microphone"
-        ></iframe>
+  <div class="wrap">
+    <div class="slbl rv">Try It Yourself</div>
+    <h2 class="stitle rv">Live <em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Demo</em></h2>
+    <p class="ssub rv">Interact with the real Kographic AI chatbot below — the same technology we deploy for your business. Try asking about pricing, services, or booking a call.</p>
+    <div class="demo-wrap rv">
+      <div class="demo-bar">
+        <div class="demo-dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
+        <div class="demo-title">🤖 Kographic AI — Live Bot</div>
       </div>
-      <div class="demo-info">
-        <h3>🤖 Kographic AI — Live Bot</h3>
-        <p>This is the real automation technology we deploy for Nigerian and UAE businesses. Try it out — ask about pricing, services, or book a call directly from the chat.</p>
-        <div class="demo-prompts">
-          <div class="demo-prompt"><span>Try asking:</span> "What's your pricing for a WhatsApp bot?"</div>
-          <div class="demo-prompt"><span>Try asking:</span> "Can you help my real estate business?"</div>
-          <div class="demo-prompt"><span>Try asking:</span> "How long does setup take?"</div>
-        </div>
-        <a href="https://wa.me/2349138290042" class="btn-primary">💬 Or Chat on WhatsApp →</a>
+      <div class="demo-body">
+        <iframe src="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/01/11/09/20250111091038-EU5FGBLZ.json" width="100%" height="600" title="Kographic AI Live Demo"></iframe>
       </div>
+    </div>
+    <div style="text-align:center;margin-top:24px">
+      <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-wa">💬 Or Chat on WhatsApp →</a>
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" style="background: var(--black);">
-  <div class="section-inner">
-    <span class="section-label">Client Results</span>
-    <h2 class="section-title">Businesses That <em>Already Automate</em></h2>
-    <p class="section-subtitle">Real businesses. Real numbers. Real revenue from WhatsApp automation.</p>
+<section style="background:var(--card2)">
+  <div class="wrap">
+    <div class="slbl rv">Client Results</div>
+    <h2 class="stitle rv" id="testi-title">Businesses That<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Already Automate</em></h2>
+    <p class="ssub rv" id="testi-sub">Real Nigerian businesses. Real numbers. Real revenue from WhatsApp automation.</p>
 
-    <div class="testimonials-grid">
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">The chatbot increased our lead capture rate significantly within the very first month. We stopped losing leads to slow response times overnight. Every morning I wake up to qualified buyers in my inbox.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AS</div>
-          <div>
-            <div class="author-name">Ahmed S.</div>
-            <div class="author-meta">Real Estate · Lagos</div>
+    <!-- Nigeria Testimonials -->
+    <div class="ms on" id="testi-ng">
+      <div class="testi-grid">
+        <div class="testi-card rv d1">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">The chatbot increased our lead capture rate significantly within the very first month. We stopped losing leads to slow response times overnight. Every morning I wake up to qualified buyers in my inbox.</div>
+          <div class="testi-foot">
+            <div class="tav">AS</div>
+            <div><div class="tname">Ahmed S.</div><div class="trole">Real Estate · Lagos</div></div>
+            <div class="tres">+3 deals/mo</div>
           </div>
-          <span class="author-result">+3 deals/mo</span>
+        </div>
+        <div class="testi-card rv d2">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">Customer response time dropped from hours to seconds. Our support team now only handles complex escalations — the bot handles everything else. Truly amazing automation that paid for itself in week two.</div>
+          <div class="testi-foot">
+            <div class="tav">CO</div>
+            <div><div class="tname">Chinwe O.</div><div class="trole">Ecommerce · Abuja</div></div>
+            <div class="tres">34% cart recovery</div>
+          </div>
+        </div>
+        <div class="testi-card rv d3">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">We handle support queries 24/7 without adding a single staff member. The ROI paid for itself within the first two weeks of going live. Delivery complaints dropped and the team is finally focused on real work.</div>
+          <div class="testi-foot">
+            <div class="tav">DA</div>
+            <div><div class="tname">David A.</div><div class="trole">Logistics · Port Harcourt</div></div>
+            <div class="tres">−70% tickets</div>
+          </div>
         </div>
       </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">Customer response time dropped from hours to seconds. Our support team now only handles complex escalations — the bot handles everything else. Truly amazing automation that paid for itself in week two.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">CO</div>
-          <div>
-            <div class="author-name">Chinwe O.</div>
-            <div class="author-meta">Ecommerce · Abuja</div>
-          </div>
-          <span class="author-result">34% cart recovery</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">We handle support queries 24/7 without adding a single staff member. The ROI paid for itself within the first two weeks of going live. Delivery complaints dropped and the team is finally focused on real work.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">DA</div>
-          <div>
-            <div class="author-name">David A.</div>
-            <div class="author-meta">Logistics · Port Harcourt</div>
-          </div>
-          <span class="author-result">−70% tickets</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">We were losing Dubai buyers who messaged at midnight and got no reply until morning. The bilingual bot changed everything — it qualifies in Arabic and English and books viewings automatically. Our close rate jumped within weeks.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">KA</div>
-          <div>
-            <div class="author-name">Khalid A.</div>
-            <div class="author-meta">Real Estate · Dubai</div>
-          </div>
-          <span class="author-result">+4 viewings/wk</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">No-shows were costing us thousands every month. The WhatsApp reminder sequence — 48 hours, then 3 hours before — cut no-shows by more than half. We recovered AED 22,000 in the first month alone. Worth every dirham.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">LM</div>
-          <div>
-            <div class="author-name">Layla M.</div>
-            <div class="author-meta">Aesthetic Clinic · Abu Dhabi</div>
-          </div>
-          <span class="author-result">AED 22k recovered</span>
-        </div>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">Incident reports used to take 22 minutes to reach the right manager — guards were using personal WhatsApp with no audit trail. Now the bot classifies severity, raises a ticket, and alerts the team in under 3 minutes. Compliance sorted.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">OM</div>
-          <div>
-            <div class="author-name">Omar M.</div>
-            <div class="author-meta">Security Company · UAE</div>
-          </div>
-          <span class="author-result">−85% response time</span>
-        </div>
-      </div>
-
     </div>
+
+    <!-- UAE Testimonials -->
+    <div class="ms" id="testi-uae">
+      <div class="testi-grid">
+        <div class="testi-card rv vis d1">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">We were losing Dubai buyers who messaged at midnight and got no reply until morning. The bilingual bot changed everything — it qualifies in Arabic and English and books viewings automatically. Our close rate jumped within weeks.</div>
+          <div class="testi-foot">
+            <div class="tav">KA</div>
+            <div><div class="tname">Khalid A.</div><div class="trole">Real Estate · Dubai</div></div>
+            <div class="tres">+4 viewings/wk</div>
+          </div>
+        </div>
+        <div class="testi-card rv vis d2">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">No-shows were costing us thousands every month. The WhatsApp reminder sequence — 48 hours, then 3 hours before — cut no-shows by more than half. We recovered AED 22,000 in the first month alone. Worth every dirham.</div>
+          <div class="testi-foot">
+            <div class="tav">LM</div>
+            <div><div class="tname">Layla M.</div><div class="trole">Aesthetic Clinic · Abu Dhabi</div></div>
+            <div class="tres">AED 22k recovered</div>
+          </div>
+        </div>
+        <div class="testi-card rv vis d3">
+          <div class="stars">★★★★★</div>
+          <div class="testi-q">Incident reports used to take 22 minutes to reach the right manager — guards were using personal WhatsApp with no audit trail. Now the bot classifies severity, raises a ticket, and alerts the team in under 3 minutes. Compliance sorted.</div>
+          <div class="testi-foot">
+            <div class="tav">OM</div>
+            <div><div class="tname">Omar M.</div><div class="trole">Security Company · UAE</div></div>
+            <div class="tres">−85% response time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-  <div class="section-inner">
-    <span class="section-label">Investment</span>
-    <h2 class="section-title">Pick Your <em>Growth Plan</em></h2>
-    <p class="section-subtitle">One-time setup fee. You own your bot from day one. No hidden monthly platform costs.</p>
+  <div class="wrap">
+    <div class="slbl rv">Investment</div>
+    <h2 class="stitle rv">Pick Your<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Growth Plan</em></h2>
+    <p class="ssub rv" id="price-sub">One-time setup fee. You own your bot from day one. No hidden monthly platform costs.</p>
 
-    <div class="currency-toggle">
-      <button class="currency-btn active" onclick="switchCurrency('ng', this)">🇳🇬 Nigeria (₦)</button>
-      <button class="currency-btn" onclick="switchCurrency('ae', this)">🇦🇪 UAE (AED)</button>
-    </div>
-
-    <!-- Nigeria Pricing -->
-    <div class="pricing-panel active" id="pricing-ng">
+    <div class="ms on" id="price-ng">
       <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-name">Starter Bot</div>
-          <div class="price-amount">₦120,000</div>
-          <div class="price-period">One-time setup · 2 weeks support</div>
-          <ul class="price-features">
+        <div class="plan rv d1">
+          <div class="plan-name">Starter Bot</div>
+          <div class="plan-price">₦120,000</div>
+          <div class="plan-note">One-time setup · 2 weeks support</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
             <li>Basic Chatbot Flow</li>
-            <li>Lead Capture &amp; Storage</li>
+            <li>Lead Capture & Storage</li>
             <li>1 Platform Integration</li>
             <li>FAQ Automation</li>
             <li>2 Weeks of Support</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Get Started →</a>
+          <button class="plan-btn pbtn-out" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Starter%20Bot%20plan','_blank')">Get Started →</button>
         </div>
-
-        <div class="price-card popular">
-          <span class="popular-badge">Most Popular</span>
-          <div class="price-name">Growth Bot</div>
-          <div class="price-amount">₦280,000</div>
-          <div class="price-period">One-time setup · 30 days support</div>
-          <ul class="price-features">
-            <li>Advanced Flow Logic &amp; Qualification</li>
+        <div class="plan feat rv d2">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Growth Bot</div>
+          <div class="plan-price">₦280,000</div>
+          <div class="plan-note">One-time setup · 30 days support</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
+            <li>Advanced Flow Logic & Qualification</li>
             <li>WhatsApp Business API Integration</li>
             <li>CRM or Google Sheets Sync</li>
             <li>Follow-up Sequences</li>
             <li>Monthly Analytics Report</li>
             <li>30 Days Priority Support</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Get Started →</a>
+          <button class="plan-btn pbtn-fill" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Growth%20Bot%20plan','_blank')">Get Started →</button>
         </div>
-
-        <div class="price-card">
-          <div class="price-name">Full Automation</div>
-          <div class="price-amount">₦500,000</div>
-          <div class="price-period">One-time setup · 60 days support</div>
-          <ul class="price-features">
+        <div class="plan rv d3">
+          <div class="plan-name">Full Automation</div>
+          <div class="plan-price">₦500,000</div>
+          <div class="plan-note">One-time setup · 60 days support</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
             <li>Full Business Automation System</li>
             <li>Multi-platform Deployment (WA + IG + Web)</li>
             <li>Custom AI Integrations</li>
-            <li>E-commerce &amp; Cart Recovery</li>
+            <li>E-commerce & Cart Recovery</li>
             <li>Advanced CRM Workflows</li>
             <li>Ongoing Optimisation (2 months)</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Get Started →</a>
+          <button class="plan-btn pbtn-out" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20Full%20Automation%20plan','_blank')">Get Started →</button>
         </div>
       </div>
     </div>
 
-    <!-- UAE Pricing -->
-    <div class="pricing-panel" id="pricing-ae">
+    <div class="ms" id="price-uae">
       <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-name">Starter</div>
-          <div class="price-amount">AED 1,500</div>
-          <div class="price-period">One-time setup · 2 weeks support</div>
-          <ul class="price-features">
+        <div class="plan rv d1">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">AED 1,500</div>
+          <div class="plan-note">One-time setup · 2 weeks support</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
             <li>1 WhatsApp or website bot</li>
             <li>Up to 5 conversation flows</li>
-            <li>Lead capture &amp; FAQ</li>
+            <li>Lead capture & FAQ</li>
             <li>Arabic + English support</li>
             <li>2 weeks post-launch support</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Get Started →</a>
+          <button class="plan-btn pbtn-out" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20UAE%20Starter%20plan','_blank')">Get Started →</button>
         </div>
-
-        <div class="price-card popular">
-          <span class="popular-badge">Most Popular</span>
-          <div class="price-name">Growth</div>
-          <div class="price-amount">AED 3,500</div>
-          <div class="price-period">One-time + AED 800/month</div>
-          <ul class="price-features">
+        <div class="plan feat rv d2">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-price">AED 3,500</div>
+          <div class="plan-note">One-time + AED 800/month</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
             <li>WhatsApp + Instagram automation</li>
-            <li>Arabic &amp; English bilingual</li>
-            <li>Full lead capture &amp; qualification</li>
+            <li>Arabic & English bilingual</li>
+            <li>Full lead capture & qualification</li>
             <li>Appointment booking integration</li>
-            <li>CRM sync &amp; analytics</li>
+            <li>CRM sync & analytics</li>
             <li>30 days support + optimisation</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Get Growth Plan →</a>
+          <button class="plan-btn pbtn-fill" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20UAE%20Growth%20plan','_blank')">Get Growth Plan →</button>
         </div>
-
-        <div class="price-card">
-          <div class="price-name">Enterprise</div>
-          <div class="price-amount">AED 7,000+</div>
-          <div class="price-period">Custom build + retainer</div>
-          <ul class="price-features">
+        <div class="plan rv d3">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">AED 7,000+</div>
+          <div class="plan-note">Custom build + retainer</div>
+          <div class="plan-div"></div>
+          <ul class="plan-feats">
             <li>Full multi-channel automation</li>
-            <li>Security &amp; incident workflows</li>
+            <li>Security & incident workflows</li>
             <li>Advanced CRM integration</li>
-            <li>Compliance &amp; analytics reporting</li>
+            <li>Compliance & analytics reporting</li>
             <li>Dedicated account manager</li>
             <li>Bilingual priority support</li>
           </ul>
-          <a href="https://wa.me/2349138290042" class="price-cta">Let's Talk →</a>
+          <button class="plan-btn pbtn-out" onclick="window.open('https://wa.me/2349138290042?text=Hi,%20I%20want%20the%20UAE%20Enterprise%20plan','_blank')">Let's Talk →</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA BANNER -->
-<div class="cta-section">
-  <h2>Ready to Stop Losing WhatsApp Customers?</h2>
-  <p>Book a free 30-minute strategy call and see exactly how a chatbot can grow your specific business. No tech jargon — just a clear plan and real numbers.</p>
-  <a href="https://wa.me/2349138290042" class="btn-primary" style="font-size:1rem;padding:16px 32px;">💬 Chat on WhatsApp Now →</a>
-</div>
+<!-- FINAL CTA -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="wrap" style="position:relative;z-index:1;text-align:center">
+    <div class="slbl rv" style="display:block;margin-bottom:12px">Ready to Automate?</div>
+    <h2 class="rv">Ready to Stop Losing<br>WhatsApp Customers?</h2>
+    <p class="rv">Book a free 30-minute strategy call and see exactly how a chatbot can grow your specific business. No tech jargon — just a clear plan and real numbers.</p>
+    <a href="https://wa.me/2349138290042" target="_blank" class="btn btn-wa rv" style="margin:0 auto;font-size:clamp(.85rem,2.5vw,1rem);padding:clamp(13px,3vw,16px) clamp(20px,5vw,36px)">
+      💬 Chat on WhatsApp Now →
+    </a>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
+  <div class="wrap">
+    <div class="footer-inner">
       <div class="footer-brand">
-        <div class="nav-logo">
-          <span>K</span> KographicAI
+        <div class="fn">
+          <div class="logo-mark">K</div>
+          KographicAI
         </div>
         <p>AI-powered WhatsApp chatbots that help businesses in Nigeria and the UAE capture leads, automate support, and increase sales — 24/7.</p>
       </div>
-
-      <div class="footer-col">
+      <div class="fcol">
         <h4>Services</h4>
         <ul>
           <li><a href="#services">Lead Capture Bots</a></li>
@@ -1765,73 +1014,133 @@
           <li><a href="#demo">Live Demo</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
+      <div class="fcol">
         <h4>Industries</h4>
         <ul>
           <li><a href="#industries">Real Estate</a></li>
           <li><a href="#industries">E-commerce</a></li>
-          <li><a href="#industries">Schools &amp; Training</a></li>
+          <li><a href="#industries">Schools & Training</a></li>
           <li><a href="#industries">Logistics</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
+      <div class="fcol">
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:kograhic@gmail.com">kograhic@gmail.com</a></li>
-          <li><a href="https://wa.me/2349138290042">💬 WhatsApp</a></li>
-          <li><a href="https://instagram.com/kograhic">📸 Instagram</a></li>
-          <li><a href="https://tiktok.com/@kog.co">🎵 TikTok</a></li>
-          <li><a href="https://x.com/kolaolaide266">𝕏 Twitter / X</a></li>
-          <li><a href="https://linktr.ee/kograhic">🔗 All Links</a></li>
+          <li><a href="https://wa.me/2349138290042" target="_blank">💬 WhatsApp</a></li>
+          <li><a href="https://instagram.com/kograhic" target="_blank">📸 Instagram</a></li>
+          <li><a href="https://tiktok.com/@kog.co" target="_blank">🎵 TikTok</a></li>
+          <li><a href="https://x.com/kolaolaide266" target="_blank">𝕏 Twitter / X</a></li>
         </ul>
       </div>
+      <div class="fcol">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://instagram.com/kograhic" target="_blank" style="display:flex;align-items:center;gap:8px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a></li>
+          <li><a href="https://tiktok.com/@kog.co" target="_blank" style="display:flex;align-items:center;gap:8px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.15 8.15 0 0 0 4.77 1.52V6.82a4.85 4.85 0 0 1-1-.13z"/></svg>
+            TikTok
+          </a></li>
+          <li><a href="https://x.com/kolaolaide266" target="_blank" style="display:flex;align-items:center;gap:8px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Twitter / X
+          </a></li>
+          <li><a href="https://wa.me/2349138290042" target="_blank" style="display:flex;align-items:center;gap:8px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.554 4.11 1.523 5.836L.057 23.786a.5.5 0 0 0 .602.633l6.15-1.61A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.686-.511-5.218-1.4l-.374-.217-3.878 1.017 1.034-3.774-.233-.389A9.946 9.946 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp Business
+          </a></li>
+        </ul>
+        <a href="https://linktr.ee/kograhic" target="_blank" class="ltree-btn" style="display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:linear-gradient(135deg,#43e97b,#38f9d7);color:#0a1020;font-weight:700;font-size:.78rem;padding:10px 16px;border-radius:10px;transition:opacity .2s;white-space:normal;word-break:break-word" onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-7H7v-2h4V7h2v4h4v2h-4v4h-2v-4z"/></svg>
+          All Links — linktr.ee/kograhic
+        </a>
+      </div>
     </div>
-
     <div class="footer-bottom">
-      <p>© 2026 Kographic AI. All rights reserved. · Powered by Botpress &amp; ManyChat</p>
-      <div class="footer-flags">🇳🇬 🇦🇪</div>
+      <p>© 2026 Kographic AI. All rights reserved.</p>
+      <p>Powered by Botpress & ManyChat · Serving businesses in Nigeria 🇳🇬 & UAE 🇦🇪</p>
     </div>
   </div>
 </footer>
 
-<!-- FLOATING CTA -->
-<a href="https://wa.me/2349138290042" class="floating-cta">
-  💬 <span class="label">Book Free Demo</span>
+<!-- WA FLOAT -->
+<a class="wa-float" id="waFloat" href="https://wa.me/2349138290042" target="_blank" aria-label="Book Free Demo on WhatsApp">
+  <span style="font-size:1.15rem">💬</span>
+  <span>Book Free Demo</span>
 </a>
 
 <script>
-  // Industries tab toggle
-  function switchMarket(market, btn) {
-    document.querySelectorAll('.market-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.market-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('market-' + market).classList.add('active');
-  }
+/* ── MOBILE MENU ── */
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobMenu').classList.remove('open')}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('mobMenu'),h=document.querySelector('.hbg');
+  if(m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open');
+});
 
-  // Pricing currency toggle
-  function switchCurrency(currency, btn) {
-    document.querySelectorAll('.currency-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('pricing-' + currency).classList.add('active');
-  }
-
-  // Smooth active nav link highlight
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.forEach(l => l.style.color = '');
-        const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
-        if (active) active.style.color = '#25D366';
+/* ── MARKET TOGGLE ── */
+function setMkt(m){
+  document.getElementById('btn-ng').classList.toggle('on',m==='ng');
+  document.getElementById('btn-uae').classList.toggle('on',m==='uae');
+  ['ind','cases','price','testi'].forEach(function(s){
+    var ng=document.getElementById(s+'-ng'),uae=document.getElementById(s+'-uae');
+    if(ng&&uae){
+      ng.classList.toggle('on',m==='ng');
+      uae.classList.toggle('on',m==='uae');
+      /* Re-trigger reveal for newly visible cards */
+      if(m==='uae'){
+        uae.querySelectorAll('.rv:not(.vis)').forEach(function(el){
+          setTimeout(function(){el.classList.add('vis');},50);
+        });
       }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => observer.observe(s));
+    }
+  });
+  var badge=document.getElementById('h-badge'),title=document.getElementById('h-title'),sub=document.getElementById('h-sub');
+  var indTitle=document.getElementById('ind-title'),indSub=document.getElementById('ind-sub');
+  var priceSub=document.getElementById('price-sub');
+  var casesTitle=document.getElementById('cases-title');
+  var testiTitle=document.getElementById('testi-title'),testiSub=document.getElementById('testi-sub');
+  if(m==='ng'){
+    badge.textContent='Now accepting Nigerian business clients';
+    title.innerHTML='Turn WhatsApp<br>Conversations Into<br><span class="hl">Paying Customers</span>';
+    sub.textContent='Kographic AI builds intelligent WhatsApp automation systems that capture leads, respond instantly, and convert enquiries into real revenue for Nigerian businesses — 24 hours a day, 7 days a week.';
+    indTitle.innerHTML='Built for Nigeria\'s<br>Fastest-Growing Sectors';
+    indSub.textContent='We specialise in industries where speed and follow-up are the difference between winning and losing a deal.';
+    priceSub.textContent='One-time setup fee. You own your bot from day one. No hidden monthly platform costs.';
+    if(casesTitle)casesTitle.innerHTML='Real Projects.<br>Measurable Outcomes.';
+    if(testiTitle)testiTitle.innerHTML='Businesses That<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Already Automate</em>';
+    if(testiSub)testiSub.textContent='Real Nigerian businesses. Real numbers. Real revenue from WhatsApp automation.';
+  } else {
+    badge.textContent='Available for UAE remote projects';
+    title.innerHTML='UAE Businesses Deserve<br>Smarter <span class="hl">Automation.</span>';
+    sub.textContent='Kographic AI builds AI chatbots and WhatsApp automation in Arabic and English that captures leads, qualifies buyers, and books appointments 24/7 — for UAE real estate, clinics, retail and security companies.';
+    indTitle.innerHTML='Built for UAE\'s<br>Highest-Growth Sectors';
+    indSub.textContent='We specialise in industries where speed, bilingual support, and follow-up determine who wins the deal.';
+    priceSub.textContent='Transparent pricing for UAE clients. Fast remote delivery. Bilingual Arabic + English support included.';
+    if(casesTitle)casesTitle.innerHTML='UAE Client Results.<br>Real Numbers.';
+    if(testiTitle)testiTitle.innerHTML='UAE Clients Who<br><em style="font-style:normal;background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Already Automate</em>';
+    if(testiSub)testiSub.textContent='Real UAE businesses. Real dirhams saved. Real results from bilingual WhatsApp automation.';
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
+},{threshold:0.09});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+
+/* ── WA FLOAT SHOW ON SCROLL ── */
+var waFloat=document.getElementById('waFloat');
+window.addEventListener('scroll',function(){
+  waFloat.classList.toggle('show',window.scrollY>320);
+},{passive:true});
 </script>
 
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/01/03/12/20260103124937-IIZOQ5NM.js" defer></script>
 </body>
 </html>
