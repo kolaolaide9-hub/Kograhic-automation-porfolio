@@ -18,7 +18,7 @@
 <meta property="og:title" content="Kographic AI | WhatsApp Automation for Nigerian Real Estate">
 <meta property="og:description" content="Stop losing property leads to slow replies. Kographic AI automates WhatsApp inquiries, qualifies buyers instantly, and captures leads 24/7 for Nigerian realtors.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kographic.web.app">
+<meta property="og:url" content="https://kograhic.web.app">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -136,8 +136,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(15,23,42,.94
 .hstat-n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.7rem;color:var(--text);line-height:1}
 .hstat-l{font-size:.68rem;color:var(--textd);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
 .sdiv{width:1px;background:var(--border);align-self:stretch}
-.ticker-wrap{position:relative;z-index:2;margin-top:52px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
-.ticker{display:flex;gap:0;animation:tick 30s linear infinite;width:max-content}
+.ticker-wrap{position:relative;z-index:2;margin-top:52px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
+.ticker{display:flex;gap:0;-webkit-animation:tick 30s linear infinite;animation:tick 30s linear infinite;width:max-content}
 .ticker-inner{display:flex;gap:0;flex-shrink:0}
 .ticker span{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;color:var(--textd);padding:0 20px;white-space:nowrap}
 .ticker span::after{content:'·';color:var(--accent)}
@@ -765,11 +765,14 @@ img,iframe,video,table{max-width:100%}
       <div style="display:flex;flex-direction:column-reverse;gap:0" class="ig-showcase">
 
         <!-- Image -->
+        <!-- ⚠️ REPLACE the src below with your actual ManyChat demo screenshot URL -->
         <div style="position:relative;overflow:hidden;min-height:260px;flex:1" class="ig-img">
           <img
-            src="https://i.ibb.co/Wv7nm866/file-0000000093f47243b54f208e29c7bd37.png"
+            id="manychat-demo-img"
+            src="https://i.ibb.co/PsS86kG9/file-0000000093f47243b54f208e29c7bd37.png"
             alt="ManyChat Instagram DM Automation Demo — Kographic AI"
             style="width:100%;height:100%;display:block;object-fit:cover;object-position:top;min-height:260px;"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1e1b4b,#0d1b3e)'"
           />
           <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,27,62,.55) 0%,transparent 60%);pointer-events:none"></div>
         </div>
@@ -1407,4 +1410,4 @@ img,iframe,video,table{max-width:100%}
 <!-- WA FLOAT -->
 <a class="wa-float" id="waFloat" href="https://wa.me/2349138290042?text=Hi,%20I%20want%20a%20WhatsApp%20automation%20demo%20for%20my%20business." target="_blank" aria-label="Get WhatsApp Automation Demo" onclick="gtag('event','whatsapp_float_click',{event_category:'lead',event_label:'WA Float Button'});">
   <span class="wa-float-icon">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.1
