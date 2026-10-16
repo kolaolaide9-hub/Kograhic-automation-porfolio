@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Payment status | Kograhic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#080d14;--bg2:#0d1520;--border:rgba(255,255,255,.07);--accent:#00d4ff;--accent2:#0066ff;--text:#e8edf4;--muted:#8899aa;--green:#22c55e;--red:#ef4444;--gold:#f59e0b;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;line-height:1.6;min-height:100vh;display:grid;place-items:center;padding:20px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:32px 24px;width:min(480px,100%);text-align:center}
+h1{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;margin:12px 0 8px}
+p{color:var(--muted);font-size:.92rem;margin-bottom:8px}
+.icon{font-size:2.2rem}
+.ok{color:var(--green)}.bad{color:var(--red)}.wait{color:var(--gold)}
+.btns{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.btn{display:block;padding:12px 24px;border-radius:99px;font-weight:600;font-size:.92rem;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.btn.ghost{background:transparent;border:1.5px solid var(--border);color:var(--text)}
+.btn[hidden]{display:none}
+code{font-size:.75rem;color:var(--muted);word-break:break-all}
+</style>
+</head>
+<body>
+<main class="card" aria-live="polite">
+  <div class="icon" id="icon">⏳</div>
+  <h1 id="title">Checking your payment…</h1>
+  <p id="msg">Please wait a moment.</p>
+  <p><code id="ref"></code></p>
+  <div class="btns">
+    <a class="btn" id="wa" href="#" target="_blank" rel="noopener" hidden>Message us on WhatsApp</a>
+    <a class="btn ghost" href="/">Back to Kograhic</a>
+  </div>
+</main>
+<script>
+// Must match the website's PAY_API. Empty = payments disabled.
+const PAY_API = 'https://kograhic-paystack-staging.kolaolaide9.workers.dev';
+const WA_NUMBER = '2349138290042';
+
+const $ = (id) => document.getElementById(id);
+const money = (k, cur) => new Intl.NumberFormat('en-NG', { style: 'currency', currency: cur || 'NGN', maximumFractionDigits: 0 }).format(k / 100);
+function show(icon, cls, title, msg) {
+  $('icon').textContent = icon; $('icon').className = 'icon ' + cls;
+  $('title').textContent = title; $('msg').textContent = msg;
+}
+function wa(ref, text) {
+  const a = $('wa');
+  a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text + (ref ? ' Reference: ' + ref : ''));
+  a.hidden = false;
+}
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const HELP = 'Hi, I need help with a payment on the Kograhic website.';
+
+(async function () {
+  const q = new URLSearchParams(location.search);
+  const ref = q.get('reference') || q.get('trxref') || '';
+  if (!PAY_API) { show('ℹ️', 'wait', 'Payments are not enabled yet', 'Please contact us on WhatsApp.'); wa('', HELP); return; }
+  if (!/^[A-Za-z0-9_-]{1,128}$/.test(ref)) { show('⚠️', 'bad', 'Missing payment reference', 'If you were charged, message us with your payment receipt.'); wa('', HELP); return; }
+  $('ref').textContent = ref;
+  let notFound = 0;
+  // The browser redirect proves nothing. Ask our server, which asks Paystack.
+  for (let i = 0; i < 8; i++) {
+    try {
+      const res = await fetch(PAY_API + '/verify/' + encodeURIComponent(ref));
+      const d = await res.json();
+      if (res.status === 404) {
+        // A just-created record can take a moment to be visible; do not alarm the customer yet.
+        if (++notFound > 3) { show('⚠️', 'bad', 'Payment not found', 'We could not find this payment. Please contact us.'); wa(ref, HELP); return; }
+      } else if (res.status === 409) {
+        show('⚠️', 'bad', 'Payment needs review', 'Something did not match. We will check and contact you.'); wa(ref, HELP); return;
+      } else if (res.ok && d.payment_state === 'paid') {
+        if (d.payment_type === 'deposit') {
+          show('✅', 'ok', 'Deposit received',
+            'We have received your ' + money(d.amount_kobo, d.currency) + ' deposit for ' + (d.product_name || 'your project') +
+            '. This is not the full price: the remaining balance of ' + money(d.balance_kobo, d.currency) +
+            ' has not been charged. We will contact you shortly to get started.');
+          wa(ref, 'Hi, I just paid the deposit for ' + (d.product_name || 'my project') + ' on the Kograhic website.');
+        } else {
+          show('✅', 'ok', 'Payment confirmed', 'Thank you! We have received your payment of ' + money(d.amount_kobo, d.currency) + '.');
+          wa(ref, 'Hi, I just made a payment on the Kograhic website.');
+        }
+        return;
+      } else if (res.ok && d.payment_state === 'failed') {
+        show('❌', 'bad', 'Payment failed', 'This payment did not go through. You can try again from the pricing section.'); return;
+      } else if (res.ok && d.payment_state === 'abandoned') {
+        show('↩️', 'wait', 'Payment not completed', 'The payment was cancelled or not finished. You can try again from the pricing section.'); return;
+      }
+    } catch (e) { /* retry */ }
+    await sleep(3000);
+  }
+  show('⏳', 'wait', 'Still confirming…', 'Your payment is taking longer than usual to confirm. If you were charged, message us with this reference.');
+  wa(ref, HELP);
+})();
+</script>
+</body>
+</html>
