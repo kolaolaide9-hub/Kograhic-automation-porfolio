@@ -454,7 +454,59 @@ footer{padding:40px 0 24px;border-top:1px solid var(--border);}
 .cs-result-label{font-size:.75rem;color:var(--text-muted);margin-top:4px;}
 .tool-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:.75rem;}
 
+/* ─── BOOKING AUTOMATION CASE STUDY (bk-*) ──────────────────── */
+#booking-automation{padding:clamp(60px,8vw,100px) 0;scroll-margin-top:72px;}
+.bk-featured{grid-column:1/-1;}
+.bk-note{font-size:.72rem;color:var(--text-dim);line-height:1.6;margin-top:.75rem;}
+.bk-card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.25rem;}
+.bk-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem;}
+.bk-wrap{max-width:960px;}
+.bk-wrap .cs-step>div{min-width:0;}
+.bk-wrap .cs-step p+p{margin-top:.75rem;}
+.bk-list{list-style:none;margin-top:.6rem;display:grid;gap:8px;padding:0;}
+.bk-list li{font-size:.875rem;color:var(--text-muted);line-height:1.65;padding-left:24px;position:relative;}
+.bk-list li::before{content:"";position:absolute;left:5px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.bk-list--check li::before{content:"✓";width:auto;height:auto;top:0;left:3px;background:none;color:var(--green);font-weight:700;font-size:.85rem;}
+.bk-list--proposed li::before{background:transparent;border:1.5px dashed var(--gold);}
+.bk-list strong{color:var(--text);font-weight:600;}
+.bk-callout{margin-top:1rem;padding:12px 16px;font-size:.8rem;line-height:1.65;color:var(--text-muted);background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r);}
+.bk-callout strong{color:var(--gold);}
+.bk-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px;margin-top:.9rem;}
+.bk-stack-item{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.bk-stack-item strong{display:block;font-family:var(--font-display);font-size:.9rem;color:var(--text);}
+.bk-stack-item span{display:block;font-size:.76rem;color:var(--text-muted);margin-top:3px;line-height:1.5;}
+
+/* Architecture diagram */
+.bk-diagram{display:grid;gap:12px;margin-top:1rem;}
+.bk-lane{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(14px,2.5vw,22px);}
+.bk-lane--down{border-style:dashed;border-color:rgba(0,212,255,0.3);}
+.bk-lane-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.bk-flow{display:flex;align-items:stretch;gap:6px;}
+.bk-node{flex:1 1 0;min-width:0;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 10px;text-align:center;}
+.bk-node strong{display:block;font-family:var(--font-display);font-size:.85rem;font-weight:700;color:var(--text);}
+.bk-node small{display:block;font-size:.68rem;color:var(--text-muted);margin-top:4px;line-height:1.45;}
+.bk-node-ico{display:block;font-size:1.25rem;margin-bottom:6px;}
+.bk-node--resp{border-color:rgba(34,197,94,0.4);}
+.bk-arrow{flex:0 0 22px;display:grid;place-items:center;color:var(--accent);font-family:var(--font-mono);}
+.bk-arrow::before{content:"→";}
+.bk-handoff{text-align:center;font-size:.75rem;color:var(--text-muted);line-height:1.5;padding:0 8px;}
+.bk-handoff::before{content:"↓";display:block;color:var(--accent);font-family:var(--font-mono);font-size:1rem;}
+.bk-outcomes-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin:16px 0 10px;}
+.bk-notify-handoff{text-align:center;font-size:.75rem;color:var(--text-muted);line-height:1.5;padding:8px 8px 0;}
+.bk-notify-handoff::before{content:"↓";display:block;color:var(--green);font-family:var(--font-mono);font-size:1rem;margin-bottom:3px;}
+.bk-outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.bk-outcome{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:12px 10px;text-align:center;}
+.bk-outcome strong{display:block;font-size:.8rem;font-weight:600;color:var(--text);}
+.bk-outcome small{display:block;font-size:.68rem;color:var(--text-muted);margin-top:3px;line-height:1.45;}
+@media(max-width:768px){
+  .bk-flow{flex-direction:column;}
+  .bk-arrow{flex:0 0 20px;}
+  .bk-arrow::before{content:"↓";}
+  .bk-outcomes{grid-template-columns:1fr;}
+}
+
 </style>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body class="market-ng" id="body">
 
@@ -1026,6 +1078,31 @@ footer{padding:40px 0 24px;border-top:1px solid var(--border);}
         </div>
       </article>
 
+      <!-- Project 5 — Own portfolio project (tested locally) -->
+      <article class="card portfolio-card bk-featured">
+        <div class="pf-header">
+          <div>
+            <div class="pf-industry">Own Portfolio Project · Tested Locally</div>
+            <h3 class="pf-title">Kograhic AI Booking &amp; Lead Automation System</h3>
+          </div>
+          <span class="badge badge-gold">Portfolio Project</span>
+        </div>
+        <div class="pf-problem">❌ Problem: Website enquiries often wait in an inbox — no instant acknowledgement, no central record, and no alert to the owner.</div>
+        <p class="pf-solution">An end-to-end automation I built to demonstrate the fix: Formspree captures the enquiry, Node-RED validates it and returns a fast response, a Flask API stores the lead in SQLite, and notifications follow — a Telegram alert plus customer and owner emails.</p>
+        <div class="pf-results">
+          <div class="pf-result"><div class="pf-result-num">200</div><div class="pf-result-label">HTTP status</div></div>
+          <div class="pf-result"><div class="pf-result-num">0.23s</div><div class="pf-result-label">Endpoint response</div></div>
+          <div class="pf-result"><div class="pf-result-num">Saved</div><div class="pf-result-label">Test lead stored</div></div>
+        </div>
+        <div class="pf-tools">
+          <span class="tag">Formspree</span><span class="tag">Node-RED</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Telegram Bot API</span><span class="tag">SMTP Email</span>
+        </div>
+        <p class="bk-note">Built and tested locally — not a paid client project and not publicly deployed. 0.23s is the booking endpoint's response time, not total notification delivery time.</p>
+        <div class="bk-card-actions">
+          <a href="#booking-automation" class="btn btn-primary btn-sm" onclick="gtag('event','case_study_click',{event_category:'engagement',event_label:'booking_automation_card'});">Read the Case Study →</a>
+        </div>
+      </article>
+
     </div>
 
     <div style="text-align:center;margin-top:32px;" class="reveal">
@@ -1270,6 +1347,208 @@ footer{padding:40px 0 24px;border-top:1px solid var(--border);}
     </div>
     <div style="margin-top:32px;" class="reveal">
       <a href="#contact" class="btn btn-primary" onclick="gtag('event','book_demo_click',{event_category:'lead',event_label:'case_study'});">Get a Similar System Built →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CASE STUDY — BOOKING & LEAD AUTOMATION SYSTEM
+     (own portfolio project, tested locally)
+════════════════════════════════════════════════════════════════ -->
+<section id="booking-automation" aria-labelledby="bk-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge badge-gold" style="margin-bottom:1rem;">Case Study</span>
+      <h2 class="section-title" id="bk-heading">Booking &amp; Lead<br/>Automation System</h2>
+      <p class="section-sub">A locally tested automation that turns a website enquiry into a validated, stored lead with instant alerts. Built as my own portfolio project — not a paid client engagement.</p>
+      <div class="bk-meta">
+        <span class="badge badge-gold">Own Portfolio Project</span>
+        <span class="badge badge-cyan">Tested Locally</span>
+        <span class="tag">Not publicly deployed</span>
+      </div>
+    </div>
+
+    <div class="bk-wrap reveal">
+
+      <div class="cs-step">
+        <div class="cs-step-num">01</div>
+        <div>
+          <h3>Project Overview</h3>
+          <p>The Kograhic AI Booking &amp; Lead Automation System is my own portfolio project. It demonstrates website enquiry intake, workflow orchestration, backend API integration, database persistence, Telegram alerts and email automation working together as one pipeline.</p>
+          <p>It was built and tested on a local setup. It is not a client project, and it is not presented as publicly deployed production software.</p>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">02</div>
+        <div>
+          <h3>Business Problem</h3>
+          <p>Many small businesses handle website enquiries by hand. The message lands in an inbox, the customer hears nothing back, there is no structured record of the lead, and the owner only finds out when they next check. This project shows how those gaps can be closed with a small, well-defined automation.</p>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">03</div>
+        <div>
+          <h3>Implemented Solution</h3>
+          <ul class="bk-list bk-list--check">
+            <li><strong>Intake:</strong> Formspree receives the website form submission.</li>
+            <li><strong>Validation &amp; orchestration:</strong> Node-RED validates the submission and coordinates the workflow.</li>
+            <li><strong>Synchronous processing:</strong> Node-RED forwards the validated booking to Flask and returns the HTTP response after Flask responds.</li>
+            <li><strong>Persistence:</strong> a Python/Flask API processes the validated booking and stores the lead in SQLite.</li>
+            <li><strong>Alerts:</strong> a Telegram Bot API message announces each new lead.</li>
+            <li><strong>Email:</strong> SMTP sends a receipt acknowledgment to the customer and a notification with the enquiry details to the owner.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">04</div>
+        <div>
+          <h3>Workflow Architecture</h3>
+          <p>The booking follows a sequential request path. Node-RED validates the submission, Flask stores the lead in SQLite, and the HTTP response is returned after Flask responds. After the database commit, Flask starts notification delivery in a background thread; notification delivery does not need to finish before the HTTP response.</p>
+
+          <div class="bk-diagram" role="group" aria-label="Sequential booking workflow: validation, database persistence, HTTP response, and background notifications">
+            <div class="bk-lane">
+              <div class="bk-lane-label">Synchronous request path</div>
+              <div class="bk-flow">
+                <div class="bk-node"><span class="bk-node-ico">📝</span><strong>Website Form</strong><small>Visitor submits an enquiry</small></div>
+                <span class="bk-arrow" aria-hidden="true"></span>
+                <div class="bk-node"><span class="bk-node-ico">📥</span><strong>Formspree</strong><small>Enquiry intake</small></div>
+                <span class="bk-arrow" aria-hidden="true"></span>
+                <div class="bk-node"><span class="bk-node-ico">🔀</span><strong>Node-RED Validation</strong><small>Requires a non-empty Name and valid Email</small></div>
+                <span class="bk-arrow" aria-hidden="true"></span>
+                <div class="bk-node"><span class="bk-node-ico">🐍</span><strong>Flask API</strong><small>Processes the validated booking</small></div>
+                <span class="bk-arrow" aria-hidden="true"></span>
+                <div class="bk-node"><span class="bk-node-ico">🗄️</span><strong>SQLite Lead Storage</strong><small>Lead committed to the database</small></div>
+                <span class="bk-arrow" aria-hidden="true"></span>
+                <div class="bk-node bk-node--resp"><span class="bk-node-ico">⚡</span><strong>HTTP Response</strong><small>Returned after Flask responds</small></div>
+              </div>
+            </div>
+            <div class="bk-lane bk-lane--down">
+              <div class="bk-lane-label">Background notification delivery</div>
+              <div class="bk-notify-handoff">After the database commit, Flask starts notification delivery in a background thread</div>
+              <div class="bk-outcomes-label">Notification outcomes</div>
+              <div class="bk-outcomes">
+                <div class="bk-outcome"><strong>Telegram alert</strong><small>New-lead notification</small></div>
+                <div class="bk-outcome"><strong>Customer email</strong><small>Receipt acknowledgment</small></div>
+                <div class="bk-outcome"><strong>Owner email</strong><small>Notification with enquiry details</small></div>
+              </div>
+            </div>
+          </div>
+          <p class="bk-note">The HTTP response follows successful database persistence. Telegram and email delivery run in the background and may complete after the response.</p>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">05</div>
+        <div>
+          <h3>Technology Stack</h3>
+          <div class="tool-badges">
+            <span class="tag">Formspree</span><span class="tag">Node-RED</span><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Telegram Bot API</span><span class="tag">SMTP Email</span>
+          </div>
+          <div class="bk-stack">
+            <div class="bk-stack-item"><strong>Formspree</strong><span>Website enquiry intake</span></div>
+            <div class="bk-stack-item"><strong>Node-RED</strong><span>Validation and workflow orchestration</span></div>
+            <div class="bk-stack-item"><strong>Python &amp; Flask</strong><span>Backend API processing</span></div>
+            <div class="bk-stack-item"><strong>SQLite</strong><span>Lead storage</span></div>
+            <div class="bk-stack-item"><strong>Telegram Bot API</strong><span>New-lead alerts</span></div>
+            <div class="bk-stack-item"><strong>SMTP email</strong><span>Customer acknowledgment and owner notification</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">06</div>
+        <div>
+          <h3>Validation &amp; Database Persistence</h3>
+          <p>Node-RED checks that Name is non-empty and Email is valid before passing the booking to the backend. Validated bookings are processed by the Flask API and written to a SQLite database, so every lead leaves a structured record rather than only an email in an inbox.</p>
+          <p>In the final test a synthetic lead was successfully stored in SQLite, with Formspree recorded as the source.</p>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">07</div>
+        <div>
+          <h3>Verified Test Results</h3>
+          <div class="cs-results">
+            <div class="cs-result-item"><div class="cs-result-num">200</div><div class="cs-result-label">HTTP status</div></div>
+            <div class="cs-result-item"><div class="cs-result-num">0.23s</div><div class="cs-result-label">Booking endpoint response time</div></div>
+            <div class="cs-result-item"><div class="cs-result-num">Saved</div><div class="cs-result-label">Test lead stored</div></div>
+            <div class="cs-result-item"><div class="cs-result-num">Formspree</div><div class="cs-result-label">Recorded lead source</div></div>
+          </div>
+          <ul class="bk-list bk-list--check">
+            <li>The lead was saved in SQLite.</li>
+            <li>The Telegram new-lead alert arrived.</li>
+            <li>The customer acknowledgment email arrived.</li>
+            <li>The owner notification email arrived with the enquiry details.</li>
+          </ul>
+          <div class="bk-callout"><strong>How to read these numbers:</strong> 0.23 seconds is the response time of the booking endpoint only. It is not the total time for notifications to be delivered. These results come from the final test on a local setup, not from a public deployment.</div>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">08</div>
+        <div>
+          <h3>Business Value</h3>
+          <p>This pattern is designed to give a business:</p>
+          <ul class="bk-list">
+            <li>A customer receipt acknowledgment as part of the notification workflow.</li>
+            <li>A structured, searchable record of each lead.</li>
+            <li>Owner alerts via Telegram and email, subject to successful delivery.</li>
+            <li>A clear receipt acknowledgment for the customer.</li>
+          </ul>
+          <p>These are design goals demonstrated by the local test. No revenue, cost-saving or conversion figures are claimed for this project.</p>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">09</div>
+        <div>
+          <h3>Production-Readiness Considerations</h3>
+          <p>The system has been tested locally only. A production rollout would need to address, among other things:</p>
+          <ul class="bk-list">
+            <li>Hosted infrastructure with HTTPS and uptime monitoring.</li>
+            <li>Secure secrets management and credential rotation.</li>
+            <li>Verification of incoming webhook requests, plus spam and rate-limit protection.</li>
+            <li>Retry and failure handling for notifications, with logging and alerting.</li>
+            <li>Database backups, and a managed database if lead volume grows.</li>
+            <li>Data-protection and consent requirements for stored customer details.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">10</div>
+        <div>
+          <h3>Future Improvements <span class="badge badge-gold" style="margin-left:6px;">Proposed — not implemented</span></h3>
+          <p>The ideas below are proposals only. None of them is part of the tested system.</p>
+          <ul class="bk-list bk-list--proposed">
+            <li>Sync leads to a CRM or spreadsheet.</li>
+            <li>WhatsApp Business API alerts alongside Telegram.</li>
+            <li>A lightweight dashboard for viewing and updating lead status.</li>
+            <li>Automated follow-up messages and calendar booking links.</li>
+            <li>Duplicate-lead detection and a retry queue for failed notifications.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-step">
+        <div class="cs-step-num">11</div>
+        <div>
+          <h3>Want Something Similar?</h3>
+          <p>If your business handles website enquiries by hand, I can scope an intake-to-alert automation around your own forms, tools and notification channels. Tell me how enquiries reach you today and I'll outline what could be automated.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:1.25rem;">
+            <a href="#contact" class="btn btn-primary" onclick="gtag('event','book_demo_click',{event_category:'lead',event_label:'booking_automation_case_study'});">Discuss a Similar System →</a>
+            <a href="#book" class="btn btn-ghost">Book a Free Strategy Session</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:28px;" class="reveal">
+      <a href="#portfolio" class="btn btn-ghost btn-sm">← Back to Portfolio</a>
     </div>
   </div>
 </section>
@@ -1652,7 +1931,7 @@ footer{padding:40px 0 24px;border-top:1px solid var(--border);}
 
       <div class="contact-form reveal reveal-delay-1">
         <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:1.5rem;">Free Strategy Enquiry</h3>
-        <form id="contact-form" onsubmit="handleSubmit(event)" novalidate>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div class="form-group">
               <label for="fname">First Name</label>
@@ -1701,6 +1980,10 @@ footer{padding:40px 0 24px;border-top:1px solid var(--border);}
           <div class="form-group">
             <label for="message">Tell me about your biggest challenge</label>
             <textarea id="message" name="message" placeholder="e.g. We get 50+ WhatsApp leads per day but can only respond to half of them in time..."></textarea>
+          </div>
+          <p style="font-size:.82rem;color:var(--text-dim);margin:0 0 1rem;line-height:1.6;">Submitting an enquiry is free. After we confirm your project requirements and agree on the scope, you will receive a secure deposit payment link.</p>
+          <div id="turnstile-container" class="form-group" style="display:none;justify-content:center;margin:0 0 1rem;">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAFuV15M91mZuWYes"></div>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
             Send Enquiry — It's Free
@@ -1881,6 +2164,13 @@ function toggleFaq(btn){
   btn.setAttribute('aria-expanded',open);
 }
 
+// Hostless cutover remains OFF until explicitly approved.
+const USE_HOSTLESS_INTAKE = false;
+const turnstileContainer = document.getElementById('turnstile-container');
+if(turnstileContainer){
+  turnstileContainer.style.display = USE_HOSTLESS_INTAKE ? 'flex' : 'none';
+}
+
 // ─── FORM ────────────────────────────────────────────────────────
 async function handleSubmit(e){
   e.preventDefault();
@@ -1891,32 +2181,84 @@ async function handleSubmit(e){
   btn.disabled=true;
   btn.textContent='Sending…';
   try{
+    if(USE_HOSTLESS_INTAKE){
+      const firstName=String(data.get('fname') || '').trim();
+      const lastName=String(data.get('lname') || '').trim();
+      const payload={
+        name:[firstName,lastName].filter(Boolean).join(' '),
+        email:String(data.get('email') || '').trim(),
+        phone:String(data.get('whatsapp') || '').trim(),
+        industry:String(data.get('industry') || '').trim(),
+        service:String(data.get('service') || '').trim(),
+        message:String(data.get('message') || '').trim(),
+        turnstile_token:String(data.get('cf-turnstile-response') || '')
+      };
+
+      if(!payload.turnstile_token){
+        btn.disabled=false;
+        btn.textContent="Send Enquiry — It's Free";
+        alert('Please complete the security check and try again.');
+        return;
+      }
+
+      const res=await fetch('https://kograhic-booking-automation.hostless.app/api/public/leads',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(payload)
+      });
+
+      let result={};
+      try{
+        result=await res.json();
+      }catch(parseError){
+        result={};
+      }
+
+      if(res.status===201 && result.success===true){
+        try {
+          gtag('event','book_demo_click',{event_category:'lead',event_label:'contact_form'});
+        } catch (analyticsError) {
+          console.warn('Analytics event could not be recorded.');
+        }
+        form.style.display='none';
+        success.style.display='block';
+        return;
+      }
+
+      if(window.turnstile) window.turnstile.reset();
+      btn.disabled=false;
+      btn.textContent="Send Enquiry — It's Free";
+
+      const messages={
+        400:'Please check your details and try again.',
+        403:'The security check could not be verified. Please try again.',
+        409:'This submission may already have been received. Please contact us on WhatsApp if you need help.',
+        429:'Too many attempts. Please wait a moment before trying again.',
+        503:'The booking service is temporarily unavailable. Please try again later or contact us on WhatsApp.'
+      };
+      alert(messages[res.status] || 'Something went wrong. Please try again or reach out on WhatsApp.');
+      return;
+    }
+
+    // Existing Formspree route remains the active default.
     const res=await fetch('https://formspree.io/f/xqeovkjb',{method:'POST',body:data,headers:{Accept:'application/json'}});
     if(res.ok){
-      gtag('event','book_demo_click',{event_category:'lead',event_label:'contact_form'});
-      // Send lead to n8n (fire-and-forget — don't block the success state)
-      fetch('https://kograhic.app.n8n.cloud/webhook/lead-test',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({
-          Name: (data.get('fname')||'').trim()+' '+(data.get('lname')||'').trim(),
-          Email: data.get('email')||'',
-          WhatsApp: data.get('whatsapp')||'',
-          Industry: data.get('industry')||'',
-          Service: data.get('service')||'',
-          Message: data.get('message')||''
-        })
-      }).catch(()=>{}); // silent fail — Formspree is the source of truth
+      try {
+        gtag('event','book_demo_click',{event_category:'lead',event_label:'contact_form'});
+      } catch (analyticsError) {
+        console.warn('Analytics event could not be recorded.');
+      }
       form.style.display='none';
       success.style.display='block';
     } else {
       btn.disabled=false;
-      btn.textContent='Send Message';
+      btn.textContent="Send Enquiry — It's Free";
       alert('Something went wrong. Please try again or reach out on WhatsApp.');
     }
   }catch(err){
+    if(USE_HOSTLESS_INTAKE && window.turnstile) window.turnstile.reset();
     btn.disabled=false;
-    btn.textContent='Send Message';
+    btn.textContent="Send Enquiry — It's Free";
     alert('Network error. Please try again or reach out on WhatsApp.');
   }
 }
