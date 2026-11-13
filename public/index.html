@@ -2165,7 +2165,7 @@ function toggleFaq(btn){
 }
 
 // Hostless cutover remains OFF until explicitly approved.
-const USE_HOSTLESS_INTAKE = false;
+const USE_HOSTLESS_INTAKE = true;
 const turnstileContainer = document.getElementById('turnstile-container');
 if(turnstileContainer){
   turnstileContainer.style.display = USE_HOSTLESS_INTAKE ? 'flex' : 'none';
